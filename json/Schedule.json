@@ -1,0 +1,23 @@
+{
+    "schedule": [
+      {
+        "lessonID": 1,
+        "date": "2025-02-08",
+        "time": "14:00",
+        "duration": 30
+      },
+      {
+        "lessonID": 2,
+        "date": "2025-02-09",
+        "time": "16:30",
+        "duration": 45
+      },
+      {
+        "lessonID": 3,
+        "date": "2025-02-10",
+        "time": "10:00",
+        "duration": 60
+      }
+    ]
+  }
+  

@@ -1,0 +1,95 @@
+{
+    "lessons": [
+      {
+        "lessonID": 1,
+        "lessonName": "Introduction to Notes",
+        "lessonDescription": "Learn the basics of reading musical notes.",
+        "difficulty": "EASY",
+        "content": "Notes are symbols representing musical sounds...",
+        "flashcards": [
+          {
+            "question": "What is the first note on the treble clef?",
+            "answer": "E"
+          },
+          {
+            "question": "How many lines are in a standard musical staff?",
+            "answer": "5"
+          }
+        ],
+        "quizzes": [1],
+        "estimatedTime": 20,
+        "isCompleted": false
+      },
+      {
+        "lessonID": 2,
+        "lessonName": "Reading Rhythms",
+        "lessonDescription": "Understand note durations and time signatures.",
+        "difficulty": "INTERMEDIATE",
+        "content": "Each note has a specific duration...",
+        "flashcards": [
+          {
+            "question": "How many beats does a quarter note get?",
+            "answer": "1"
+          }
+        ],
+        "quizzes": [2],
+        "estimatedTime": 30,
+        "isCompleted": false
+      }
+    ],
+
+    "quizzes": [
+      {
+        "quizID": 1,
+        "lessonID": 1,
+        "questions": [
+          {
+            "questionID": 1,
+            "question": "What is the note on the first space of the treble clef?",
+            "options": ["A", "B", "C", "D"],
+            "correctAnswer": "F"
+          },
+          {
+            "questionID": 2,
+            "question": "How many beats does a whole note have?",
+            "options": ["1", "2", "3", "4"],
+            "correctAnswer": "4"
+          }
+        ]
+      },
+      {
+        "quizID": 2,
+        "lessonID": 2,
+        "questions": [
+          {
+            "questionID": 3,
+            "question": "What does 'Allegro' mean in music?",
+            "options": ["Slow", "Moderate", "Fast", "Very Slow"],
+            "correctAnswer": "Fast"
+          }
+        ]
+      }
+    ],
+
+    "flashcards":
+    [
+        {
+            "_comment": "I ai generated these questions because I know pretty much nothing about music",
+            
+            "questions": 
+            {
+                "1": "What is a major scale?",
+                "2": "What is a minor chord?",
+                "3": "What does 'fortissimo' mean?"
+            },
+
+            "answers": 
+            {
+                "1": "A diatonic scale with a specific pattern of whole and half steps.",
+                "2": "A chord that has a root, minor third, and perfect fifth.",
+                "3": "It means to play very loudly."
+            }
+        }
+    ]
+  }
+  

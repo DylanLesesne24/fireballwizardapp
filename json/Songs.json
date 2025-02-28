@@ -1,0 +1,26 @@
+{
+    "songs": [
+      {
+        "songID": 1,
+        "title": "Twinkle Twinkle Little Star",
+        "difficulty": "EASY",
+        "notes": ["C", "C", "G", "G", "A", "A", "G"],
+        "tempo": 60
+      },
+      {
+        "songID": 2,
+        "title": "Fur Elise",
+        "difficulty": "INTERMEDIATE",
+        "notes": ["E", "D#", "E", "D#", "E", "B", "D", "C", "A"],
+        "tempo": 120
+      },
+      {
+        "songID": 3,
+        "title": "Moonlight Sonata",
+        "difficulty": "PRO",
+        "notes": ["C#", "E", "G#", "E", "C#", "E", "G#", "E"],
+        "tempo": 40
+      }
+    ]
+  }
+  

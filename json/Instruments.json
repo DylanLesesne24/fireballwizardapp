@@ -1,0 +1,43 @@
+[
+    {
+        "name": "Piano",
+        "type": "Piano",
+        "volume": "5",
+        "IsElectric": "false", 
+        "numberofKeys": 88,
+        "sustainPedal": "true",
+        "_comment": "this comment won't be accessed, electric pianos and acoustic pianos sound the same, so I didn't worry about listing different kinds here"
+    },
+
+    {
+        "name": "Electric Guitar",
+        "type": "Guitar",
+        "volume": 5,
+        "IsElectric": "true",
+        "numberOfStrings": 6
+    },
+
+    {
+        "name": "Acoustic Guitar",
+        "type": "Guitar",
+        "volume": 5,
+        "IsElectric": "false",
+        "numberOfStrings": 6
+    },
+
+    {
+        "name": "Violin",
+        "type": "Violin",
+        "volume": 5,
+        "IsElectric": "false",
+        "numberOfStrings": 4
+    },
+
+    {
+        "name": "Electric Violin",
+        "type": "Guitar",
+        "volume": 5,
+        "IsElectric": "true",
+        "numberOfStrings": 5
+    }
+]
