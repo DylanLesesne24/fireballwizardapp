@@ -5,8 +5,7 @@
         "volume": "5",
         "IsElectric": "false", 
         "numberofKeys": 88,
-        "sustainPedal": "true",
-        "_comment": "this comment won't be accessed, electric pianos and acoustic pianos sound the same, so I didn't worry about listing different kinds here"
+        "sustainPedal": "true"
     },
 
     {
