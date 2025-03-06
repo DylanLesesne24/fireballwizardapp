@@ -8,7 +8,7 @@ public class MusicLearningFacade {
 
     private UUID userID;
     private UUID quizID;
-    private UUID lessonID; //These variables
+    private UUID lessonID; //These variables, but theoretically in data loader
 
     public boolean registerUser(String username, String password, String email)
     {
