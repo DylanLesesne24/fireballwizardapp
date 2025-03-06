@@ -1,25 +1,29 @@
 package com.firewizapp.model;
 
-public class DataWriter extends Data_Loader{
+public class DataWriter extends Data_Loader{ //I was told that we shouldn't have any voids in data writer for testing purposes
 
-    public void saveUsers()
+    public boolean saveUsers()
     {
-
+        //TODO
+        return true;
     }
 
-    public void saveLessons()
+    public boolean saveLessons()
     {
-
+        //TODO
+        return true;
     }
 
-    public void saveProgress()
+    public boolean saveProgress()
     {
-
+        //TODO
+        return true;
     }
 
-    public void saveQuizzes()
+    public boolean saveQuizzes()
     {
-        
+        //TODO
+        return true;
     }
     
 }

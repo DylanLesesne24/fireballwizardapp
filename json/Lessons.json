@@ -1,7 +1,7 @@
 {
     "lessons": [
       {
-        "lessonID": 1,
+        "lessonID": "b0d109e4-06de-4f1e-9d96-ddf2bb22ed64",
         "lessonName": "Introduction to Notes",
         "lessonDescription": "Learn the basics of reading musical notes.",
         "difficulty": "EASY",
@@ -21,7 +21,7 @@
         "isCompleted": false
       },
       {
-        "lessonID": 2,
+        "lessonID": "0aae13c0-1b1b-49e2-b54c-62df3639bd98",
         "lessonName": "Reading Rhythms",
         "lessonDescription": "Understand note durations and time signatures.",
         "difficulty": "INTERMEDIATE",
@@ -40,17 +40,16 @@
 
     "quizzes": [
       {
-        "quizID": 1,
-        "lessonID": 1,
+        "quizID": "bd650b2d-73e9-4d71-9ec5-08e2ed05a2c1",
         "questions": [
           {
-            "questionID": 1,
+            "questionID": "71e05021-3703-434f-b5d8-6e4f3133a9b9",
             "question": "What is the note on the first space of the treble clef?",
             "options": ["A", "B", "C", "D"],
             "correctAnswer": "F"
           },
           {
-            "questionID": 2,
+            "questionID": "ccb1ad8a-1a04-4ac0-8371-5ac9c75417d8",
             "question": "How many beats does a whole note have?",
             "options": ["1", "2", "3", "4"],
             "correctAnswer": "4"
@@ -58,11 +57,10 @@
         ]
       },
       {
-        "quizID": 2,
-        "lessonID": 2,
+        "quizID": "398b0687-e92f-4974-980f-f5f014b1bb32",
         "questions": [
           {
-            "questionID": 3,
+            "questionID": "9d91214f-badf-47f2-9465-541c9c078dc2",
             "question": "What does 'Allegro' mean in music?",
             "options": ["Slow", "Moderate", "Fast", "Very Slow"],
             "correctAnswer": "Fast"
