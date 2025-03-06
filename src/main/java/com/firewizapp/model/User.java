@@ -3,8 +3,8 @@ package com.firewizapp.model;
 import java.util.UUID;
 
 public class User {
-    
-    //TODO
+
+    // TODO
 
     private UUID userID;
 
