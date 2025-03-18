@@ -2,9 +2,23 @@ package com.firewizapp.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
-abstract class Data_Loader {
+public class Data_Loader {
 
-    //needs static pathways
-    //TODO
+    public ArrayList<User> loadUsers() {
+        return new ArrayList<>(); // TODO
+    }
+
+    public HashMap<UUID, Lesson> loadLessons() {
+        return new HashMap<>(); // TODO
+    }
+
+    public HashMap<UUID, ProgressTracker> loadProgress() {
+        return new HashMap<>(); // TODO
+    }
+
+    public HashMap<UUID, Quiz> loadQuizzes() {
+        return new HashMap<>(); // TODO
+    }
 }
