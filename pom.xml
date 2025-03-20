@@ -41,6 +41,12 @@
             <artifactId>javafx-fxml</artifactId>
             <version>13</version>
         </dependency>
+    
+      <dependency>
+        <groupId>org.apache.avro</groupId>
+        <artifactId>avro</artifactId>
+        <version>1.9.0</version>
+      </dependency>
     </dependencies>
     <build>
         <plugins>
