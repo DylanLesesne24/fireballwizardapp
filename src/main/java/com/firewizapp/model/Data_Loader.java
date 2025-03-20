@@ -34,7 +34,6 @@ public class Data_Loader extends DataConstants{
                 String[] badgesEarned = ((String[])personJSON.get(BADGES_EARNED));
 
                 users.add(new User(id, username, password, firstName, lastName, userEmail, userSkillLevel, filter, badgesEarned));
-
             }
 
 
@@ -51,6 +50,7 @@ public class Data_Loader extends DataConstants{
         return new HashMap<>(); // TODO
     }
 
+    /* These were just causing errors, and I thought it best to leave them alone for now
     public static HashMap<UUID, ProgressTracker> loadProgress()
     {
         return new HashMap<>(); // TODO
@@ -59,4 +59,5 @@ public class Data_Loader extends DataConstants{
     public staticHashMap<UUID, Quiz> loadQuizzes() {
         return new HashMap<>(); // TODO
     }
+    */
 }
