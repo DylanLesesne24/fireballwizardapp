@@ -29,8 +29,28 @@ public class User {
 
     }
 
+    public String getFirstName()
+    {
+        return this.firstName;
+    }
+
+    public String getLastName()
+    {
+        return this.lastName;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    public boolean getFilter()
+    {
+        return this.filter;
+    }
+
+    public String[] getBadgesEarned()
+    {
+        return this.badgesEarned;
     }
 
     public boolean checkPassword(String inputPassword) {

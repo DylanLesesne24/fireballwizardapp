@@ -17,8 +17,9 @@ public class Data_Loader extends DataConstants{
 
         try {
             FileReader fileReader = new FileReader(USER_FILE_NAME);
-            JSONParser parser = new JSONParser();
-            JSONArray peopleJSON = (JSONArray)new JSONParser().parse(fileReader);
+            JSONParser parser = new JSONParser(); // Parse the file as a JSONObject since your file contains multiple keys
+            JSONObject root = (JSONObject)parser.parse(fileReader); // Extract the "users" array from the root object
+            JSONArray peopleJSON = (JSONArray)root.get("users");
 
             for(int i = 0; i < peopleJSON.size(); i++)
             {
@@ -31,7 +32,13 @@ public class Data_Loader extends DataConstants{
                 String userEmail = ((String)personJSON.get(USER_EMAIL));
                 String userSkillLevel = ((String)personJSON.get(SKILL_LEVEL));
                 boolean filter = ((boolean)personJSON.get(FILTER));
-                String[] badgesEarned = ((String[])personJSON.get(BADGES_EARNED));
+
+                JSONArray badgesJSON = (JSONArray) personJSON.get(BADGES_EARNED);
+                String[] badgesEarned = new String[badgesJSON.size()];
+                for (int j = 0; j < badgesJSON.size(); j++)
+                {
+                    badgesEarned[j] = (String)badgesJSON.get(j);
+                }
 
                 users.add(new User(id, username, password, firstName, lastName, userEmail, userSkillLevel, filter, badgesEarned));
             }
@@ -42,7 +49,7 @@ public class Data_Loader extends DataConstants{
             e.printStackTrace();
         }
 
-        return new ArrayList<>(); // TODO
+        return users; // TODO
     }
 
     public static HashMap<UUID, Lessons> loadLessons()

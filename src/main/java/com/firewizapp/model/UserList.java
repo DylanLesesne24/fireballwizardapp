@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class UserList {
 
-    private ArrayList<User> users;
+    private static ArrayList<User> users;
 
     private static UserList userList;
 
@@ -30,6 +30,11 @@ public class UserList {
             }
         }
         return null; 
+    }
+
+    public static ArrayList<User> getUsers()
+    {
+        return users;
     }
 
     public boolean saveUser() {
