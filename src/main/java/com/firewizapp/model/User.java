@@ -21,7 +21,7 @@ public class User {
         this.username = Username;
         this.password = Password;
         this.firstName = FirstName;
-        this.lastName = FirstName;
+        this.lastName = LastName;
         this.email = Email;
         this.skillLevel = SkillLevel;
         this.filter = Filter;

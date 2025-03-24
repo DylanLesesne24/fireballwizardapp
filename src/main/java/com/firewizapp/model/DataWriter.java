@@ -82,9 +82,10 @@ public class DataWriter extends Data_Loader { //I was told that we shouldn't hav
         return true;
     }
 
-    public static void main(String[] args) {
-        // Try to load users from your UserList.
-        ArrayList<User> users = UserList.getUsers();
+    public static void main(String[] args) 
+    {
+        UserList.getInstance(); //Initialize User List
+        ArrayList<User> users = UserList.getUsers(); // Try to load users from your UserList.
         
         // If no users are loaded, create a dummy user for testing.
         if (users == null || users.isEmpty()) {
@@ -120,5 +121,4 @@ public class DataWriter extends Data_Loader { //I was told that we shouldn't hav
             System.out.println("-----------------------\n");
         }
     }
-    
 }

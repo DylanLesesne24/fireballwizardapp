@@ -9,7 +9,7 @@ public class UserList {
     private static UserList userList;
 
     private UserList() {
-        users = new ArrayList<>();
+        users = Data_Loader.loadUsers(); //This is for data loader and writer, this is creating the starting list of users that are read from the json file
     }
 
     public static UserList getInstance() {
@@ -34,6 +34,11 @@ public class UserList {
 
     public static ArrayList<User> getUsers()
     {
+        if (users == null || users.isEmpty()) 
+        {
+            users = Data_Loader.loadUsers(); //Optionally, load users again if list is empty
+        }
+        
         return users;
     }
 
