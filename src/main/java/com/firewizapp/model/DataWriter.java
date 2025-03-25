@@ -96,7 +96,6 @@ public class DataWriter extends Data_Loader { //I was told that we shouldn't hav
             return false;
         }
 
-        //TODO
         return true;
     }
 

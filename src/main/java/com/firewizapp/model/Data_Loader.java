@@ -1,7 +1,6 @@
 package com.firewizapp.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.UUID;
 import java.io.FileReader;
 
@@ -106,20 +105,4 @@ public class Data_Loader extends DataConstants{
 
         return songs;
     }
-
-    public static HashMap<UUID, Lessons> loadLessons()
-    {
-        return new HashMap<>(); // TODO
-    }
-
-    /* These were just causing errors, and I thought it best to leave them alone for now
-    public static HashMap<UUID, ProgressTracker> loadProgress()
-    {
-        return new HashMap<>(); // TODO
-    }
-
-    public staticHashMap<UUID, Quiz> loadQuizzes() {
-        return new HashMap<>(); // TODO
-    }
-    */
 }
