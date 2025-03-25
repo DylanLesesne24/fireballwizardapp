@@ -1,63 +1,82 @@
 {
-  "words": [
-    "shit", "damn", "fuck", "bitch", "prick", "slut", 
-    "dick", "cunt", "asshole", "douchebag", "douche"
-  ],
-
-  "badges": [
-    "First Lesson Completed!", 
-    "Starting Piano", 
-    "Starting Guitar", 
-    "Starting Violin"
-  ],
-
-  "users": [
-    {
-      "userID": "fb979790-a889-4a45-beb5-c94553a764a7",
-      "username": "MusicLover98",
-      "password": "testPass123",
-      "firstName": "Susan",
-      "lastName": "Brown",
-      "email": "MusicLover@gmail.com",
-      "skillLevel": "INTERMEDIATE",
-      "filter": true,
-      "badgesEarned": ["First Lesson Completed!", "Starting Guitar"]
-    },
-
-    {
-      "userID": "a1d6502a-299c-4c2d-961b-e498ff10b247",
-      "username": "PianoMaster129",
-      "password": "testPass321",
-      "firstName": "Scott",
-      "lastName": "Mack",
-      "email": "PianoMaster@gmail.com",
-      "skillLevel": "PRO",
-      "filter": false,
-      "badgesEarned": ["First Lesson Completed!", "Starting Piano"]
-    }
-  ],
-
-  "progress": [
-    {
-      "userID": "fb979790-a889-4a45-beb5-c94553a764a7",
-      "percentageCompleted": 25,
-      "streak": 5,
-      "lessonsCompleted": [1],
-      "quizzesCompleted": [1],
-      "badgesEarned": ["First Lesson Completed"],
-      "lastLessonDate": "2025-02-07",
-      "leaderboardPosition": 10
-    },
-
-    {
-      "userID": "a1d6502a-299c-4c2d-961b-e498ff10b247",
-      "percentageCompleted": 50,
-      "streak": 10,
-      "lessonsCompleted": [1, 2],
-      "quizzesCompleted": [1, 2],
-      "badgesEarned": ["First Lesson Completed", "Rhythm Master"],
-      "lastLessonDate": "2025-02-06",
-      "leaderboardPosition": 5
-      }
+    "badges": [
+        "First Lesson Completed!",
+        "Starting Piano",
+        "Starting Guitar",
+        "Starting Violin"
+    ],
+    "words": [
+        "shit",
+        "damn",
+        "fuck",
+        "bitch",
+        "prick",
+        "slut",
+        "dick",
+        "cunt",
+        "asshole",
+        "douchebag",
+        "douche"
+    ],
+    "progress": [
+        {
+            "percentageCompleted": 25,
+            "lastLessonDate": "2025-02-07",
+            "lessonsCompleted": [
+                1
+            ],
+            "badgesEarned": [
+                "First Lesson Completed"
+            ],
+            "leaderboardPosition": 10,
+            "streak": 5,
+            "userID": "fb979790-a889-4a45-beb5-c94553a764a7",
+            "quizzesCompleted": [
+                1
+            ]
+        },
+        {
+            "percentageCompleted": 50,
+            "lastLessonDate": "2025-02-06",
+            "lessonsCompleted": [
+                1,
+                2
+            ],
+            "badgesEarned": [
+                "First Lesson Completed",
+                "Rhythm Master"
+            ],
+            "leaderboardPosition": 5,
+            "streak": 10,
+            "userID": "a1d6502a-299c-4c2d-961b-e498ff10b247",
+            "quizzesCompleted": [
+                1,
+                2
+            ]
+        }
+    ],
+    "users": [
+        {
+            "filter": "true",
+            "firstName": "Susan",
+            "lastName": "Brown",
+            "password": "testPass123",
+            "badgesEarned": "First Lesson Completed!, Starting Guitar",
+            "userID": "fb979790-a889-4a45-beb5-c94553a764a7",
+            "skillLevel": "INTERMEDIATE",
+            "email": "MusicLover@gmail.com",
+            "username": "MusicLover98"
+        },
+        {
+            "filter": "false",
+            "firstName": "Scott",
+            "lastName": "Mack",
+            "password": "testPass321",
+            "badgesEarned": "First Lesson Completed!, Starting Piano",
+            "userID": "a1d6502a-299c-4c2d-961b-e498ff10b247",
+            "skillLevel": "PRO",
+            "email": "PianoMaster@gmail.com",
+            "username": "PianoMaster129"
+        }
     ]
 }

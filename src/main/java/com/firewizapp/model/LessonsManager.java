@@ -26,5 +26,24 @@ public class LessonsManager {
     public boolean removeLesson(UUID id) {
         return lessonsMap.remove(id) != null;
     }
-}
 
+    public Flashcards getFlashcardsForLesson(int lessonID) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getFlashcardsForLesson'");
+    }
+
+    public static LessonsManager getInstance() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getInstance'");
+    }
+
+    public void completeLesson(int lessonID) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'completeLesson'");
+    }
+
+    public ArrayList<Lessons> getLessons() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getLessons'");
+    }
+}

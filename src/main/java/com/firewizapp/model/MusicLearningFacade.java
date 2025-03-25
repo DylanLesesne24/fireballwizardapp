@@ -1,13 +1,12 @@
 package com.firewizapp.model;
 
-import com.firewizapp.music.MusicPlayer;
 import java.util.ArrayList;
 import java.util.UUID;
 
 /**
  * Facade class that simplifies access to the core components of the music
- * learning app, including user management, lesson control, songs, flashcards,
- * and quizzes.
+ * learning app,
+ * including user management, lesson control, songs, flashcards, and quizzes.
  * 
  * This class follows the Singleton pattern to ensure a single access point to
  * the app logic.
@@ -31,7 +30,7 @@ public class MusicLearningFacade {
 
     /**
      * Returns the singleton instance of the MusicLearningFacade.
-     *
+     * 
      * @return MusicLearningFacade instance
      */
     public static MusicLearningFacade getInstance() {
@@ -43,7 +42,7 @@ public class MusicLearningFacade {
 
     /**
      * Registers a new user with the system.
-     *
+     * 
      * @param username   The desired username
      * @param password   The desired password
      * @param email      The user's email
@@ -51,12 +50,12 @@ public class MusicLearningFacade {
      * @return true if registration is successful, false otherwise
      */
     public boolean registerUser(String username, String password, String email, Difficulty skillLevel) {
-        return userList.addUser(username, password, email, skillLevel);
+        return userList.addUser(username, password, email, skillLevel); //TODO Update like you did in UserList.java, it doesn't match the constructor in User.java
     }
 
     /**
      * Logs in a user if the username and password are valid.
-     *
+     * 
      * @param username The user's username
      * @param password The user's password
      * @return User object if login is successful, null otherwise
@@ -71,7 +70,7 @@ public class MusicLearningFacade {
 
     /**
      * Logs out the current user.
-     *
+     * 
      * @param user The user to log out
      */
     public void logoutUser(User user) {
@@ -80,7 +79,7 @@ public class MusicLearningFacade {
 
     /**
      * Starts a lesson by its ID.
-     *
+     * 
      * @param lessonID The lesson ID
      */
     public void startLesson(UUID lessonID) {
@@ -89,7 +88,7 @@ public class MusicLearningFacade {
 
     /**
      * Marks a lesson as completed by its ID.
-     *
+     * 
      * @param lessonID The lesson ID
      */
     public void completeLesson(int lessonID) {
@@ -98,7 +97,7 @@ public class MusicLearningFacade {
 
     /**
      * Returns all available lessons in the system.
-     *
+     * 
      * @return ArrayList of Lessons
      */
     public ArrayList<Lessons> getAllLessons() {
@@ -106,15 +105,17 @@ public class MusicLearningFacade {
     }
 
     /**
-     * Plays a song by its ID using MusicPlayer to generate audible output.
-     *
+     * Plays a song by ID by printing its chords to the console.
+     * 
      * @param songID The ID of the song
      */
     public void playSong(int songID) {
         Song song = songList.getSong(songID);
         if (song != null) {
-            MusicPlayer musicPlayer = new MusicPlayer();
-            musicPlayer.playSong(song);
+            System.out.println("Now playing: " + song.getTitle());
+            for (String chord : song.getChords()) {
+                System.out.println("Chord: " + chord);
+            }
         } else {
             System.out.println("Song not found.");
         }
@@ -122,7 +123,7 @@ public class MusicLearningFacade {
 
     /**
      * Adds a new song to the song list.
-     *
+     * 
      * @param song The song to add
      */
     public void addSong(Song song) {
@@ -131,7 +132,7 @@ public class MusicLearningFacade {
 
     /**
      * Returns all songs available in the system.
-     *
+     * 
      * @return ArrayList of Song objects
      */
     public ArrayList<Song> getAllSongs() {
@@ -140,7 +141,7 @@ public class MusicLearningFacade {
 
     /**
      * Retrieves the flashcards associated with a given lesson.
-     *
+     * 
      * @param lessonID The lesson ID
      * @return Flashcards for the lesson
      */
@@ -150,7 +151,7 @@ public class MusicLearningFacade {
 
     /**
      * Retrieves the quiz associated with a given lesson.
-     *
+     * 
      * @param lessonID The lesson ID
      * @return Quiz object for the lesson
      */

@@ -1,7 +1,6 @@
 package com.firewizapp.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.UUID;
 import java.io.FileReader;
 
@@ -19,7 +18,7 @@ public class Data_Loader extends DataConstants{
             FileReader fileReader = new FileReader(USER_FILE_NAME);
             JSONParser parser = new JSONParser(); // Parse the file as a JSONObject since your file contains multiple keys
             JSONObject root = (JSONObject)parser.parse(fileReader); // Extract the "users" array from the root object
-            JSONArray peopleJSON = (JSONArray)root.get("users");
+            JSONArray peopleJSON = (JSONArray)root.get(USER_LIST);
 
             for(int i = 0; i < peopleJSON.size(); i++)
             {
@@ -31,7 +30,9 @@ public class Data_Loader extends DataConstants{
                 String lastName = ((String)personJSON.get(LAST_NAME));
                 String userEmail = ((String)personJSON.get(USER_EMAIL));
                 String userSkillLevel = ((String)personJSON.get(SKILL_LEVEL));
-                boolean filter = ((boolean)personJSON.get(FILTER));
+                
+                String filterStr = (String) personJSON.get(FILTER);
+                boolean filter = Boolean.parseBoolean(filterStr);
 
                 JSONArray badgesJSON = (JSONArray) personJSON.get(BADGES_EARNED);
                 String[] badgesEarned = new String[badgesJSON.size()];
@@ -49,22 +50,59 @@ public class Data_Loader extends DataConstants{
             e.printStackTrace();
         }
 
-        return users; // TODO
+        return users;
     }
 
-    public static HashMap<UUID, Lessons> loadLessons()
+    public static ArrayList<Song> loadSongs()
     {
-        return new HashMap<>(); // TODO
-    }
+        ArrayList<Song> songs = new ArrayList<Song>();
 
-    /* These were just causing errors, and I thought it best to leave them alone for now
-    public static HashMap<UUID, ProgressTracker> loadProgress()
-    {
-        return new HashMap<>(); // TODO
-    }
+        try {
+            FileReader fileReader = new FileReader(SONGS_FILE_NAME);
+            JSONParser parser = new JSONParser(); // Parse the file as a JSONObject since your file contains multiple keys
+            JSONObject root = (JSONObject)parser.parse(fileReader); // Extract the "users" array from the root object
+            JSONArray songsJSON = (JSONArray)root.get(SONG_LIST);
 
-    public staticHashMap<UUID, Quiz> loadQuizzes() {
-        return new HashMap<>(); // TODO
+            for(int i = 0; i < songsJSON.size(); i++)
+            {
+                JSONObject songJSON = (JSONObject)songsJSON.get(i);
+                UUID id = UUID.fromString((String)songJSON.get(SONG_ID));
+                String title = ((String)songJSON.get(SONG_TITLE));
+                String difficulty = ((String)songJSON.get(SONG_DIFFICULTY));
+                
+                Object tempoObj = songJSON.get(SONG_TEMPO);
+                int tempo;
+
+                if(tempoObj instanceof Long)
+                {
+                    tempo = ((Long)tempoObj).intValue();
+                }
+                
+                else if(tempoObj instanceof String) 
+                {
+                    tempo = Integer.parseInt((String) tempoObj);
+                }
+                
+                else
+                {
+                    tempo = 0; // or handle error
+                }
+
+                JSONArray notesJSON = (JSONArray)songJSON.get(NOTES);
+                String[] notes = new String[notesJSON.size()];
+                for (int j = 0; j < notesJSON.size(); j++)
+                {
+                    notes[j] = (String)notesJSON.get(j);
+                }
+
+                songs.add(new Song(id, title, difficulty, notes, tempo));
+            }
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return songs;
     }
-    */
 }

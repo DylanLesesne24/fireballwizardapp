@@ -1,5 +1,7 @@
 package com.firewizapp.model;
 
+import java.util.ArrayList;
+
 public class SongList {
     private String title;
     private String artist;
@@ -76,5 +78,25 @@ public class SongList {
                 ", genre='" + genre + '\'' +
                 ", duration=" + duration +
                 '}';
+    }
+
+    public ArrayList<Song> getAllSongs() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAllSongs'");
+    }
+
+    public void addSong(Song song) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addSong'");
+    }
+
+    public static SongList getInstance() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getInstance'");
+    }
+
+    public Song getSong(int songID) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getSong'");
     }
 }

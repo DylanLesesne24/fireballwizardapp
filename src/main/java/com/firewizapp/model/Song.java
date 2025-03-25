@@ -1,47 +1,56 @@
 package com.firewizapp.model;
 
 import java.util.HashMap;
+import java.util.UUID;
 
 public class Song {
 
-    // A static repository of songs (could be populated from JSON)
     public static HashMap<Integer, Song> SONGS = new HashMap<>();
 
-    private String title;
-    private String artist;
-    private String[] chords;  // New field for the chord sequence
+    private UUID songID;
+    private String songTitle;
+    private String difficulty;
+    private String[] songNotes;
+    private int songTempo;
 
-    /**
-     * Constructor that accepts title, artist, and a sequence of chords.
-     *
-     * @param title  The title of the song.
-     * @param artist The artist of the song.
-     * @param chords An array of chords representing the song.
-     */
-    public Song(String title, String artist, String[] chords) {
-        this.title = title;
-        this.artist = artist;
-        this.chords = chords;
+    public Song(UUID id, String title, String difficulty, String[] notes, int tempo)
+    {
+        this.songID = id;
+        this.songTitle = title;
+        this.difficulty = difficulty;
+        this.songNotes = notes;
+        this.songTempo = tempo;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTitle()
+    {
+        return this.songTitle;
     }
 
-    public String getArtist() {
-        return artist;
+    public String getDifficulty()
+    {
+        return this.difficulty;
     }
 
-    /**
-     * Returns the stored chords for the song.
-     *
-     * @return an array of chord strings.
-     */
-    public String[] getChords() {
-        return chords;
+    public int getTempo() 
+    {
+        return this.songTempo;
     }
 
-    public static Song getSong(int num) {
+    public String[] getNotes()
+    {
+        return this.songNotes;
+    }
+
+    /* Commenting out for simplicity sake
+    public static Song getSong(int num) //TODO ??????????
+    {
         return SONGS.get(num);
     }
+
+    public String[] getChords() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getChords'");
+    }
+    */
 }

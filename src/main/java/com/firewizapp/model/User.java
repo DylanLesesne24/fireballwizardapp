@@ -16,7 +16,8 @@ public class User {
     private boolean filter;
     private String[] badgesEarned;
 
-    public User(UUID id, String Username, String Password, String FirstName, String LastName, String Email, String SkillLevel, boolean Filter, String[] BadgesEarned) {
+    public User(UUID id, String Username, String Password, String FirstName, String LastName, String Email,
+            String SkillLevel, boolean Filter, String[] BadgesEarned) {
         this.userID = id;
         this.username = Username;
         this.password = Password;
@@ -29,13 +30,11 @@ public class User {
 
     }
 
-    public String getFirstName()
-    {
+    public String getFirstName() {
         return this.firstName;
     }
 
-    public String getLastName()
-    {
+    public String getLastName() {
         return this.lastName;
     }
 
@@ -43,13 +42,11 @@ public class User {
         return password;
     }
 
-    public boolean getFilter()
-    {
+    public boolean getFilter() {
         return this.filter;
     }
 
-    public String[] getBadgesEarned()
-    {
+    public String[] getBadgesEarned() {
         return this.badgesEarned;
     }
 
@@ -66,13 +63,14 @@ public class User {
 
     }
 
-    /*public String getWord(int num) { //For now, lets leave this commented TODO
-        if (num >= 0 && num < WORDS.length) {
-            return WORDS[num];
-        }
-        return null;
-    }
-    */
+    /*
+     * public String getWord(int num) { //For now, lets leave this commented TODO
+     * if (num >= 0 && num < WORDS.length) {
+     * return WORDS[num];
+     * }
+     * return null;
+     * }
+     */
     public UUID getUserID() {
         return userID;
     }

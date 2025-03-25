@@ -1,9 +1,12 @@
-package com.firewizapp.model;
+package com.firewizapp.ui; //TODO I'm leaving this to whoever does this, I haven't been in charge of this
+
+import com.firewizapp.model.MusicLearningFacade;
 
 import java.util.Scanner;
 import java.util.UUID;
 
 public class MusicLearningUI {
+
     private MusicLearningFacade facade;
     private Scanner scanner;
 
@@ -11,18 +14,15 @@ public class MusicLearningUI {
         this.facade = new MusicLearningFacade();
         this.scanner = new Scanner(System.in);
     }
-
+//Name of app may change
     public void start() {
         while (true) {
             System.out.println("\nWelcome to the Fireball Wizards Music Learning App");
             System.out.println("1. Register");
             System.out.println("2. Login");
-            System.out.println("3. Start Lesson");
-            System.out.println("4. Complete Lesson");
-            System.out.println("5. View Progress");
-            System.out.println("6. Take a Quiz");
-            System.out.println("7. Play Sample Song");
-            System.out.println("8. Exit");
+            System.out.println("3. View Progress");
+            System.out.println("4. Take a Quiz");
+            System.out.println("5. Exit");
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
@@ -36,21 +36,12 @@ public class MusicLearningUI {
                     loginUser();
                     break;
                 case 3:
-                    startLesson();
-                    break;
-                case 4:
-                    completeLesson();
-                    break;
-                case 5:
                     viewProgress();
                     break;
-                case 6:
+                case 4:
                     takeQuiz();
                     break;
-                case 7:
-                    playSampleSong();
-                    break;
-                case 8:
+                case 5:
                     System.out.println("Exiting application...");
                     return;
                 default:
@@ -89,56 +80,25 @@ public class MusicLearningUI {
         }
     }
 
-    private void startLesson() {
-        System.out.print("Enter Lesson ID (UUID): ");
-        String lessonIdStr = scanner.nextLine();
-        try {
-            UUID lessonId = UUID.fromString(lessonIdStr);
-            facade.startLesson(lessonId);
-        } catch (Exception e) {
-            System.out.println("Invalid UUID format or lesson not found: " + e.getMessage());
-        }
-    }
-
-    private void completeLesson() {
-        System.out.print("Enter Lesson ID (UUID): ");
-        String lessonIdStr = scanner.nextLine();
-        try {
-            UUID lessonId = UUID.fromString(lessonIdStr);
-            facade.completeLesson(lessonId);
-        } catch (Exception e) {
-            System.out.println("Invalid UUID format or lesson not found: " + e.getMessage());
-        }
-    }
-
     private void viewProgress() {
-        System.out.print("Enter User ID (UUID): ");
+        System.out.print("Enter User ID: ");
         String userIdStr = scanner.nextLine();
-        try {
-            UUID userId = UUID.fromString(userIdStr);
-            String progress = facade.getUserProgress(userId);
-            System.out.println("User Progress: " + progress);
-        } catch (Exception e) {
-            System.out.println("Invalid UUID format: " + e.getMessage());
-        }
+        UUID userId = UUID.fromString(userIdStr);
+
+        String progress = facade.getUserProgress(userId);
+        System.out.println("User Progress: " + progress);
     }
 
     private void takeQuiz() {
-        System.out.print("Enter Quiz ID (UUID): ");
+        System.out.print("Enter Quiz ID: ");
         String quizIdStr = scanner.nextLine();
-        try {
-            UUID quizId = UUID.fromString(quizIdStr);
-            System.out.println("Enter your answers separated by commas:");
-            String[] answers = scanner.nextLine().split(",");
-            facade.takeQuiz(quizId, answers);
-            System.out.println("Quiz submitted successfully!");
-        } catch (Exception e) {
-            System.out.println("Invalid UUID format or error: " + e.getMessage());
-        }
-    }
+        UUID quizId = UUID.fromString(quizIdStr);
 
-    private void playSampleSong() {
-        facade.playSampleSong();
+        System.out.println("Enter your answers below.:");
+        String[] answers = scanner.nextLine().split(",");
+
+        facade.takeQuiz(quizId, answers);
+        System.out.println("Quiz submitted successfully!");
     }
 
     public static void main(String[] args) {

@@ -1,12 +1,14 @@
 package com.firewizapp.model;
 
 import java.io.FileWriter;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;
 import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 public class DataWriter extends Data_Loader { //I was told that we shouldn't have any voids in data writer for testing purposes
 
@@ -21,17 +23,79 @@ public class DataWriter extends Data_Loader { //I was told that we shouldn't hav
             jsonUsers.add(getUserJSON(userList.get(i)));
         }
 
+        // Create a JSONObject to hold the entire file content.
+        JSONObject root = new JSONObject();
+
+        try 
+        {
+            // Attempt to load the existing file.
+            FileReader fileReader = new FileReader(USER_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            Object parsed = parser.parse(fileReader);
+        
+            if (parsed instanceof JSONObject) 
+            {
+                root = (JSONObject) parsed; // Existing root with multiple keys.
+            } 
+            
+            else
+            {
+                // If the file is just an array, create a new root and set default values.
+                root = new JSONObject();
+                root.put(USER_LIST, parsed);
+            }
+        } 
+        catch (Exception e) 
+        {
+            // If the file doesn't exist or can't be parsed, create a new root with defaults.
+            root = new JSONObject();
+        }
+
+        // Ensure that the root has the keys "words", "badges", and "progress".
+        // If they don't exist, set them to empty arrays.
+        if(!root.containsKey("words")) 
+        {
+            root.put("words", new JSONArray());
+        }
+
+        if(!root.containsKey("badges"))
+        {
+            root.put("badges", new JSONArray());
+        }
+
+        if (!root.containsKey("progress"))
+        {
+            root.put("progress", new JSONArray());
+        }
+    
+        JSONArray mergedUsers = new JSONArray();
+        if (root.containsKey(USER_LIST))
+        {
+            Object existing = root.get(USER_LIST);
+            if (existing instanceof JSONArray)
+            {
+                mergedUsers.addAll((JSONArray) existing);
+            }
+        }
+        mergedUsers.addAll(jsonUsers);
+    
+        // Update the "users" key with the merged array.
+        root.put(USER_LIST, mergedUsers);
+        
+        String compactJson = root.toJSONString();// Convert the JSON array to a compact string (JSON-simple's default)
+        String prettyJson = prettyPrintJson(compactJson); // Then pretty-print it manually
+
         try(FileWriter file = new FileWriter(USER_FILE_NAME))
         {
-            file.write(jsonUsers.toJSONString());
+            file.write(prettyJson);
             file.flush();
         }
         catch(IOException e)
         {
             e.printStackTrace();
+            return false;
         }
 
-        //TODO
         return true;
     }
 
@@ -64,6 +128,12 @@ public class DataWriter extends Data_Loader { //I was told that we shouldn't hav
         return jsonArray;
     }
 
+    public static boolean saveSongs()
+    {
+
+    }
+
+    /* Just commenting this out for cleanliness sake
     public static boolean saveLessons()
     {
         //TODO
@@ -81,44 +151,95 @@ public class DataWriter extends Data_Loader { //I was told that we shouldn't hav
         //TODO
         return true;
     }
+    */
+
+    //Written by ChatGPT
+    private static String prettyPrintJson(String jsonString) { //THIS IS ONLY HERE TO MAKE WRITING TO THE JSON FILE CLEANER AND EASIER TO UNDERSTAND, LEMME TELL YOU TRY READING A SINGLE LINED ENTIRE JSON FILE
+        StringBuilder result = new StringBuilder();
+        int indentLevel = 0;
+        boolean inQuotes = false;
+    
+        for (int i = 0; i < jsonString.length(); i++) {
+            char c = jsonString.charAt(i);
+    
+            // Toggle inQuotes when we see an unescaped "
+            if (c == '"' && (i == 0 || jsonString.charAt(i - 1) != '\\')) {
+                inQuotes = !inQuotes;
+            }
+    
+            // If we’re inside quotes, just append the character
+            if (inQuotes) {
+                result.append(c);
+                continue;
+            }
+    
+            switch (c) {
+                case '{':
+                case '[':
+                    result.append(c);
+                    result.append("\n");
+                    indentLevel++;
+                    result.append(getIndentString(indentLevel));
+                    break;
+                case '}':
+                case ']':
+                    result.append("\n");
+                    indentLevel--;
+                    result.append(getIndentString(indentLevel));
+                    result.append(c);
+                    break;
+                case ',':
+                    result.append(c);
+                    result.append("\n");
+                    result.append(getIndentString(indentLevel));
+                    break;
+                case ':':
+                    result.append(": ");
+                    break;
+                default:
+                    result.append(c);
+                    break;
+            }
+        }
+        return result.toString();
+    }
+    
+    //Written by ChatGPT, AGAIN ONLY HERE TO HELP
+    private static String getIndentString(int level) {// Helper to create the indentation (e.g., 4 spaces per level)
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < level; i++) {
+            sb.append("    "); // 4 spaces
+        }
+        return sb.toString();
+    }
 
     public static void main(String[] args) 
     {
-        UserList.getInstance(); //Initialize User List
-        ArrayList<User> users = UserList.getUsers(); // Try to load users from your UserList.
-        
-        // If no users are loaded, create a dummy user for testing.
-        if (users == null || users.isEmpty()) {
-            System.out.println("No users loaded. Creating a dummy user for testing...");
-            User dummy = new User(
-                UUID.randomUUID(), 
-                "testUser", 
-                "password123", 
-                "John", 
-                "Doe", 
-                "john.doe@example.com", 
-                "Intermediate", 
-                false, 
-                new String[] {"Badge1", "Badge2", "Badge3"}
-            );
-            users = new ArrayList<>();
-            users.add(dummy);
-        }
-        
-        // For each user, convert to JSON and print each variable.
-        for (User user : users) {
-            JSONObject userJSON = DataWriter.getUserJSON(user);
-            System.out.println("---- User Details ----");
-            System.out.println("User ID: " + userJSON.get(DataConstants.USER_ID));
-            System.out.println("Username: " + userJSON.get(DataConstants.USERNAME));
-            System.out.println("Password: " + userJSON.get(DataConstants.PASSWORD));
-            System.out.println("First Name: " + userJSON.get(DataConstants.FIRST_NAME));
-            System.out.println("Last Name: " + userJSON.get(DataConstants.LAST_NAME));
-            System.out.println("Email: " + userJSON.get(DataConstants.USER_EMAIL));
-            System.out.println("Skill Level: " + userJSON.get(DataConstants.SKILL_LEVEL));
-            System.out.println("Filter: " + userJSON.get(DataConstants.FILTER));
-            System.out.println("Badges Earned: " + userJSON.get(DataConstants.BADGES_EARNED));
-            System.out.println("-----------------------\n");
+        System.out.println("Loading songs from JSON...");
+
+        ArrayList<Song> songs = Data_Loader.loadSongs();
+
+        if (songs.isEmpty()) {
+            System.out.println("No songs were loaded.");
+        } else {
+            for (Song song : songs) {
+                // Get song details
+                String title = song.getTitle();
+                String difficulty = song.getDifficulty();
+                int tempo = song.getTempo(); // Assuming you added a getter for tempo
+                String[] notes = song.getNotes(); // Assuming you added a getter for notes
+
+                // Print the song details including tempo and notes
+                System.out.println("Title: " + title + ", Difficulty: " + difficulty);
+                System.out.println("Tempo: " + tempo);
+                System.out.print("Notes: ");
+                if (notes != null && notes.length > 0) {
+                    for (String note : notes) {
+                        System.out.print(note + " ");
+                    }
+                }
+                System.out.println("\n"); // Adds a line break after each song
+            }
         }
     }
 }
