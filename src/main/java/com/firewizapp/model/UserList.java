@@ -21,7 +21,7 @@ public class UserList {
     }
 
     public boolean addUser(String username, String password, String email, Difficulty skillLevel) {
-        users.add(new User(username, password, email, skillLevel));
+        users.add(new User(username, password, email, skillLevel)); //TODO Update this to be in line with the info stored in our json file
     }
 
     public User getUser(String username) {

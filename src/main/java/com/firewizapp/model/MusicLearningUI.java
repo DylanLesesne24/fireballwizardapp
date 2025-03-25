@@ -1,4 +1,4 @@
-package com.firewizapp.ui;
+package com.firewizapp.ui; //TODO I'm leaving this to whoever does this, I haven't been in charge of this
 
 import com.firewizapp.model.MusicLearningFacade;
 

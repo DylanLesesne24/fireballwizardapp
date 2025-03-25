@@ -209,59 +209,31 @@ public class DataWriter extends Data_Loader { //I was told that we shouldn't hav
 
     public static void main(String[] args) 
     {
-        UserList.getInstance(); //Initialize User List
-        ArrayList<User> users = UserList.getUsers(); // Try to load users from your UserList.
-        
-        // If no users are loaded, create a dummy user for testing.
-        if (users == null || users.isEmpty()) {
-            System.out.println("No users loaded. Creating a dummy user for testing...");
-            User dummy = new User(
-                UUID.randomUUID(), 
-                "testUser", 
-                "password123", 
-                "John", 
-                "Doe", 
-                "john.doe@example.com", 
-                "Intermediate", 
-                false, 
-                new String[] {"Badge1", "Badge2", "Badge3"}
-            );
-            users.add(dummy);
-        }
-        
-        // Print out the current users in a clean, formatted manner.
-        System.out.println("----- Current Users (from memory) -----");
-        for (User user : users) {
-            JSONObject userJSON = DataWriter.getUserJSON(user);
-            System.out.println("---- User Details ----");
-            System.out.println("User ID: " + userJSON.get(DataConstants.USER_ID));
-            System.out.println("Username: " + userJSON.get(DataConstants.USERNAME));
-            System.out.println("Password: " + userJSON.get(DataConstants.PASSWORD));
-            System.out.println("First Name: " + userJSON.get(DataConstants.FIRST_NAME));
-            System.out.println("Last Name: " + userJSON.get(DataConstants.LAST_NAME));
-            System.out.println("Email: " + userJSON.get(DataConstants.USER_EMAIL));
-            System.out.println("Skill Level: " + userJSON.get(DataConstants.SKILL_LEVEL));
-            System.out.println("Filter: " + userJSON.get(DataConstants.FILTER));
-            System.out.println("Badges Earned: " + userJSON.get(DataConstants.BADGES_EARNED));
-            System.out.println("-----------------------\n");
-        }
+        System.out.println("Loading songs from JSON...");
 
-        // Test saving the current list of users to the JSON file.
-        // The parameters here aren't used in the saveUsers method as written,
-        // so dummy values are passed.
-        boolean saveResult = DataWriter.saveUsers("dummy", "dummy", "dummy", Difficulty.INTERMEDIATE);
-        if (saveResult) {
-            System.out.println("\nUsers successfully saved to file.");
+        ArrayList<Song> songs = Data_Loader.loadSongs();
+
+        if (songs.isEmpty()) {
+            System.out.println("No songs were loaded.");
         } else {
-            System.out.println("\nFailed to save users.");
-        }
+            for (Song song : songs) {
+                // Get song details
+                String title = song.getTitle();
+                String difficulty = song.getDifficulty();
+                int tempo = song.getTempo(); // Assuming you added a getter for tempo
+                String[] notes = song.getNotes(); // Assuming you added a getter for notes
 
-        // Now, reload the users from the file to verify that they were saved.
-        ArrayList<User> savedUsers = Data_Loader.loadUsers();
-        System.out.println("----- Saved Users (reloaded from file) -----");
-        for (User user : savedUsers) {
-            JSONObject userJSON = DataWriter.getUserJSON(user);
-            System.out.println(userJSON.toJSONString());
+                // Print the song details including tempo and notes
+                System.out.println("Title: " + title + ", Difficulty: " + difficulty);
+                System.out.println("Tempo: " + tempo);
+                System.out.print("Notes: ");
+                if (notes != null && notes.length > 0) {
+                    for (String note : notes) {
+                        System.out.print(note + " ");
+                    }
+                }
+                System.out.println("\n"); // Adds a line break after each song
+            }
         }
     }
 }

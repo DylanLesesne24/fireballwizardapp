@@ -50,7 +50,7 @@ public class MusicLearningFacade {
      * @return true if registration is successful, false otherwise
      */
     public boolean registerUser(String username, String password, String email, Difficulty skillLevel) {
-        return userList.addUser(username, password, email, skillLevel);
+        return userList.addUser(username, password, email, skillLevel); //TODO Update like you did in UserList.java, it doesn't match the constructor in User.java
     }
 
     /**
