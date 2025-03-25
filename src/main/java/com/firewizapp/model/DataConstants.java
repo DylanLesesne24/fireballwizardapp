@@ -4,7 +4,7 @@ public class DataConstants {
 
     /*
      * These variables store the names of the variables in our json files so we can access them without typing out the name each time
-     */
+    */
     
     protected static final String USER_FILE_NAME = "C:/Users/lauri/OneDrive/Desktop/fireballwizardapp/src/main/json/Users.json";
     protected static final String INSTRUMENTS_FILE_NAME = "src/main/json/Instruments.json";

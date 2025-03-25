@@ -20,7 +20,6 @@ public class Song {
         this.difficulty = difficulty;
         this.songNotes = notes;
         this.songTempo = tempo;
-
     }
 
     public String getTitle()
@@ -43,6 +42,7 @@ public class Song {
         return this.songNotes;
     }
 
+    /* Commenting out for simplicity sake
     public static Song getSong(int num) //TODO ??????????
     {
         return SONGS.get(num);
@@ -52,4 +52,5 @@ public class Song {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getChords'");
     }
+    */
 }

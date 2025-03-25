@@ -128,6 +128,12 @@ public class DataWriter extends Data_Loader { //I was told that we shouldn't hav
         return jsonArray;
     }
 
+    public static boolean saveSongs()
+    {
+
+    }
+
+    /* Just commenting this out for cleanliness sake
     public static boolean saveLessons()
     {
         //TODO
@@ -145,6 +151,7 @@ public class DataWriter extends Data_Loader { //I was told that we shouldn't hav
         //TODO
         return true;
     }
+    */
 
     //Written by ChatGPT
     private static String prettyPrintJson(String jsonString) { //THIS IS ONLY HERE TO MAKE WRITING TO THE JSON FILE CLEANER AND EASIER TO UNDERSTAND, LEMME TELL YOU TRY READING A SINGLE LINED ENTIRE JSON FILE
