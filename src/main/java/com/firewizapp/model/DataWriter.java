@@ -1,12 +1,14 @@
 package com.firewizapp.model;
 
 import java.io.FileWriter;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;
 import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 public class DataWriter extends Data_Loader { //I was told that we shouldn't have any voids in data writer for testing purposes
 
@@ -21,14 +23,77 @@ public class DataWriter extends Data_Loader { //I was told that we shouldn't hav
             jsonUsers.add(getUserJSON(userList.get(i)));
         }
 
+        // Create a JSONObject to hold the entire file content.
+        JSONObject root = new JSONObject();
+
+        try 
+        {
+            // Attempt to load the existing file.
+            FileReader fileReader = new FileReader(USER_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            Object parsed = parser.parse(fileReader);
+        
+            if (parsed instanceof JSONObject) 
+            {
+                root = (JSONObject) parsed; // Existing root with multiple keys.
+            } 
+            
+            else
+            {
+                // If the file is just an array, create a new root and set default values.
+                root = new JSONObject();
+                root.put(USER_LIST, parsed);
+            }
+        } 
+        catch (Exception e) 
+        {
+            // If the file doesn't exist or can't be parsed, create a new root with defaults.
+            root = new JSONObject();
+        }
+
+        // Ensure that the root has the keys "words", "badges", and "progress".
+        // If they don't exist, set them to empty arrays.
+        if(!root.containsKey("words")) 
+        {
+            root.put("words", new JSONArray());
+        }
+
+        if(!root.containsKey("badges"))
+        {
+            root.put("badges", new JSONArray());
+        }
+
+        if (!root.containsKey("progress"))
+        {
+            root.put("progress", new JSONArray());
+        }
+    
+        JSONArray mergedUsers = new JSONArray();
+        if (root.containsKey(USER_LIST))
+        {
+            Object existing = root.get(USER_LIST);
+            if (existing instanceof JSONArray)
+            {
+                mergedUsers.addAll((JSONArray) existing);
+            }
+        }
+        mergedUsers.addAll(jsonUsers);
+    
+        // Update the "users" key with the merged array.
+        root.put(USER_LIST, mergedUsers);
+        
+        String compactJson = root.toJSONString();// Convert the JSON array to a compact string (JSON-simple's default)
+        String prettyJson = prettyPrintJson(compactJson); // Then pretty-print it manually
+
         try(FileWriter file = new FileWriter(USER_FILE_NAME))
         {
-            file.write(jsonUsers.toJSONString());
+            file.write(prettyJson);
             file.flush();
         }
         catch(IOException e)
         {
             e.printStackTrace();
+            return false;
         }
 
         //TODO
@@ -82,6 +147,66 @@ public class DataWriter extends Data_Loader { //I was told that we shouldn't hav
         return true;
     }
 
+    //Written by ChatGPT
+    private static String prettyPrintJson(String jsonString) { //THIS IS ONLY HERE TO MAKE WRITING TO THE JSON FILE CLEANER AND EASIER TO UNDERSTAND, LEMME TELL YOU TRY READING A SINGLE LINED ENTIRE JSON FILE
+        StringBuilder result = new StringBuilder();
+        int indentLevel = 0;
+        boolean inQuotes = false;
+    
+        for (int i = 0; i < jsonString.length(); i++) {
+            char c = jsonString.charAt(i);
+    
+            // Toggle inQuotes when we see an unescaped "
+            if (c == '"' && (i == 0 || jsonString.charAt(i - 1) != '\\')) {
+                inQuotes = !inQuotes;
+            }
+    
+            // If we’re inside quotes, just append the character
+            if (inQuotes) {
+                result.append(c);
+                continue;
+            }
+    
+            switch (c) {
+                case '{':
+                case '[':
+                    result.append(c);
+                    result.append("\n");
+                    indentLevel++;
+                    result.append(getIndentString(indentLevel));
+                    break;
+                case '}':
+                case ']':
+                    result.append("\n");
+                    indentLevel--;
+                    result.append(getIndentString(indentLevel));
+                    result.append(c);
+                    break;
+                case ',':
+                    result.append(c);
+                    result.append("\n");
+                    result.append(getIndentString(indentLevel));
+                    break;
+                case ':':
+                    result.append(": ");
+                    break;
+                default:
+                    result.append(c);
+                    break;
+            }
+        }
+        return result.toString();
+    }
+    
+    //Written by ChatGPT, AGAIN ONLY HERE TO HELP
+    private static String getIndentString(int level) {// Helper to create the indentation (e.g., 4 spaces per level)
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < level; i++) {
+            sb.append("    "); // 4 spaces
+        }
+        return sb.toString();
+    }
+
     public static void main(String[] args) 
     {
         UserList.getInstance(); //Initialize User List
@@ -101,11 +226,11 @@ public class DataWriter extends Data_Loader { //I was told that we shouldn't hav
                 false, 
                 new String[] {"Badge1", "Badge2", "Badge3"}
             );
-            users = new ArrayList<>();
             users.add(dummy);
         }
         
-        // For each user, convert to JSON and print each variable.
+        // Print out the current users in a clean, formatted manner.
+        System.out.println("----- Current Users (from memory) -----");
         for (User user : users) {
             JSONObject userJSON = DataWriter.getUserJSON(user);
             System.out.println("---- User Details ----");
@@ -119,6 +244,24 @@ public class DataWriter extends Data_Loader { //I was told that we shouldn't hav
             System.out.println("Filter: " + userJSON.get(DataConstants.FILTER));
             System.out.println("Badges Earned: " + userJSON.get(DataConstants.BADGES_EARNED));
             System.out.println("-----------------------\n");
+        }
+
+        // Test saving the current list of users to the JSON file.
+        // The parameters here aren't used in the saveUsers method as written,
+        // so dummy values are passed.
+        boolean saveResult = DataWriter.saveUsers("dummy", "dummy", "dummy", Difficulty.INTERMEDIATE);
+        if (saveResult) {
+            System.out.println("\nUsers successfully saved to file.");
+        } else {
+            System.out.println("\nFailed to save users.");
+        }
+
+        // Now, reload the users from the file to verify that they were saved.
+        ArrayList<User> savedUsers = Data_Loader.loadUsers();
+        System.out.println("----- Saved Users (reloaded from file) -----");
+        for (User user : savedUsers) {
+            JSONObject userJSON = DataWriter.getUserJSON(user);
+            System.out.println(userJSON.toJSONString());
         }
     }
 }

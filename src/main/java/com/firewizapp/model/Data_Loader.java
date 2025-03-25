@@ -31,7 +31,9 @@ public class Data_Loader extends DataConstants{
                 String lastName = ((String)personJSON.get(LAST_NAME));
                 String userEmail = ((String)personJSON.get(USER_EMAIL));
                 String userSkillLevel = ((String)personJSON.get(SKILL_LEVEL));
-                boolean filter = ((boolean)personJSON.get(FILTER));
+                
+                String filterStr = (String) personJSON.get(FILTER);
+                boolean filter = Boolean.parseBoolean(filterStr);
 
                 JSONArray badgesJSON = (JSONArray) personJSON.get(BADGES_EARNED);
                 String[] badgesEarned = new String[badgesJSON.size()];
