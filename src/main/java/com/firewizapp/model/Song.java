@@ -23,6 +23,11 @@ public class Song {
     }
 
     public static Song getSong(int num) {
-        return SONGS.get(num); 
+        return SONGS.get(num);
+    }
+
+    public String[] getChords() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getChords'");
     }
 }

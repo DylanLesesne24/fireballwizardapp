@@ -16,7 +16,7 @@ public class Lessons {
     private boolean isCompleted;
 
     public Lessons(UUID lessonID, String title, String lessonDescription, Difficulty difficulty, String content,
-                   int estimatedTime) {
+            int estimatedTime) {
         this.lessonID = lessonID;
         this.title = title;
         this.lessonDescription = lessonDescription;
@@ -89,6 +89,7 @@ public class Lessons {
     }
 
     public String getLessonSummary() {
-        return "Title: " + title + "\nDifficulty: " + difficulty + "\nEstimated Time: " + estimatedTime + " minutes\nCompleted: " + isCompleted;
+        return "Title: " + title + "\nDifficulty: " + difficulty + "\nEstimated Time: " + estimatedTime
+                + " minutes\nCompleted: " + isCompleted;
     }
 }
