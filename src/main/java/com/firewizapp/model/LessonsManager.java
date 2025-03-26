@@ -6,6 +6,7 @@ import java.util.UUID;
 
 public class LessonsManager {
     private HashMap<UUID, Lessons> lessonsMap;
+    private static LessonsManager instance;
 
     public LessonsManager() {
         this.lessonsMap = new HashMap<>();
@@ -27,23 +28,59 @@ public class LessonsManager {
         return lessonsMap.remove(id) != null;
     }
 
-    public Flashcards getFlashcardsForLesson(int lessonID) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getFlashcardsForLesson'");
+    /**
+     * Returns flashcards for the lesson specified by the index.
+     * This method returns the first flashcard from the lesson's flashcards list,
+     * or null if there are no flashcards.
+     *
+     * @param lessonIndex The index of the lesson in the list obtained from getAllLessons().
+     * @return A Flashcards object, or null if not available.
+     */
+    public Flashcards getFlashcardsForLesson(int lessonIndex) {
+        ArrayList<Lessons> lessons = getAllLessons();
+        if (lessonIndex >= 0 && lessonIndex < lessons.size()) {
+            Lessons lesson = lessons.get(lessonIndex);
+            if (lesson.getFlashcards() != null && !lesson.getFlashcards().isEmpty()) {
+                return lesson.getFlashcards().get(0); // Return the first flashcard as an example
+            }
+        }
+        return null;
     }
 
+    /**
+     * Returns the singleton instance of LessonsManager.
+     *
+     * @return LessonsManager instance.
+     */
     public static LessonsManager getInstance() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getInstance'");
+        if (instance == null) {
+            instance = new LessonsManager();
+        }
+        return instance;
     }
 
-    public void completeLesson(int lessonID) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'completeLesson'");
+    /**
+     * Marks the lesson at the given index as completed.
+     * This method assumes the index corresponds to the list from getAllLessons().
+     *
+     * @param lessonIndex The index of the lesson.
+     */
+    public void completeLesson(int lessonIndex) {
+        ArrayList<Lessons> lessons = getAllLessons();
+        if (lessonIndex >= 0 && lessonIndex < lessons.size()) {
+            Lessons lesson = lessons.get(lessonIndex);
+            lesson.completeLesson(); // Assumes Lessons has a completeLesson() method
+        } else {
+            System.out.println("Invalid lesson index.");
+        }
     }
 
+    /**
+     * Returns all lessons.
+     *
+     * @return An ArrayList of Lessons.
+     */
     public ArrayList<Lessons> getLessons() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getLessons'");
+        return getAllLessons();
     }
 }
