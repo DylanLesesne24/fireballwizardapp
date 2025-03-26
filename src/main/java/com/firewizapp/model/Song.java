@@ -42,6 +42,11 @@ public class Song {
         return this.songNotes;
     }
 
+    public UUID getSongID() 
+    {
+        return this.songID;
+    }
+
     /* Commenting out for simplicity sake
     public static Song getSong(int num) //TODO ??????????
     {
@@ -53,8 +58,4 @@ public class Song {
         throw new UnsupportedOperationException("Unimplemented method 'getChords'");
     }
     */
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> c0c57081a2b5e3887eb6d8d4813b0502f513be40

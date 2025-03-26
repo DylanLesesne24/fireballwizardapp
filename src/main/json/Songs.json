@@ -1,26 +1,52 @@
 {
     "songs": [
-      {
-        "songID": "55a81202-0260-4bc2-9ab8-f95a1f5ea150",
-        "title": "Twinkle Twinkle Little Star",
-        "difficulty": "EASY",
-        "notes": ["C", "C", "G", "G", "A", "A", "G"],
-        "tempo": 60
-      },
-      {
-        "songID": "f5812e8a-98bb-4cff-9180-305de91daa33",
-        "title": "Fur Elise",
-        "difficulty": "INTERMEDIATE",
-        "notes": ["E", "D#", "E", "D#", "E", "B", "D", "C", "A"],
-        "tempo": 120
-      },
-      {
-        "songID": "58050043-a0db-4470-ac6f-ffdf9b820b5b",
-        "title": "Moonlight Sonata",
-        "difficulty": "PRO",
-        "notes": ["C#", "E", "G#", "E", "C#", "E", "G#", "E"],
-        "tempo": 40
-      }
+        {
+            "difficulty": "EASY",
+            "notes": [
+                "C",
+                "C",
+                "G",
+                "G",
+                "A",
+                "A",
+                "G"
+            ],
+            "tempo": 60,
+            "title": "Twinkle Twinkle Little Star",
+            "songID": "55a81202-0260-4bc2-9ab8-f95a1f5ea150"
+        },
+        {
+            "difficulty": "INTERMEDIATE",
+            "notes": [
+                "E",
+                "D#",
+                "E",
+                "D#",
+                "E",
+                "B",
+                "D",
+                "C",
+                "A"
+            ],
+            "tempo": 120,
+            "title": "Fur Elise",
+            "songID": "f5812e8a-98bb-4cff-9180-305de91daa33"
+        },
+        {
+            "difficulty": "PRO",
+            "notes": [
+                "C#",
+                "E",
+                "G#",
+                "E",
+                "C#",
+                "E",
+                "G#",
+                "E"
+            ],
+            "tempo": 40,
+            "title": "Moonlight Sonata",
+            "songID": "58050043-a0db-4470-ac6f-ffdf9b820b5b"
+        }
     ]
-  }
-  
+}

@@ -34,17 +34,31 @@ public class Data_Loader extends DataConstants{
                 String filterStr = (String) personJSON.get(FILTER);
                 boolean filter = Boolean.parseBoolean(filterStr);
 
-                JSONArray badgesJSON = (JSONArray) personJSON.get(BADGES_EARNED);
-                String[] badgesEarned = new String[badgesJSON.size()];
-                for (int j = 0; j < badgesJSON.size(); j++)
+                Object badgesObj = personJSON.get(BADGES_EARNED);
+                String[] badgesEarned;
+                if (badgesObj instanceof JSONArray) 
                 {
-                    badgesEarned[j] = (String)badgesJSON.get(j);
+                    JSONArray badgesJSON = (JSONArray) badgesObj;
+                    badgesEarned = new String[badgesJSON.size()];
+                    
+                    for (int j = 0; j < badgesJSON.size(); j++)
+                    {
+                        badgesEarned[j] = (String) badgesJSON.get(j);
+                    }
+                }
+                
+                else if (badgesObj instanceof String)
+                {
+                    badgesEarned = ((String) badgesObj).split(",\\s*");
+                }
+                
+                else
+                {
+                    badgesEarned = new String[0];
                 }
 
                 users.add(new User(id, username, password, firstName, lastName, userEmail, userSkillLevel, filter, badgesEarned));
             }
-
-
         }
         catch (Exception e) {
             e.printStackTrace();

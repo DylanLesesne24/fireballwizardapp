@@ -61,7 +61,10 @@
             "firstName": "Susan",
             "lastName": "Brown",
             "password": "testPass123",
-            "badgesEarned": "First Lesson Completed!, Starting Guitar",
+            "badgesEarned": [
+                "First Lesson Completed!",
+                "Starting Guitar"
+            ],
             "userID": "fb979790-a889-4a45-beb5-c94553a764a7",
             "skillLevel": "INTERMEDIATE",
             "email": "MusicLover@gmail.com",
@@ -72,7 +75,10 @@
             "firstName": "Scott",
             "lastName": "Mack",
             "password": "testPass321",
-            "badgesEarned": "First Lesson Completed!, Starting Piano",
+            "badgesEarned": [
+                "First Lesson Completed!",
+                "Starting Piano"
+            ],
             "userID": "a1d6502a-299c-4c2d-961b-e498ff10b247",
             "skillLevel": "PRO",
             "email": "PianoMaster@gmail.com",

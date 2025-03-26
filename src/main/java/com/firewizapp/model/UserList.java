@@ -1,6 +1,7 @@
 package com.firewizapp.model;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class UserList {
 
@@ -20,8 +21,10 @@ public class UserList {
         return userList;
     }
 
-    public boolean addUser(String username, String password, String email, Difficulty skillLevel) {
-        users.add(new User(username, password, email, skillLevel)); //TODO Update this to be in line with the info stored in our json file
+    public boolean addUser(String firstName, String lastName, String username, String password, String email, String skillLevel, boolean filter)
+    {
+        users.add(new User(UUID.randomUUID(), username, password, firstName, lastName, email, skillLevel, filter, new String[]{}));
+        return true;
     }
 
     public User getUser(String username) {
