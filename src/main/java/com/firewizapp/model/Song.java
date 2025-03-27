@@ -55,16 +55,20 @@ public class Song {
         Player player = new Player();
         StringBuilder pattern = new StringBuilder();
     
+        // Add tempo to pattern (e.g., T120)
+        pattern.append("T").append(songTempo).append(" ");
+    
+        // Add each note with a duration
         for (String note : songNotes)
         {
-            pattern.append(note).append("q "); // quarter note by default
+            pattern.append(note).append("q ");  // quarter note duration
         }
     
         try
         {
-            System.out.println("Playing song: " + pattern);
+            System.out.println("Pattern: " + pattern);
             player.play(new Pattern(pattern.toString().trim()));
-        } 
+        }
         catch (Exception e)
         {
             System.out.println("Error playing song.");

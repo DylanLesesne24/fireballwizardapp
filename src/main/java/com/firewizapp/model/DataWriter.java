@@ -2,6 +2,7 @@ package com.firewizapp.model;
 
 import java.io.FileWriter;
 import java.io.FileReader;
+import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.UUID;
@@ -296,20 +297,30 @@ public class DataWriter extends Data_Loader { //I was told that we shouldn't hav
         return sb.toString();
     }
 
-    //For Testing purposes
-    public static void main(String[] args) {
+    public static void playSongByTitle()
+    {
+        Scanner scanner = new Scanner(System.in);
         ArrayList<Song> songs = Data_Loader.loadSongs();
     
-        for (Song song : songs) {
-            if (song.getTitle().equalsIgnoreCase("Fur Elise") &&
-                song.getDifficulty().equalsIgnoreCase("Intermediate")) {
-                
+        System.out.print("Enter the title of the song to play: ");
+        String inputTitle = scanner.nextLine().trim();
+    
+        for (Song song : songs)
+        {
+            if (song.getTitle().equalsIgnoreCase(inputTitle))
+            {
                 System.out.println("Now playing: " + song.getTitle() + " (" + song.getDifficulty() + ")");
-                song.playNotes();
+                song.playNotes();  // This will use the tempo inside the Song object
                 return;
             }
         }
     
-        System.out.println("Fur Elise (Intermediate) not found in loaded songs.");
+        System.out.println("Song not found.");
+        scanner.close();
+    }
+
+    //For Testing purposes
+    public static void main(String[] args) {
+        playSongByTitle();
     }                               
 }
