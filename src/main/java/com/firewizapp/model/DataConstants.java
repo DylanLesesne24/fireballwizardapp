@@ -7,9 +7,12 @@ public class DataConstants {
     */
     
     protected static final String USER_FILE_NAME = "C:/Users/lauri/OneDrive/Desktop/fireballwizardapp/src/main/json/Users.json";
-    protected static final String INSTRUMENTS_FILE_NAME = "src/main/json/Instruments.json";
-    protected static final String LESSONS_FILE_NAME = "src/main/json/Lessons.json";
     protected static final String SONGS_FILE_NAME = "src/main/json/Songs.json";
+
+    /*
+    protected static final String INSTRUMENTS_FILE_NAME = "src/main/json/Instruments.json";
+    protected static final String LESSONS_FILE_NAME = "src/main/json/Lessons.json"; 
+    */
 
     protected static final String USER_LIST = "users";
     protected static final String USER_ID = "userID";
@@ -23,6 +26,7 @@ public class DataConstants {
     protected static final String BADGES_EARNED = "badgesEarned";
     protected static final String WORDS = "words";
 
+    /*
     protected static final String PROGRESS = "progress";
     protected static final String PERCENT_COMPLETED = "percentageCompleted";
     protected static final String STREAK = "streak";
@@ -30,7 +34,8 @@ public class DataConstants {
     protected static final String QUIZZES_COMP = "quizzesCompleted";
     protected static final String LAST_LESSON_DATE = "lastLessonDate";
     protected static final String LEADERBOARD_POS = "leaderboardPosition"; 
-    
+    */
+
     protected static final String SONG_LIST = "songs";
     protected static final String SONG_ID = "songID";
     protected static final String SONG_TITLE = "title";

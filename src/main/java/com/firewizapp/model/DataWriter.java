@@ -296,6 +296,7 @@ public class DataWriter extends Data_Loader { //I was told that we shouldn't hav
         return sb.toString();
     }
 
+    //For Testing purposes
     public static void main(String[] args) {
         System.out.println("----- USER OPERATIONS -----");
         System.out.println("Loading users from JSON...");
