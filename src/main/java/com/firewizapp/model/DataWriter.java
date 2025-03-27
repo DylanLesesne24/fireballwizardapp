@@ -319,9 +319,130 @@ public class DataWriter extends Data_Loader { //I was told that we shouldn't hav
         scanner.close();
     }
 
-    /*For Testing purposes
+    /*For Testing purposes*/
     public static void main(String[] args) {
-        playSongByTitle();
-    }
-    */                               
+        Scanner scanner = new Scanner(System.in);
+        UserList userList = UserList.getInstance();
+        ArrayList<User> users = UserList.getUsers();
+        ArrayList<Song> songs = Data_Loader.loadSongs();
+    
+        boolean running = true;
+    
+        System.out.println("🎵 Welcome to the Music Learning App 🎵");
+    
+        while (running) {
+            User currentUser = null;
+    
+            // Login or create account loop
+            while (currentUser == null) {
+                System.out.println("\n--- Login Menu ---");
+                System.out.println("1. Log In");
+                System.out.println("2. Create New Account");
+                System.out.println("3. Exit");
+                System.out.print("Select an option: ");
+                String input = scanner.nextLine().trim();
+    
+                switch (input) {
+                    case "1": {
+                        System.out.print("Username: ");
+                        String username = scanner.nextLine().trim();
+                        System.out.print("Password: ");
+                        String password = scanner.nextLine().trim();
+    
+                        User user = userList.getUser(username);
+                        if (user != null && user.checkPassword(password)) {
+                            System.out.println("Login successful. Welcome, " + user.getFirstName() + "!");
+                            currentUser = user;
+                        } else {
+                            System.out.println("Invalid username or password.");
+                        }
+                        break;
+                    }
+    
+                    case "2": {
+                        System.out.println("Creating a new account...");
+                        System.out.print("First name: ");
+                        String firstName = scanner.nextLine().trim();
+                        System.out.print("Last name: ");
+                        String lastName = scanner.nextLine().trim();
+                        System.out.print("Username: ");
+                        String username = scanner.nextLine().trim();
+                        System.out.print("Password: ");
+                        String password = scanner.nextLine().trim();
+                        System.out.print("Email: ");
+                        String email = scanner.nextLine().trim();
+                        System.out.print("Skill Level: ");
+                        String skillLevel = scanner.nextLine().trim();
+                        System.out.print("Enable filter? (true/false): ");
+                        boolean filter = Boolean.parseBoolean(scanner.nextLine().trim());
+    
+                        boolean success = DataWriter.saveUsers(firstName, lastName, username, password, email, skillLevel, filter);
+                        if (success) {
+                            System.out.println("Account created successfully.");
+                            currentUser = userList.getUser(username);
+                        } else {
+                            System.out.println("Failed to create account.");
+                        }
+                        break;
+                    }
+    
+                    case "3":
+                        System.out.println("Exiting program. Goodbye!");
+                        scanner.close();
+                        return;
+    
+                    default:
+                        System.out.println("Invalid option. Please choose 1–3.");
+                }
+            }
+    
+            // Main user menu
+            boolean loggedIn = true;
+            while (loggedIn) {
+                System.out.println("\n--- Main Menu ---");
+                System.out.println("1. Play a Song");
+                System.out.println("2. View All Users");
+                System.out.println("3. Log Out");
+                System.out.print("What would you like to do? ");
+                String action = scanner.nextLine().trim();
+    
+                switch (action) {
+                    case "1": {
+                        System.out.print("Enter the title of the song: ");
+                        String title = scanner.nextLine().trim();
+    
+                        boolean found = false;
+                        for (Song song : songs) {
+                            if (song.getTitle().equalsIgnoreCase(title)) {
+                                System.out.println("Now playing: " + song.getTitle() + " (" + song.getDifficulty() + ")");
+                                song.playNotes();
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found) {
+                            System.out.println("Song not found.");
+                        }
+                        break;
+                    }
+    
+                    case "2": {
+                        System.out.println("\n--- User List ---");
+                        for (User u : UserList.getUsers()) {
+                            System.out.println("- " + u.getUsername() + " (" + u.getSkillLevel() + ")");
+                        }
+                        break;
+                    }
+    
+                    case "3":
+                        System.out.println("Logging out...");
+                        loggedIn = false;
+                        break;
+    
+                    default:
+                        System.out.println("Invalid selection. Please choose 1–3.");
+                }
+            }
+        }
+    }                                  
 }
