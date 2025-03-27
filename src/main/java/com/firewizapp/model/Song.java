@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import org.jfugue.player.Player;
+import org.jfugue.pattern.Pattern;
 
 public class Song {
 
@@ -52,22 +53,22 @@ public class Song {
     public void playNotes()
     {
         Player player = new Player();
-
+        StringBuilder pattern = new StringBuilder();
+    
         for (String note : songNotes)
         {
-            try
-            {
-                player.play(note);
-                Thread.sleep(150); // 150 ms pause between notes
-            }
-            catch (InterruptedException e)
-            {
-                System.out.println("Playback interrupted.");
-            }
-            catch (Exception e)
-            {
-                System.out.println("Error playing note: " + note);
-            }
+            pattern.append(note).append("q "); // quarter note by default
+        }
+    
+        try
+        {
+            System.out.println("Playing song: " + pattern);
+            player.play(new Pattern(pattern.toString().trim()));
+        } 
+        catch (Exception e)
+        {
+            System.out.println("Error playing song.");
+            e.printStackTrace();
         }
     }
 
