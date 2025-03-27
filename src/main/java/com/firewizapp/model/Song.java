@@ -3,6 +3,8 @@ package com.firewizapp.model;
 import java.util.HashMap;
 import java.util.UUID;
 
+import org.jfugue.player.Player;
+
 public class Song {
 
     public static HashMap<Integer, Song> SONGS = new HashMap<>();
@@ -45,6 +47,28 @@ public class Song {
     public UUID getSongID() 
     {
         return this.songID;
+    }
+
+    public void playNotes()
+    {
+        Player player = new Player();
+
+        for (String note : songNotes)
+        {
+            try
+            {
+                player.play(note);
+                Thread.sleep(150); // 150 ms pause between notes
+            }
+            catch (InterruptedException e)
+            {
+                System.out.println("Playback interrupted.");
+            }
+            catch (Exception e)
+            {
+                System.out.println("Error playing note: " + note);
+            }
+        }
     }
 
     /* Commenting out for simplicity sake
