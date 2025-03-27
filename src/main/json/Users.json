@@ -83,6 +83,58 @@
             "skillLevel": "PRO",
             "email": "PianoMaster@gmail.com",
             "username": "PianoMaster129"
+        },
+        {
+            "filter": "true",
+            "firstName": "John",
+            "lastName": "Doe",
+            "password": "newPassword123",
+            "badgesEarned": [
+                "First Lesson Completed!"
+            ],
+            "userID": "bb51f7ea-0323-47ac-888f-d1a11929470e",
+            "skillLevel": "BEGINNER",
+            "email": "newuser@example.com",
+            "username": "NewUser123"
+        },
+        {
+            "filter": "false",
+            "firstName": "test",
+            "lastName": "test",
+            "password": "123",
+            "badgesEarned": [
+                
+            ],
+            "userID": "a0581daf-2772-4694-8de8-366af3c21cc1",
+            "skillLevel": "beginner",
+            "email": "testtest@gmail.com",
+            "username": "testtest123"
+        },
+        {
+            "filter": "true",
+            "firstName": "test",
+            "lastName": "test",
+            "password": "test",
+            "badgesEarned": [
+                
+            ],
+            "userID": "b34d0fdd-4698-40f0-8532-118efce9bf7f",
+            "skillLevel": "test",
+            "email": "test",
+            "username": "test"
+        },
+        {
+            "filter": "false",
+            "firstName": "John",
+            "lastName": "Smith",
+            "password": "johnsmith",
+            "badgesEarned": [
+                
+            ],
+            "userID": "72c4acc3-ade0-4df1-b4fd-27c0ae4678c0",
+            "skillLevel": "Beginner",
+            "email": "johnsmith@gmail.com",
+            "username": "John123"
         }
     ]
 }

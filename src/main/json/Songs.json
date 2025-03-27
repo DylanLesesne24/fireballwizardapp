@@ -47,6 +47,30 @@
             "tempo": 40,
             "title": "Moonlight Sonata",
             "songID": "58050043-a0db-4470-ac6f-ffdf9b820b5b"
+        },
+        {
+            "difficulty": "EASY",
+            "notes": [
+                "C",
+                "D",
+                "E",
+                "F"
+            ],
+            "tempo": 120,
+            "title": "Test Song",
+            "songID": "ea540837-b9cc-4c5c-9dbc-2b61aae17d9c"
+        },
+        {
+            "difficulty": "EASY",
+            "notes": [
+                "C",
+                "D",
+                "E",
+                "F"
+            ],
+            "tempo": 120,
+            "title": "Test Song",
+            "songID": "8b0f2c9f-6bd2-488e-bc03-aa18f308c794"
         }
     ]
 }
