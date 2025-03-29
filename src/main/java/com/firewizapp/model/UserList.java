@@ -9,6 +9,8 @@ public class UserList {
 
     private static UserList userList;
 
+    private User currentLoginAttemptUser = null;
+
     private UserList() {
         users = Data_Loader.loadUsers(); // This is for data loader and writer, this is creating the starting list of
                                          // users that are read from the json file
@@ -42,6 +44,31 @@ public class UserList {
         }
 
         return users;
+    }
+
+    public boolean checkUsername(String inputUsername)
+    {
+        for (User user : users)
+        {
+            if (user.getUsername().equalsIgnoreCase(inputUsername))
+            {
+                currentLoginAttemptUser = user;
+                return true;
+            }
+        }
+
+        currentLoginAttemptUser = null;
+        return false;
+    }
+
+    public boolean checkPassword(String inputPassword)
+    {
+        if (currentLoginAttemptUser == null)
+        {
+            return false;
+        }
+        
+        return currentLoginAttemptUser.getPassword().equals(inputPassword);
     }
 
     /* Not finished yet

@@ -48,18 +48,47 @@ public class User {
         return this.badgesEarned;
     }
 
-    public boolean checkPassword(String inputPassword) {
+    public boolean checkUsername(String inputUsername)
+    {
+        return this.username.equalsIgnoreCase(inputUsername); //Most username logins I've seen ignore case - Laurin Johnson (so you know who wrote this)
+    }
+
+    public boolean checkPassword(String inputPassword)
+    {
         return this.password.equals(inputPassword);
     }
 
-    public boolean meetsPassRequirements() {
-        return password.length() >= 8;
+    public boolean meetsPassRequirements(String password) 
+    {
+        if(password == null) //Null Pointer Check
+        {
+            return false;
+        }
+
+        if(password.length() < 8) // Length Check
+        {
+            return false;
+        }
+
+        if(!password.matches(".*\\d.*")) //Number check, this is a representation of 0-9
+        {
+            return false;
+        }
+
+        if(!password.matches(".*[^a-zA-Z0-9].*"))//Special Character check, this is a representation of any character that is NOT a letter (a–z or A–Z) or a digit (0–9).
+        {                                        //This includes special characters like: ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~ and spaces
+            return false;
+        }
+
+        return true;
     }
 
+    /* Useless, editing this out for now
     public void logout() {
         System.out.println(username + "has logged out.");
 
     }
+    */
 
     /*
      * public String getWord(int num) { //For now, lets leave this commented TODO
@@ -69,6 +98,7 @@ public class User {
      * return null;
      * }
      */
+
     public UUID getUserID() {
         return userID;
     }

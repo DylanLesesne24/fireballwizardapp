@@ -36,67 +36,70 @@ public class UserTest {
 
     /*
 
-    *Tested by Laurin Johnson, WORKS
+    //Tested by Laurin Johnson, WORKS
     @Test
     public void testGetUsername()
     {
         assertEquals(TEST_USERNAME, testUser.getUsername());
     }
 
-    *Tested by Laurin Johnson, WORKS
+    //Tested by Laurin Johnson, WORKS
     @Test
     public void testGetPassword()
     {
         assertEquals(TEST_PASSWORD, testUser.getPassword());
     }
     
-    *Tested by Laurin Johnson, WORKS
+    //Tested by Laurin Johnson, WORKS
     @Test
     public void testGetFirstName()
     {
         assertEquals(TEST_FIRSTNAME, testUser.getFirstName());
     }
 
-    *Tested by Laurin Johnson, WORKS
+    //Tested by Laurin Johnson, WORKS
     @Test
     public void testGetLastName()
     {
         assertEquals(TEST_LASTNAME, testUser.getLastName());
     }
 
-    *Tested by Laurin Johnson, WORKS
+    //Tested by Laurin Johnson, WORKS
     @Test
     public void testGetEmail()
     {
         assertEquals(TEST_EMAIL, testUser.getEmail());
     }
 
-    *Tested by Laurin Johnson, WORKS
+    //Tested by Laurin Johnson, WORKS
     @Test
     public void testGetSkillLevel()
     {
         assertEquals(TEST_SKILLLEVEL, testUser.getSkillLevel());
     }
 
-    *Tested by Laurin Johnson, WORKS
+    //Tested by Laurin Johnson, WORKS
     @Test
     public void testIsFilterEnabled()
     {
         assertTrue(testUser.isFilterEnabled());
     }
 
-    *Tested by Laurin Johnson, WORKS
+    //Tested by Laurin Johnson, WORKS
     @Test
     public void testGetBadgesEarned()
     {
         assertArrayEquals(TEST_BADGES_EARNED, testUser.getBadgesEarned());
     }
 
-    *Tested by Laurin Johnson, WORKS
+    //Tested by Laurin Johnson, WORKS
     @Test
     public void testGetUserID()
     {
         assertEquals(ID, testUser.getUserID());
     }
     */
+
+    @Test
+    
 }
