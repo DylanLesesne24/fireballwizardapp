@@ -4,8 +4,6 @@ import java.util.UUID;
 
 public class User {
 
-    // TODO
-
     private UUID userID;
     private String username;
     private String password;
