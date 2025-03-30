@@ -247,7 +247,8 @@ public class User {
      * 
      * @param SkillLevel
      */
-    public void setSkillLevel(String SkillLevel) {
+    public void setSkillLevel(String SkillLevel)
+    {
         this.skillLevel = SkillLevel;
     }
 
@@ -256,7 +257,8 @@ public class User {
      * 
      * @param Filter
      */
-    public void setFilter(boolean Filter) {
+    public void setFilter(boolean Filter)
+    {
         this.filter = Filter;
     }
 
