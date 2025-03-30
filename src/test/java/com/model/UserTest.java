@@ -35,6 +35,7 @@ public class UserTest {
     }
 
     /*
+     Accessor Tests, real simple
 
     //Tested by Laurin Johnson, WORKS
     @Test
@@ -98,8 +99,115 @@ public class UserTest {
     {
         assertEquals(ID, testUser.getUserID());
     }
+
+    */
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+    /*
+     * Testing for:
+     * public boolean checkUsername(String inputUsername)
+        {
+            if (inputUsername == null || inputUsername.isEmpty() || inputUsername.contains(" "))
+            {
+                return false;
+            }
+
+            return this.username.equalsIgnoreCase(inputUsername);
+        }
+    
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameMatch()
+    {
+        assertTrue(testUser.checkUsername("testUser"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameMatchAllCaps()
+    {
+        assertTrue(testUser.checkUsername("TESTUSER"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameMatchMixed()
+    {
+        assertTrue(testUser.checkUsername("TestUser"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameLeadingSpace()
+    {
+        assertFalse(testUser.checkUsername(" testUser"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameTrailingSpace()
+    {
+        assertFalse(testUser.checkUsername("testUser "));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameInternalSpace()
+    {
+        assertFalse(testUser.checkUsername("te stUser"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameMatchFromList()
+    {
+        UserList userList = UserList.getInstance();
+
+        // Manually add the testUser if not already present
+        userList.addUser(TEST_FIRSTNAME, TEST_LASTNAME, TEST_USERNAME, TEST_PASSWORD, TEST_EMAIL, TEST_SKILLLEVEL, TEST_FILTER);
+
+        assertTrue("Username 'TESTUSER' should match existing user ignoring case", userList.checkUsername("TESTUSER"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testNullUsername()
+    {
+        assertFalse("Null input should return false", testUser.checkUsername(null));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testEmptyUsername()
+    {
+        assertFalse("Empty input should return false", testUser.checkUsername(""));
+    }
+    */
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+    /*
+     * Testing for:
+     *  public boolean checkPassword(String inputPassword)
+        {
+            if (inputPassword == null || inputPassword.isEmpty() || inputPassword.contains(" "))
+            {
+                return false;
+            }
+
+            return this.password.equals(inputPassword);
+        }
     */
 
     @Test
-    
+    public void testPasswordAfterUsernameMatch()
+    {
+        UserList userList = UserList.getInstance();
+
+        userList.checkUsername("testUser");
+        assertTrue("Password 'testPassword' should match current login attempt user", userList.checkPassword("testPassword"));
+    }
+        
 }
