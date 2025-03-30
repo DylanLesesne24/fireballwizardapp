@@ -146,51 +146,61 @@ public class User {
      */
     public boolean checkUsername(String inputUsername)
     {
-        if (inputUsername == null || inputUsername.isEmpty() || inputUsername.contains(" "))
-        {
-            return false;
-        }
-
         return this.username.equalsIgnoreCase(inputUsername); //Most username logins I've seen ignore case - Laurin Johnson (so you know who wrote this)
     }
 
     /**
      * Checks that the input password matches the password of the user, Case-Sensitive, also checks for invalid password input
+     * Tested by Laurin Johnson, WORKS
      * 
      * @param inputPassword
      * @return true if the passwords match, false otherwise
      */
     public boolean checkPassword(String inputPassword)
     {
-        if (inputPassword == null || inputPassword.isEmpty() || inputPassword.contains(" "))
-        {
-            return false;
-        }
-
         return this.password.equals(inputPassword);
     }
 
     /**
      * Checks that the chosen username of the user is null, empty, or contains a space, is false if any matches
+     * Tested by Laurin Johnson, WORKS
      * 
-     * @param Username
+     * @param inputUsername
      * @return True if username isn't null, empty, or doesn't contain a space, false otherwise
      */
     public boolean meetsUsernameRequirements(String inputUsername)
     {
-        if(inputUsername == null)
+        if(inputUsername == null) //null check
         {
             return false;
         }
 
-        if(inputUsername == "")
+        if(inputUsername == "") //empty check
         {
             return false;
         }
 
-        if(inputUsername.contains(" "))
+        if (inputUsername.contains(" ") || inputUsername.contains("\t") || inputUsername.contains("\n")) //Space, newline, and tab check
+        {
+            return false; // no whitespace of any kind
+        }
+
+        if (!inputUsername.matches("[a-zA-Z0-9]+")) //I don't think special characters should be allowed in a username - Laurin Johnson
         {
             return false;
+        }
+
+        if (inputUsername.length() > 26) //Max length of username is 26 characters
+        {
+            return false;
+        }
+
+        for (User existingUser : UserList.getUsers()) //Checks for an already existing username, must match exactly
+        {
+            if (existingUser.getUsername().equals(inputUsername))
+            {
+                return false;
+            }
         }
 
         return true;
@@ -199,7 +209,7 @@ public class User {
     /**
      * Checks that the chosen password of the user is not null, not empty, is 8 characters or longer, contains a number, and contains a special character other than space
      * 
-     * @param Password
+     * @param inputPassword
      * @return true if the password is not null, not empty, is 8 characters or longer, contains a number, and contains a special character other than space, false otherwise
      */
     public boolean meetsPassRequirements(String inputPassword) 
@@ -214,7 +224,7 @@ public class User {
             return false;
         }
 
-        if(inputPassword.length() < 8) // Length Check
+        if(inputPassword.length() < 8 || inputPassword.length() > 26) // Length Check
         {
             return false;
         }

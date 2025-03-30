@@ -34,9 +34,16 @@ public class UserTest {
                             TEST_BADGES_EARNED);
     }
 
-    /*
-     Accessor Tests, real simple
+    private void ensureTestUserIsInUserList() //Forgot to use this on multiple methods, not gonna refactor everything, will start using in meetsUsernameRequirements and onward
+    {
+        UserList.getInstance().addUser(TEST_FIRSTNAME, TEST_LASTNAME, TEST_USERNAME, TEST_PASSWORD, TEST_EMAIL, TEST_SKILLLEVEL, TEST_FILTER);
+    }
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+// Accessor Tests (getUsername, getPassword, getFirstName, getLastName, getEmail, getSkillLevel, isFilterEnabled, getBadgesEarned, getUserID)
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+    /*
     //Tested by Laurin Johnson, WORKS
     @Test
     public void testGetUsername()
@@ -103,6 +110,8 @@ public class UserTest {
     */
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+// Tests for: public boolean checkUsername(String inputUsername)
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
     /*
      * Testing for:
@@ -115,7 +124,6 @@ public class UserTest {
 
             return this.username.equalsIgnoreCase(inputUsername);
         }
-    
 
     //Tested by Laurin Johnson, WORKS
     @Test
@@ -170,7 +178,9 @@ public class UserTest {
 
         assertTrue("Username 'TESTUSER' should match existing user ignoring case", userList.checkUsername("TESTUSER"));
     }
+    */
 
+    /*
     //Tested by Laurin Johnson, WORKS
     @Test
     public void testNullUsername()
@@ -184,8 +194,12 @@ public class UserTest {
     {
         assertFalse("Empty input should return false", testUser.checkUsername(""));
     }
+
+    *The methods in the above comment were useless, keeping them for the sake of tracking what's been done
     */
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+// Tests for: public boolean checkPassword(String inputPassword)
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
     /*
@@ -199,15 +213,272 @@ public class UserTest {
 
             return this.password.equals(inputPassword);
         }
-    */
+    
 
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordMatch()
+    {
+        assertTrue(testUser.checkPassword("testPassword"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordMatchMixed()
+    {
+        assertFalse(testUser.checkPassword("TestPassword")); // capital T
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordMatchAllCaps()
+    {
+        assertFalse(testUser.checkPassword("TESTPASSWORD"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordMatchNoCaps()
+    {
+        assertFalse(testUser.checkPassword("testpassword")); // correct except lowercase P
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordLeadingSpace()
+    {
+        assertFalse(testUser.checkPassword(" testPassword"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordTrailingSpace()
+    {
+        assertFalse(testUser.checkPassword("testPassword "));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordInternalSpace()
+    {
+        assertFalse(testUser.checkPassword("test Pass"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
     @Test
     public void testPasswordAfterUsernameMatch()
     {
         UserList userList = UserList.getInstance();
+        userList.addUser(TEST_FIRSTNAME, TEST_LASTNAME, TEST_USERNAME, TEST_PASSWORD, TEST_EMAIL, TEST_SKILLLEVEL, TEST_FILTER);
 
         userList.checkUsername("testUser");
         assertTrue("Password 'testPassword' should match current login attempt user", userList.checkPassword("testPassword"));
     }
-        
+    */
+
+    /*
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testNullPassword()
+    {
+        assertFalse(testUser.checkPassword(null));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testEmptyPassword()
+    {
+        assertFalse(testUser.checkPassword(""));
+    }
+
+    *The methods in the above comment were useless, keeping them for the sake of tracking what's been done
+    */
+
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+// Tests for: public boolean meetsUsernameRequirements(String inputUsername)
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+    /*
+     *  Testing for: 
+     * 
+     *  public boolean meetsUsernameRequirements(String inputUsername)
+        {
+            if(inputUsername == null)
+            {
+                return false;
+            }
+
+            if(inputUsername == "")
+            {
+                return false;
+            }
+
+            if(inputUsername.contains(" "))
+            {
+                return false;
+            }
+
+            return true;
+        }
+    
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameIsValid()
+    {
+        assertTrue(testUser.meetsUsernameRequirements("newUser123"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameWithSpecialChar()
+    {
+        assertFalse(testUser.meetsUsernameRequirements("new@User"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameWithSpace()
+    {
+        assertFalse(testUser.meetsUsernameRequirements("new User"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameIsNull()
+    {
+        assertFalse(testUser.meetsUsernameRequirements(null));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameIsEmpty()
+    {
+        assertFalse(testUser.meetsUsernameRequirements(""));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameAlreadyExistsExact()
+    {
+        ensureTestUserIsInUserList();
+
+        assertFalse(testUser.meetsUsernameRequirements("testUser"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameAlreadyExistsDifferentCase()
+    {
+        ensureTestUserIsInUserList();
+
+        assertTrue(testUser.meetsUsernameRequirements("TestUser"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameWithNumbers()
+    {
+        assertTrue(testUser.meetsUsernameRequirements("user123"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameAllCaps()
+    {
+        assertTrue(testUser.meetsUsernameRequirements("TESTUSERNAME"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameNoCaps()
+    {
+        assertTrue(testUser.meetsUsernameRequirements("testusername"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameWithTabCharacter()
+    {
+        assertFalse(testUser.meetsUsernameRequirements("user\tname"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameWithNewlineCharacter()
+    {
+        assertFalse(testUser.meetsUsernameRequirements("user\nname"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameWithEmoji()
+    {
+        assertFalse(testUser.meetsUsernameRequirements("user💀"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameWithUnicode()
+    {
+        assertFalse(testUser.meetsUsernameRequirements("ユーザー"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameTooLong()
+    {
+        String longUsername = "thisusernameiswaytoolonggggggg"; //30 characters, just so we know length
+        assertFalse(testUser.meetsUsernameRequirements(longUsername));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameOnlyDigits()
+    {
+        assertTrue(testUser.meetsUsernameRequirements("1234567890"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameOnlySpecialCharacters()
+    {
+        assertFalse(testUser.meetsUsernameRequirements("!!!"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameWithUnderscore()
+    {
+        assertFalse(testUser.meetsUsernameRequirements("user_name"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameWithUnicodeSpace()
+    {
+        // Unicode EN SPACE (U+2002) between "user" and "name"
+        String username = "user\u2002name";
+        assertFalse(testUser.meetsUsernameRequirements(username));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameWithInvisibleCharacter()
+    {
+        // Includes a Right-to-Left Mark (U+200F) — invisible but disruptive
+        String username = "user\u200Fname";
+        assertFalse(testUser.meetsUsernameRequirements(username));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testUsernameWithEnDash()
+    {
+        // EN DASH (–), not a regular hyphen
+        String username = "user–name";
+        assertFalse(testUser.meetsUsernameRequirements(username));
+    }
+    */
 }
