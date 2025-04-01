@@ -3,7 +3,6 @@ module com.firewizapp {
     requires javafx.fxml;
     requires json.simple;
     requires jfugue;
-    requires junit;
 
     opens com.firewizapp to javafx.fxml;
     exports com.firewizapp;

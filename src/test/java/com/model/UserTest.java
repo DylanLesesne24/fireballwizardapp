@@ -165,12 +165,10 @@ public class UserTest {
     @Test
     public void testUsernameMatchFromList()
     {
-        UserList userList = UserList.getInstance();
+        ensureTestUserIsInUserList(); // already defined
 
-        // Manually add the testUser if not already present
-        userList.addUser(TEST_FIRSTNAME, TEST_LASTNAME, TEST_USERNAME, TEST_PASSWORD, TEST_EMAIL, TEST_SKILLLEVEL, TEST_FILTER);
-
-        assertTrue("Username 'TESTUSER' should match existing user ignoring case", userList.checkUsername("TESTUSER"));
+        User user = UserList.getInstance().getUser("testUser");
+        assertTrue(user.checkUsername("TESTUSER"));
     }
     
 
@@ -257,11 +255,10 @@ public class UserTest {
     @Test
     public void testPasswordAfterUsernameMatch()
     {
-        UserList userList = UserList.getInstance();
-        userList.addUser(TEST_FIRSTNAME, TEST_LASTNAME, TEST_USERNAME, TEST_PASSWORD, TEST_EMAIL, TEST_SKILLLEVEL, TEST_FILTER);
+        ensureTestUserIsInUserList();
 
-        userList.checkUsername("testUser");
-        assertTrue("Password 'testPassword' should match current login attempt user", userList.checkPassword("testPassword"));
+        User user = UserList.getInstance().getUser("testUser");
+        assertTrue("Password 'testPassword' should match for this user", user.checkPassword("testPassword"));
     }
     
 

@@ -1,6 +1,7 @@
 package com.firewizapp.model;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 public class UserList {
@@ -8,8 +9,6 @@ public class UserList {
     private static ArrayList<User> users;
 
     private static UserList userList;
-
-    private User currentLoginAttemptUser = null;
 
     private UserList()
     {
@@ -35,13 +34,68 @@ public class UserList {
     }
 
     //For returning a single user
-    public User getUser(String username) {
-        for (User user : users) {
-            if (user.getUsername().equals(username)) {
+    public User getUser(String username)
+    {
+        for (User user : users)
+        {
+            if (user.getUsername().equals(username))
+            {
                 return user;
+
             }
         }
-        return null;
+
+        throw new NoSuchElementException("User not found! Try again.");
+
+        /*
+         *  When trying to use this method, we now will use this format
+         * 
+         *  try 
+         *  {
+                User u = userList.getUser("example");
+            }
+
+            catch (NoSuchElementException e)
+            {
+
+                System.out.println(e.getMessage());
+            }
+
+            We need to use a try-catch to use this because we are throwing a custom exception error
+
+            It first tries to find a user matching the input, if it finds no user, it throws an error message saying no user found
+
+         * Sample interaction loop using getUser()
+         * 
+         * Keeps prompting the user until a valid user is found or they type "quit"
+         *
+         * UserList userList = UserList.getInstance();
+         * User foundUser = null;
+         * 
+         * do {
+         *     System.out.print("Enter username (or 'quit' to exit): ");
+         *     String input = scanner.nextLine();
+         * 
+         *     if (input.equalsIgnoreCase("quit"))
+         *     {
+         *         break;
+         *     }
+         * 
+         *     try
+         *     {
+         *         foundUser = userList.getUser(input);
+         *         System.out.println("Welcome, " + foundUser.getFirstName() + "!");
+         *     }
+         * 
+         *     catch (NoSuchElementException e)
+         *     {
+         *         System.out.println(e.getMessage());
+         *     }
+         * }
+         * while (foundUser == null);
+         * 
+         * I hope this helps, this was just the best way I thought to approach this method
+        */
     }
 
     //For returning all users
