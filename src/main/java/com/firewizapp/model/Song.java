@@ -16,6 +16,16 @@ public class Song {
     private String[] songNotes;
     private int songTempo;
 
+    /**
+     * Constructs a new {@code Song} object with the specified details.
+     *
+     * @param id         The UUID of the song
+     * @param title      The title of the song
+     * @param difficulty The difficulty level (e.g., "Easy", "Medium", "Hard")
+     * @param notes      An array of musical notes representing the song
+     * @param tempo      The tempo (beats per minute) of the song
+     */
+
     public Song(UUID id, String title, String difficulty, String[] notes, int tempo) {
         this.songID = id;
         this.songTitle = title;
@@ -24,18 +34,22 @@ public class Song {
         this.songTempo = tempo;
     }
 
+    /* Returns Ttile of the Song */
     public String getTitle() {
         return this.songTitle;
     }
 
+    /* Returns Difficulty of the Song */
     public String getDifficulty() {
         return this.difficulty;
     }
 
+    /* Returns Tempo of the Song */
     public int getTempo() {
         return this.songTempo;
     }
 
+    /* Returns Notes of the Song */
     public String[] getNotes() {
         return this.songNotes;
     }
