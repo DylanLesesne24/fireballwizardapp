@@ -6,6 +6,8 @@ import java.util.UUID;
  * Represents a user in the FireWiz application. Stores identifying information such as name,
  * email, skill level, and preferences like word filtering and earned badges.
  * Includes methods for validating credentials, setting user attributes, and handling basic authentication.
+ * 
+ * Tested by Laurin Johnson, FULLY WORKING
 */
 public class User {
 
@@ -181,7 +183,7 @@ public class User {
             return false;
         }
 
-        if(inputUsername == "") //empty check
+        if(inputUsername .isEmpty()) //empty check
         {
             return false;
         }
@@ -260,6 +262,11 @@ public class User {
 
         return true;
     }
+
+    /*
+     * TODO BE SURE TO DESIGN AN EMAIL REQUIREMENTS METHOD
+     * THE METHOD SHOULD MAKE IT SO THE USER CAN ONLY INPUT AN EMAIL IF IT HAS @gmail.com, @yahoo.com, @outlook.com, etc. Whatever else yall think of
+     */
 
     /**
      * Attempts to set the user's skill level based on loose matching.
