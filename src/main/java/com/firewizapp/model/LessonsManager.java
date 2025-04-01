@@ -29,11 +29,12 @@ public class LessonsManager {
     }
 
     /**
-     * Returns flashcards for the lesson specified by the index.
+     * Return flashcards for the lesson specified by the index.
      * This method returns the first flashcard from the lesson's flashcards list,
      * or null if there are no flashcards.
      *
-     * @param lessonIndex The index of the lesson in the list obtained from getAllLessons().
+     * @param lessonIndex The index of the lesson in the list obtained from
+     *                    getAllLessons().
      * @return A Flashcards object, or null if not available.
      */
     public Flashcards getFlashcardsForLesson(int lessonIndex) {

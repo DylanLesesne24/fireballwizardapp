@@ -23,9 +23,10 @@ public class UserList {
         return userList;
     }
 
-    public boolean addUser(String firstName, String lastName, String username, String password, String email, String skillLevel, boolean filter)
-    {
-        users.add(new User(UUID.randomUUID(), username, password, firstName, lastName, email, skillLevel, filter, new String[]{}));
+    public boolean addUser(String firstName, String lastName, String username, String password, String email,
+            String skillLevel, boolean filter) {
+        users.add(new User(UUID.randomUUID(), username, password, firstName, lastName, email, skillLevel, filter,
+                new String[] {}));
         return true;
     }
 
@@ -46,12 +47,9 @@ public class UserList {
         return users;
     }
 
-    public boolean checkUsername(String inputUsername)
-    {
-        for (User user : users)
-        {
-            if (user.getUsername().equalsIgnoreCase(inputUsername))
-            {
+    public boolean checkUsername(String inputUsername) {
+        for (User user : users) {
+            if (user.getUsername().equalsIgnoreCase(inputUsername)) {
                 currentLoginAttemptUser = user;
                 return true;
             }
@@ -61,20 +59,19 @@ public class UserList {
         return false;
     }
 
-    public boolean checkPassword(String inputPassword)
-    {
-        if (currentLoginAttemptUser == null)
-        {
+    public boolean checkPassword(String inputPassword) {
+        if (currentLoginAttemptUser == null) {
             return false;
         }
-        
+
         return currentLoginAttemptUser.getPassword().equals(inputPassword);
     }
 
-    /* Not finished yet
-    public boolean saveUser() {
-
-        return true;
-    }
-    */
+    /*
+     * Not finished yet
+     * public boolean saveUser() {
+     * 
+     * return true;
+     * }
+     */
 }
