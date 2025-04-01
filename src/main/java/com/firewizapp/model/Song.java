@@ -16,8 +16,7 @@ public class Song {
     private String[] songNotes;
     private int songTempo;
 
-    public Song(UUID id, String title, String difficulty, String[] notes, int tempo)
-    {
+    public Song(UUID id, String title, String difficulty, String[] notes, int tempo) {
         this.songID = id;
         this.songTitle = title;
         this.difficulty = difficulty;
@@ -25,66 +24,57 @@ public class Song {
         this.songTempo = tempo;
     }
 
-    public String getTitle()
-    {
+    public String getTitle() {
         return this.songTitle;
     }
 
-    public String getDifficulty()
-    {
+    public String getDifficulty() {
         return this.difficulty;
     }
 
-    public int getTempo() 
-    {
+    public int getTempo() {
         return this.songTempo;
     }
 
-    public String[] getNotes()
-    {
+    public String[] getNotes() {
         return this.songNotes;
     }
 
-    public UUID getSongID() 
-    {
+    public UUID getSongID() {
         return this.songID;
     }
 
-    public void playNotes()
-    {
+    public void playNotes() {
         Player player = new Player();
         StringBuilder pattern = new StringBuilder();
-    
+
         // Add tempo to pattern (e.g., T120)
         pattern.append("T").append(songTempo).append(" ");
-    
+
         // Add each note with a duration
-        for (String note : songNotes)
-        {
-            pattern.append(note).append("q ");  // quarter note duration
+        for (String note : songNotes) {
+            pattern.append(note).append("q "); // quarter note duration
         }
-    
-        try
-        {
+
+        try {
             System.out.println("Pattern: " + pattern);
             player.play(new Pattern(pattern.toString().trim()));
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println("Error playing song.");
             e.printStackTrace();
         }
     }
 
-    /* Commenting out for simplicity sake
-    public static Song getSong(int num) //TODO ??????????
-    {
-        return SONGS.get(num);
-    }
-
-    public String[] getChords() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getChords'");
-    }
-    */
+    /*
+     * Commenting out for simplicity sake
+     * public static Song getSong(int num) //TODO ??????????
+     * {
+     * return SONGS.get(num);
+     * }
+     * 
+     * public String[] getChords() {
+     * // TODO Auto-generated method stub
+     * throw new UnsupportedOperationException("Unimplemented method 'getChords'");
+     * }
+     */
 }
