@@ -112,15 +112,10 @@ public class UserTest {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
     /*
-     * Testing for:
-     * public boolean checkUsername(String inputUsername)
+     *  Testing for:
+     *  public boolean checkUsername(String inputUsername)
         {
-            if (inputUsername == null || inputUsername.isEmpty() || inputUsername.contains(" "))
-            {
-                return false;
-            }
-
-            return this.username.equalsIgnoreCase(inputUsername);
+            return this.username.equalsIgnoreCase(inputUsername); //Most username logins I've seen ignore case - Laurin Johnson (so you know who wrote this)
         }
     */
 
@@ -202,14 +197,9 @@ public class UserTest {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
     /*
-     * Testing for:
+     *  Testing for:
      *  public boolean checkPassword(String inputPassword)
         {
-            if (inputPassword == null || inputPassword.isEmpty() || inputPassword.contains(" "))
-            {
-                return false;
-            }
-
             return this.password.equals(inputPassword);
         }
     */
@@ -304,19 +294,37 @@ public class UserTest {
      * 
      *  public boolean meetsUsernameRequirements(String inputUsername)
         {
-            if(inputUsername == null)
+            if(inputUsername == null) //null check
             {
                 return false;
             }
 
-            if(inputUsername == "")
+            if(inputUsername == "") //empty check
             {
                 return false;
             }
 
-            if(inputUsername.contains(" "))
+            if (inputUsername.contains(" ") || inputUsername.contains("\t") || inputUsername.contains("\n")) //Space, newline, and tab check
+            {
+                return false; // no whitespace of any kind
+            }
+
+            if (!inputUsername.matches("[a-zA-Z0-9]+")) //I don't think special characters should be allowed in a username - Laurin Johnson
             {
                 return false;
+            }
+
+            if (inputUsername.length() > 26) //Max length of username is 26 characters
+            {
+                return false;
+            }
+
+            for (User existingUser : UserList.getUsers()) //Checks for an already existing username, must match exactly
+            {
+                if (existingUser.getUsername().equals(inputUsername))
+                {
+                    return false;
+                }
             }
 
             return true;
@@ -491,12 +499,12 @@ public class UserTest {
      * 
      *  public boolean meetsPassRequirements(String inputPassword) 
         {
-            if(inputPassword == null) //Null Pointer Check
+            if (inputPassword == null || inputPassword.isEmpty())
             {
                 return false;
             }
 
-            if(inputPassword == "")
+            if (inputPassword.contains(" ") || inputPassword.contains("\t") || inputPassword.contains("\n"))
             {
                 return false;
             }
@@ -511,8 +519,13 @@ public class UserTest {
                 return false;
             }
 
-            if(!inputPassword.matches(".*[\\p{Punct}].*"))//Special Character check
-            {                                                                                                 //This includes special characters like: ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~ but not spaces
+            if (!inputPassword.matches("^[\\p{ASCII}]+$"))
+            {
+                return false;
+            }
+
+            if (!inputPassword.matches(".*[!@#$%^&*()_+\\-={}\\[\\]:\";'<>?,./\\\\|].*"))
+            {
                 return false;
             }
 
@@ -691,6 +704,11 @@ public class UserTest {
      *  public void setSkillLevel(String SkillLevel)
         {
             if (SkillLevel == null || SkillLevel.trim().isEmpty())
+            {
+                return;
+            }
+
+            if (!SkillLevel.matches("^[\\p{ASCII}]+$"))
             {
                 return;
             }
