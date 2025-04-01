@@ -208,18 +208,19 @@ public class User {
 
     /**
      * Checks that the chosen password of the user is not null, not empty, is 8 characters or longer, contains a number, and contains a special character other than space
+     * Tested by Laurin Johnson, WORKS
      * 
      * @param inputPassword
      * @return true if the password is not null, not empty, is 8 characters or longer, contains a number, and contains a special character other than space, false otherwise
      */
     public boolean meetsPassRequirements(String inputPassword) 
     {
-        if(inputPassword == null) //Null Pointer Check
+        if (inputPassword == null || inputPassword.isEmpty())
         {
             return false;
         }
 
-        if(inputPassword == "")
+        if (inputPassword.contains(" ") || inputPassword.contains("\t") || inputPassword.contains("\n"))
         {
             return false;
         }
@@ -234,8 +235,13 @@ public class User {
             return false;
         }
 
-        if(!inputPassword.matches(".*[\\p{Punct}].*"))//Special Character check
-        {                                                                                                 //This includes special characters like: ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~ but not spaces
+        if (!inputPassword.matches("^[\\p{ASCII}]+$"))
+        {
+            return false;
+        }
+
+        if (!inputPassword.matches(".*[!@#$%^&*()_+\\-={}\\[\\]:\";'<>?,./\\\\|].*"))
+        {
             return false;
         }
 
@@ -244,22 +250,69 @@ public class User {
 
     /**
      * Mutator to change the user's skill level
+     * Tested by Laurin Johnson, WORKS
      * 
      * @param SkillLevel
      */
     public void setSkillLevel(String SkillLevel)
     {
-        this.skillLevel = SkillLevel;
+        if (SkillLevel == null || SkillLevel.trim().isEmpty())
+        {
+            return;
+        }
+
+        if (!SkillLevel.matches("^[\\p{ASCII}]+$"))
+        {
+            return;
+        }
+    
+        String input = SkillLevel.trim().toUpperCase();
+    
+        if (input.contains("PRO"))
+        {
+            this.skillLevel = "PRO";
+        }
+
+        else if (input.contains("INTER"))
+        {
+            this.skillLevel = "INTERMEDIATE";
+        }
+
+        else if (input.contains("BEGIN"))
+        {
+            this.skillLevel = "BEGINNER";
+        }
     }
 
     /**
      * Mutator to change the user's filter preference
+     * Tested by Laurin Johnson, WORKS
      * 
      * @param Filter
      */
-    public void setFilter(boolean Filter)
+    public void setFilter(String Filter)
     {
-        this.filter = Filter;
+        if (Filter == null || Filter.trim().isEmpty())
+        {
+            return;
+        }
+
+        if (!Filter.matches("^[\\p{ASCII}]+$"))
+        {
+            return;
+        }
+
+        String input = Filter.trim().toLowerCase();
+
+        if (input.equals("yes") || input.equals("y"))
+        {
+            this.filter = true;
+        }
+
+        else if (input.equals("no") || input.equals("n"))
+        {
+            this.filter = false;
+        }
     }
 
     /* Useless, editing this out for now

@@ -40,10 +40,9 @@ public class UserTest {
     }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-// Accessor Tests (getUsername, getPassword, getFirstName, getLastName, getEmail, getSkillLevel, isFilterEnabled, getBadgesEarned, getUserID)
+// Accessor Tests (getUsername, getPassword, getFirstName, getLastName, getEmail, getSkillLevel, getFilter, getBadgesEarned, getUserID)
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
-    /*
     //Tested by Laurin Johnson, WORKS
     @Test
     public void testGetUsername()
@@ -88,9 +87,9 @@ public class UserTest {
 
     //Tested by Laurin Johnson, WORKS
     @Test
-    public void testIsFilterEnabled()
+    public void testgetFilter()
     {
-        assertTrue(testUser.isFilterEnabled());
+        assertTrue(testUser.getFilter());
     }
 
     //Tested by Laurin Johnson, WORKS
@@ -107,7 +106,6 @@ public class UserTest {
         assertEquals(ID, testUser.getUserID());
     }
 
-    */
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 // Tests for: public boolean checkUsername(String inputUsername)
@@ -124,6 +122,7 @@ public class UserTest {
 
             return this.username.equalsIgnoreCase(inputUsername);
         }
+    */
 
     //Tested by Laurin Johnson, WORKS
     @Test
@@ -178,7 +177,7 @@ public class UserTest {
 
         assertTrue("Username 'TESTUSER' should match existing user ignoring case", userList.checkUsername("TESTUSER"));
     }
-    */
+    
 
     /*
     //Tested by Laurin Johnson, WORKS
@@ -213,7 +212,7 @@ public class UserTest {
 
             return this.password.equals(inputPassword);
         }
-    
+    */
 
     //Tested by Laurin Johnson, WORKS
     @Test
@@ -274,7 +273,7 @@ public class UserTest {
         userList.checkUsername("testUser");
         assertTrue("Password 'testPassword' should match current login attempt user", userList.checkPassword("testPassword"));
     }
-    */
+    
 
     /*
     //Tested by Laurin Johnson, WORKS
@@ -322,6 +321,7 @@ public class UserTest {
 
             return true;
         }
+    */
     
     //Tested by Laurin Johnson, WORKS
     @Test
@@ -480,5 +480,881 @@ public class UserTest {
         String username = "user–name";
         assertFalse(testUser.meetsUsernameRequirements(username));
     }
+    
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+// Tests for: public boolean meetsPassRequirements(String inputPassword)
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+    /*
+     *  Testing for: 
+     * 
+     *  public boolean meetsPassRequirements(String inputPassword) 
+        {
+            if(inputPassword == null) //Null Pointer Check
+            {
+                return false;
+            }
+
+            if(inputPassword == "")
+            {
+                return false;
+            }
+
+            if(inputPassword.length() < 8 || inputPassword.length() > 26) // Length Check
+            {
+                return false;
+            }
+
+            if(!inputPassword.matches(".*\\d.*")) //Number check, this is a representation of 0-9
+            {
+                return false;
+            }
+
+            if(!inputPassword.matches(".*[\\p{Punct}].*"))//Special Character check
+            {                                                                                                 //This includes special characters like: ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~ but not spaces
+                return false;
+            }
+
+            return true;
+        }
     */
+    
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordIsValid()
+    {
+        assertTrue(testUser.meetsPassRequirements("ValidPass123!"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordWithSpecialChar()
+    {
+        assertTrue(testUser.meetsPassRequirements("pass@word123"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordWithInternalSpace()
+    {
+        assertFalse(testUser.meetsPassRequirements("pass word123!"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordWithLeadingSpace()
+    {
+        assertFalse(testUser.meetsPassRequirements(" password123!"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordWithTrailingSpace()
+    {
+        assertFalse(testUser.meetsPassRequirements("password123! "));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordIsNull()
+    {
+        assertFalse(testUser.meetsPassRequirements(null));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordIsEmpty()
+    {
+        assertFalse(testUser.meetsPassRequirements(""));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordWithNumbers()
+    {
+        assertTrue(testUser.meetsPassRequirements("1234pass!"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordAllCaps()
+    {
+        assertTrue(testUser.meetsPassRequirements("PASSWORD123!"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordNoCaps()
+    {
+        assertTrue(testUser.meetsPassRequirements("password123!"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordWithTabCharacter()
+    {
+        assertFalse(testUser.meetsPassRequirements("pass\tword123!"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordWithNewlineCharacter()
+    {
+        assertFalse(testUser.meetsPassRequirements("pass\nword123!"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordWithEmoji()
+    {
+        assertFalse(testUser.meetsPassRequirements("pass💀word123"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordWithUnicode()
+    {
+        assertFalse(testUser.meetsPassRequirements("パスワード123!"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordTooShort()
+    {
+        String shortPassword = "tosht1!";
+        assertFalse(testUser.meetsPassRequirements(shortPassword));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordTooLong()
+    {
+        String longPassword = "thispasswordiswaytoolongtoaccept!";
+        assertFalse(testUser.meetsPassRequirements(longPassword));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordOnlyDigits()
+    {
+        assertFalse(testUser.meetsPassRequirements("12345678"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordOnlySpecialCharacters()
+    {
+        assertFalse(testUser.meetsPassRequirements("!@#$%^&*"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordWithUnderscore()
+    {
+        assertTrue(testUser.meetsPassRequirements("pass_word123"));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordWithUnicodeSpace()
+    {
+        String password = "pass\u2002word123!";
+        assertFalse(testUser.meetsPassRequirements(password));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordWithInvisibleCharacter()
+    {
+        String password = "pass\u200Fword123!";
+        assertFalse(testUser.meetsPassRequirements(password));
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testPasswordWithEnDash()
+    {
+        String password = "pass–word123!";
+        assertFalse(testUser.meetsPassRequirements(password));
+    }
+    
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+// Tests for: public void setSkillLevel(String SkillLevel)
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+    /*
+     *  Testing for: 
+     * 
+     *  public void setSkillLevel(String SkillLevel)
+        {
+            if (SkillLevel == null || SkillLevel.trim().isEmpty())
+            {
+                return;
+            }
+    
+            String input = SkillLevel.trim().toUpperCase();
+    
+            if (input.contains("PRO"))
+            {
+                this.skillLevel = "PRO";
+            }
+
+            else if (input.contains("INTER"))
+            {
+                this.skillLevel = "INTERMEDIATE";
+            }
+
+            else if (input.contains("BEGIN"))
+            {
+                this.skillLevel = "BEGINNER";
+            }
+        }
+    */
+    
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelToBeginner()
+    {
+        testUser.setSkillLevel("BEGINNER");
+        assertEquals("BEGINNER", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelToIntermediate()
+    {
+        testUser.setSkillLevel("INTERMEDIATE");
+        assertEquals("INTERMEDIATE", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelToPro()
+    {
+        testUser.setSkillLevel("PRO");
+        assertEquals("PRO", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelLowercase()
+    {
+        testUser.setSkillLevel("beginner");
+        assertEquals("BEGINNER", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelMixedCase()
+    {
+        testUser.setSkillLevel("InTeRmeDiaTe");
+        assertEquals("INTERMEDIATE", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelWithLeadingSpaces()
+    {
+        testUser.setSkillLevel("   pro");
+        assertEquals("PRO", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelWithTrailingSpaces()
+    {
+        testUser.setSkillLevel("beginner   ");
+        assertEquals("BEGINNER", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelWithInternalSpace()
+    {
+        testUser.setSkillLevel("Pro fessional");
+        assertEquals("PRO", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelWithTabCharacter()
+    {
+        testUser.setSkillLevel("pro\t");
+        assertEquals("PRO", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelWithNewlineCharacter()
+    {
+        testUser.setSkillLevel("inter\nmediate");
+        assertEquals("INTERMEDIATE", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelWithEmoji()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("BEGINNER💀");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelWithUnicodeCharacters()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("初級");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelWithEnDash()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("BE–GINNER"); // EN DASH
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelWithInvisibleCharacter()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("PRO\u200F");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelWithInternalTypos()
+    {
+        testUser.setSkillLevel("intermidiat");
+        assertEquals("INTERMEDIATE", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelToUnknownValue()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("wizard");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelNullInput()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel(null);
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelEmptyInput()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelWhitespaceOnly()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("    ");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //
+    // BEGINNER
+    //
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelBeginnerWithSpace()
+    {
+        testUser.setSkillLevel("Beg inner");
+        assertEquals("BEGINNER", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelBeginnerWithTab()
+    {
+        testUser.setSkillLevel("Beg\tinner");
+        assertEquals("BEGINNER", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelBeginnerWithNewline()
+    {
+        testUser.setSkillLevel("Beg\ninner");
+        assertEquals("BEGINNER", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelBeginnerWithInvisibleCharacter()
+    {
+        testUser.setSkillLevel("Beginner\u200F");
+        assertEquals("BEGINNER", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelBeginnerWithEnDash()
+    {
+        testUser.setSkillLevel("BE–GINNER");
+        assertEquals("BEGINNER", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelBeginnerWithEmoji()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("BEGINNER💀");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelBeginnerWithUnicode()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("初級");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //
+    // INTERMEDIATE
+    //
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelIntermediateWithSpace()
+    {
+        testUser.setSkillLevel("Inter mediate");
+        assertEquals("INTERMEDIATE", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelIntermediateWithTab()
+    {
+        testUser.setSkillLevel("Inter\tmediate");
+        assertEquals("INTERMEDIATE", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelIntermediateWithNewline()
+    {
+        testUser.setSkillLevel("Inter\nmediate");
+        assertEquals("INTERMEDIATE", testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelIntermediateWithInvisibleCharacter()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("INTERMEDIATE\u200F");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelIntermediateWithEnDash()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("INTER–MEDIATE");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelIntermediateWithEmoji()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("INTERMEDIATE💀");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelIntermediateWithUnicode()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("中級");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //
+    // PRO
+    //
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelProWithSpace()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("P R O");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelProWithTab()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("PR\tO");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelProWithNewline()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("P\nRO");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelProWithInvisibleCharacter()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("PRO\u200F");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelProWithEnDash()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("PR–O");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelProWithEmoji()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("PRO💀");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetSkillLevelProWithUnicode()
+    {
+        String originalSkill = testUser.getSkillLevel();
+        testUser.setSkillLevel("専門");
+        assertEquals(originalSkill, testUser.getSkillLevel());
+    }
+    
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+// Tests for: public void setFilter(String Filter)
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+    /*
+     *  Testing for: 
+     * 
+     *  public void setFilter(String Filter)
+        {
+            if (Filter == null || Filter.trim().isEmpty())
+            {
+                return;
+            }
+
+            if (!Filter.matches("^[\\p{ASCII}]+$"))
+            {
+                return;
+            }
+
+            String input = Filter.trim().toLowerCase();
+
+            if (input.equals("yes") || input.equals("y"))
+            {
+                this.filter = true;
+            }
+
+            else if (input.equals("no") || input.equals("n"))
+            {
+                this.filter = false;
+            }
+        }
+    */
+
+    //
+    // YES-type inputs
+    //
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterYesLowercase()
+    {
+        testUser.setFilter("yes");
+        assertTrue(testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterYesUppercase()
+    {
+        testUser.setFilter("YES");
+        assertTrue(testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterYesMixedCase()
+    {
+        testUser.setFilter("YeS");
+        assertTrue(testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterSingleLetterY()
+    {
+        testUser.setFilter("y");
+        assertTrue(testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterYesWithLeadingSpace()
+    {
+        testUser.setFilter("  yes");
+        assertTrue(testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterYesWithTrailingSpace()
+    {
+        testUser.setFilter("yes  ");
+        assertTrue(testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterYesWithTab()
+    {
+        boolean original = testUser.getFilter();
+        testUser.setFilter("yes\t");
+        assertEquals(original, testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterYesWithNewline()
+    {
+        boolean original = testUser.getFilter();
+        testUser.setFilter("yes\n");
+        assertEquals(original, testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterYesWithEnDash()
+    {
+        boolean original = testUser.getFilter();
+        testUser.setFilter("ye–s");
+        assertEquals(original, testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterYesWithInvisibleCharacter()
+    {
+        boolean original = testUser.getFilter();
+        testUser.setFilter("yes\u200F");
+        assertEquals(original, testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterYesWithEmoji()
+    {
+        boolean original = testUser.getFilter();
+        testUser.setFilter("yes💀");
+        assertEquals(original, testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterYesWithUnicode()
+    {
+        boolean original = testUser.getFilter();
+        testUser.setFilter("はい");
+        assertEquals(original, testUser.getFilter());
+    }
+
+    //
+    // NO-type inputs
+    //
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterNoLowercase()
+    {
+        testUser.setFilter("no");
+        assertFalse(testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterNoUppercase()
+    {
+        testUser.setFilter("NO");
+        assertFalse(testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterNoMixedCase()
+    {
+        testUser.setFilter("No");
+        assertFalse(testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterSingleLetterN()
+    {
+        testUser.setFilter("n");
+        assertFalse(testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterNoWithLeadingSpace()
+    {
+        testUser.setFilter("  no");
+        assertFalse(testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterNoWithTrailingSpace()
+    {
+        testUser.setFilter("no  ");
+        assertFalse(testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterNoWithTab()
+    {
+        testUser.setFilter("yes"); // Start with TRUE
+        assertTrue(testUser.getFilter());
+
+        testUser.setFilter("no\t"); // Should be trimmed → "no" → valid
+        assertFalse(testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterNoWithNewline()
+    {
+        testUser.setFilter("yes"); // Start with TRUE
+        assertTrue(testUser.getFilter());
+
+        testUser.setFilter("no\n"); // Should be trimmed → "no" → valid
+        assertFalse(testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterNoWithEnDash()
+    {
+        boolean original = testUser.getFilter();
+        testUser.setFilter("n–o");
+        assertEquals(original, testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterNoWithInvisibleCharacter()
+    {
+        boolean original = testUser.getFilter();
+        testUser.setFilter("no\u200F");
+        assertEquals(original, testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterNoWithEmoji()
+    {
+        boolean original = testUser.getFilter();
+        testUser.setFilter("no💀");
+        assertEquals(original, testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterNoWithUnicode()
+    {
+        boolean original = testUser.getFilter();
+        testUser.setFilter("いいえ"); // Japanese "no"
+        assertEquals(original, testUser.getFilter());
+    }
+
+    //
+    // Invalid input / fallback
+    //
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterNullInput()
+    {
+        boolean original = testUser.getFilter();
+        testUser.setFilter(null);
+        assertEquals(original, testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterEmptyInput()
+    {
+        boolean original = testUser.getFilter();
+        testUser.setFilter("");
+        assertEquals(original, testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterWhitespaceOnly()
+    {
+        boolean original = testUser.getFilter();
+        testUser.setFilter("    ");
+        assertEquals(original, testUser.getFilter());
+    }
+
+    //Tested by Laurin Johnson, WORKS
+    @Test
+    public void testSetFilterUnknownWord()
+    {
+        boolean original = testUser.getFilter();
+        testUser.setFilter("maybe");
+        assertEquals(original, testUser.getFilter());
+    }
 }
