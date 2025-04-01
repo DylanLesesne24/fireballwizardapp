@@ -4,9 +4,9 @@ import java.util.UUID;
 
 /**
  * Represents a user in the FireWiz application. Stores identifying information such as name,
- * email, skill level, and preferences like content filtering and earned badges. 
- * Includes methods for validating credentials and managing user data.
- */
+ * email, skill level, and preferences like word filtering and earned badges.
+ * Includes methods for validating credentials, setting user attributes, and handling basic authentication.
+*/
 public class User {
 
     private UUID userID;
@@ -32,7 +32,7 @@ public class User {
      * @param SkillLevel
      * @param Filter
      * @param BadgesEarned
-     */
+    */
     public User(UUID id, String Username, String Password, String FirstName, String LastName, String Email,
             String SkillLevel, boolean Filter, String[] BadgesEarned) {
         this.userID = id;
@@ -52,7 +52,7 @@ public class User {
      * Tested by Laurin Johnson, WORKS
      * 
      * @return User's first name
-     */
+    */
     public String getFirstName() {
         return this.firstName;
     }
@@ -62,7 +62,7 @@ public class User {
      * Tested by Laurin Johnson, WORKS
      * 
      * @return User's last name
-     */
+    */
     public String getLastName() {
         return this.lastName;
     }
@@ -72,7 +72,7 @@ public class User {
      * Tested by Laurin Johnson, WORKS
      * 
      * @return User's username
-     */
+    */
     public String getUsername() {
         return username;
     }
@@ -82,7 +82,7 @@ public class User {
      * Tested by Laurin Johnson, WORKS
      * 
      * @return User's password
-     */
+    */
     public String getPassword() {
         return password;
     }
@@ -92,7 +92,7 @@ public class User {
      * Tested by Laurin Johnson, WORKS
      * 
      * @return User's UUID
-     */
+    */
     public UUID getUserID() {
         return userID;
     }
@@ -102,7 +102,7 @@ public class User {
      * Tested by Laurin Johnson, WORKS
      * 
      * @return User's email
-     */
+    */
     public String getEmail() {
         return email;
     }
@@ -112,7 +112,7 @@ public class User {
      * Tested by Laurin Johnson, WORKS
      * 
      * @return User's filter preference
-     */
+    */
     public boolean getFilter() {
         return this.filter;
     }
@@ -122,7 +122,7 @@ public class User {
      * Tested by Laurin Johnson, WORKS
      * 
      * @return Array of User's earned badges
-     */
+    */
     public String[] getBadgesEarned() {
         return this.badgesEarned;
     }
@@ -132,42 +132,48 @@ public class User {
      * Tested by Laurin Johnson, WORKS
      * 
      * @return User's skill level
-     */
+    */
     public String getSkillLevel() {
         return skillLevel;
     }
 
     /**
-     * Checks that the input username matches the username of a user, ignoring capitalization, also checks for invalid username input
+     * Checks whether the given input username matches the user's username (case-insensitive). Assumes invalid usernames have already been filtered.
      * Tested by Laurin Johnson, WORKS
      * 
      * @param inputUsername
      * @return true if the usernames match, false otherwise
-     */
+    */
     public boolean checkUsername(String inputUsername)
     {
         return this.username.equalsIgnoreCase(inputUsername); //Most username logins I've seen ignore case - Laurin Johnson (so you know who wrote this)
     }
 
     /**
-     * Checks that the input password matches the password of the user, Case-Sensitive, also checks for invalid password input
+     * Checks whether the given input password matches the user's password (case-sensitive). Assumes invalid passwords have already been filtered.
      * Tested by Laurin Johnson, WORKS
      * 
      * @param inputPassword
      * @return true if the passwords match, false otherwise
-     */
+    */
     public boolean checkPassword(String inputPassword)
     {
         return this.password.equals(inputPassword);
     }
 
     /**
-     * Checks that the chosen username of the user is null, empty, or contains a space, is false if any matches
+     * Validates whether the given username meets requirements:
+     * - Not null or empty
+     * - No spaces, tabs, or newlines
+     * - Only contains alphanumeric characters
+     * - Less than or equal to 26 characters
+     * - Does not match an existing username (case-sensitive)
+     *
      * Tested by Laurin Johnson, WORKS
      * 
      * @param inputUsername
-     * @return True if username isn't null, empty, or doesn't contain a space, false otherwise
-     */
+     * @return true if the username meets all requirements, false otherwise
+    */
     public boolean meetsUsernameRequirements(String inputUsername)
     {
         if(inputUsername == null) //null check
@@ -207,12 +213,19 @@ public class User {
     }
 
     /**
-     * Checks that the chosen password of the user is not null, not empty, is 8 characters or longer, contains a number, and contains a special character other than space
+     * Validates whether the given password meets requirements:
+     * - Not null or empty
+     * - Length between 8 and 26 characters
+     * - No spaces, tabs, or newlines
+     * - Only ASCII characters
+     * - Contains at least one digit
+     * - Contains at least one special character (excluding space)
+     *
      * Tested by Laurin Johnson, WORKS
      * 
      * @param inputPassword
-     * @return true if the password is not null, not empty, is 8 characters or longer, contains a number, and contains a special character other than space, false otherwise
-     */
+     * @return true if the password meets all requirements, false otherwise
+    */
     public boolean meetsPassRequirements(String inputPassword) 
     {
         if (inputPassword == null || inputPassword.isEmpty())
@@ -249,11 +262,17 @@ public class User {
     }
 
     /**
-     * Mutator to change the user's skill level
+     * Attempts to set the user's skill level based on loose matching.
+     * Converts input to uppercase and searches for a match:
+     * - Contains "BEGIN" → sets to "BEGINNER"
+     * - Contains "INTER" → sets to "INTERMEDIATE"
+     * - Contains "PRO" → sets to "PRO"
+     * If input is null, empty, non-ASCII, or does not match any known category, the skill level is unchanged.
+
      * Tested by Laurin Johnson, WORKS
      * 
      * @param SkillLevel
-     */
+    */
     public void setSkillLevel(String SkillLevel)
     {
         if (SkillLevel == null || SkillLevel.trim().isEmpty())
@@ -285,11 +304,15 @@ public class User {
     }
 
     /**
-     * Mutator to change the user's filter preference
+     * Attempts to set the user's filter preference based on input.
+     * Accepts:
+     * - "yes" or "y" (any capitalization) → sets filter to true
+     * - "no" or "n" (any capitalization) → sets filter to false
+     * Ignores invalid, non-ASCII, null, or empty input.
      * Tested by Laurin Johnson, WORKS
      * 
      * @param Filter
-     */
+    */
     public void setFilter(String Filter)
     {
         if (Filter == null || Filter.trim().isEmpty())
