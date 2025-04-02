@@ -1,6 +1,7 @@
 package com.firewizapp.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,7 +29,8 @@ public class Quiz {
     }
 
     public List<Questions> getQuestions() {
-        return questions;
+        // Return an unmodifiable list to prevent external modification
+        return Collections.unmodifiableList(questions);
     }
 
     public boolean checkAnswer(int questionIndex, String userAnswer) {

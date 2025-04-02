@@ -1,5 +1,6 @@
 package com.firewizapp.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,6 +23,19 @@ public class Questions {
     public Questions(String questionText, List<String> answerChoices, String correctAnswer) {
         this.questionText = questionText;
         this.answerChoices = answerChoices;
+        this.correctAnswer = correctAnswer;
+    }
+
+    /**
+     * Overloaded constructor for creating a question with just the question text and correct answer.
+     * The answer choices will be initialized as an empty list.
+     *
+     * @param questionText  the text of the question
+     * @param correctAnswer the correct answer for the question
+     */
+    public Questions(String questionText, String correctAnswer) {
+        this.questionText = questionText;
+        this.answerChoices = new ArrayList<>(); // Default empty list for answer choices
         this.correctAnswer = correctAnswer;
     }
 

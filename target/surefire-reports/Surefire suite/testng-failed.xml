@@ -5,10 +5,9 @@
     <classes>
       <class name="org.junit.runner.Description">
         <methods>
-          <include name="testIsCorrectWithWhitespace"/>
-          <include name="testIsCorrectCaseInsensitive"/>
+          <include name="testCheckAnswerCorrect"/>
           <include name="testConstructorAndGetters"/>
-          <include name="testIsCorrectWithValidAnswer"/>
+          <include name="testAddQuestion"/>
         </methods>
       </class> <!-- org.junit.runner.Description -->
     </classes>

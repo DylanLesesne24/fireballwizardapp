@@ -1,41 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-04-02T14:52:54 EDT" name="Surefire suite" finished-at="2025-04-02T14:52:54 EDT" duration-ms="79">
+  <suite started-at="2025-04-02T15:10:47 EDT" name="Surefire suite" finished-at="2025-04-02T15:10:47 EDT" duration-ms="75">
     <groups>
     </groups>
-    <test started-at="2025-04-02T14:52:54 EDT" name="Surefire test" finished-at="2025-04-02T14:52:54 EDT" duration-ms="79">
-      <class name="com.model.QuestionsTest">
-        <test-method signature="testIsCorrectWithWhitespace()" started-at="2025-04-02T14:52:54 EDT" name="testIsCorrectWithWhitespace" finished-at="2025-04-02T14:52:54 EDT" duration-ms="16" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testIsCorrectWithWhitespace -->
-        <test-method signature="testIsCorrectWithInvalidAnswer()" started-at="2025-04-02T14:52:54 EDT" name="testIsCorrectWithInvalidAnswer" finished-at="2025-04-02T14:52:54 EDT" duration-ms="17" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testIsCorrectWithInvalidAnswer -->
-        <test-method signature="testIsCorrectWithNullAnswer()" started-at="2025-04-02T14:52:54 EDT" name="testIsCorrectWithNullAnswer" finished-at="2025-04-02T14:52:54 EDT" duration-ms="15" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testIsCorrectWithNullAnswer -->
-        <test-method signature="testIsCorrectWithValidAnswer()" started-at="2025-04-02T14:52:54 EDT" name="testIsCorrectWithValidAnswer" finished-at="2025-04-02T14:52:54 EDT" duration-ms="16" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testIsCorrectWithValidAnswer -->
-        <test-method signature="testIsCorrectCaseInsensitive()" started-at="2025-04-02T14:52:54 EDT" name="testIsCorrectCaseInsensitive" finished-at="2025-04-02T14:52:54 EDT" duration-ms="15" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testIsCorrectCaseInsensitive -->
-        <test-method signature="testToStringFormat()" started-at="2025-04-02T14:52:54 EDT" name="testToStringFormat" finished-at="2025-04-02T14:52:54 EDT" duration-ms="16" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testToStringFormat -->
-        <test-method signature="testConstructorAndGetters()" started-at="2025-04-02T14:52:54 EDT" name="testConstructorAndGetters" finished-at="2025-04-02T14:52:54 EDT" duration-ms="15" status="PASS">
+    <test started-at="2025-04-02T15:10:47 EDT" name="Surefire test" finished-at="2025-04-02T15:10:47 EDT" duration-ms="75">
+      <class name="com.model.QuizTest">
+        <test-method signature="testConstructorAndGetters()" started-at="2025-04-02T15:10:47 EDT" name="testConstructorAndGetters" finished-at="2025-04-02T15:10:47 EDT" duration-ms="16" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testConstructorAndGetters -->
-      </class> <!-- com.model.QuestionsTest -->
+        <test-method signature="testCheckAnswerCorrect()" started-at="2025-04-02T15:10:47 EDT" name="testCheckAnswerCorrect" finished-at="2025-04-02T15:10:47 EDT" duration-ms="14" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckAnswerCorrect -->
+        <test-method signature="testAddQuestion()" started-at="2025-04-02T15:10:47 EDT" name="testAddQuestion" finished-at="2025-04-02T15:10:47 EDT" duration-ms="15" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddQuestion -->
+      </class> <!-- com.model.QuizTest -->
     </test> <!-- Surefire test -->
   </suite> <!-- Surefire suite -->
 </testng-results>
