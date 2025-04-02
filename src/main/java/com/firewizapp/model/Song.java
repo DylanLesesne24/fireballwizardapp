@@ -8,7 +8,8 @@ import org.jfugue.pattern.Pattern;
 
 public class Song {
 
-    public static HashMap<Integer, Song> SONGS = new HashMap<>();
+    // Change the key of the map to UUID to match the test expectations
+    public static HashMap<UUID, Song> SONGS = new HashMap<>();
 
     private UUID songID;
     private String songTitle;
@@ -25,7 +26,6 @@ public class Song {
      * @param notes      An array of musical notes representing the song
      * @param tempo      The tempo (beats per minute) of the song
      */
-
     public Song(UUID id, String title, String difficulty, String[] notes, int tempo) {
         this.songID = id;
         this.songTitle = title;
@@ -34,7 +34,7 @@ public class Song {
         this.songTempo = tempo;
     }
 
-    /* Returns Ttile of the Song */
+    /* Returns Title of the Song */
     public String getTitle() {
         return this.songTitle;
     }
@@ -54,10 +54,12 @@ public class Song {
         return this.songNotes;
     }
 
+    /* Returns the Song ID */
     public UUID getSongID() {
         return this.songID;
     }
 
+    /* Plays the song's notes */
     public void playNotes() {
         Player player = new Player();
         StringBuilder pattern = new StringBuilder();
@@ -78,17 +80,4 @@ public class Song {
             e.printStackTrace();
         }
     }
-
-    /*
-     * Commenting out for simplicity sake
-     * public static Song getSong(int num) //TODO ??????????
-     * {
-     * return SONGS.get(num);
-     * }
-     * 
-     * public String[] getChords() {
-     * // TODO Auto-generated method stub
-     * throw new UnsupportedOperationException("Unimplemented method 'getChords'");
-     * }
-     */
 }

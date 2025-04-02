@@ -3,6 +3,8 @@ package com.model;
 import java.util.UUID;
 import org.junit.Before;
 import org.junit.Test;
+import org.testng.ITest;
+
 import static org.junit.Assert.*;
 import com.firewizapp.model.*;
 
@@ -51,7 +53,7 @@ public class UserTest {
     }
 
     //Tested by Laurin Johnson, WORKS
-    @Test
+    ITest
     public void testGetPassword()
     {
         assertEquals(TEST_PASSWORD, testUser.getPassword());
@@ -112,10 +114,15 @@ public class UserTest {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
     /*
-     *  Testing for:
-     *  public boolean checkUsername(String inputUsername)
+     * Testing for:
+     * public boolean checkUsername(String inputUsername)
         {
-            return this.username.equalsIgnoreCase(inputUsername); //Most username logins I've seen ignore case - Laurin Johnson (so you know who wrote this)
+            if (inputUsername == null || inputUsername.isEmpty() || inputUsername.contains(" "))
+            {
+                return false;
+            }
+
+            return this.username.equalsIgnoreCase(inputUsername);
         }
     */
 
@@ -165,10 +172,12 @@ public class UserTest {
     @Test
     public void testUsernameMatchFromList()
     {
-        ensureTestUserIsInUserList(); // already defined
+        UserList userList = UserList.getInstance();
 
-        User user = UserList.getInstance().getUser("testUser");
-        assertTrue(user.checkUsername("TESTUSER"));
+        // Manually add the testUser if not already present
+        userList.addUser(TEST_FIRSTNAME, TEST_LASTNAME, TEST_USERNAME, TEST_PASSWORD, TEST_EMAIL, TEST_SKILLLEVEL, TEST_FILTER);
+
+        assertTrue("Username 'TESTUSER' should match existing user ignoring case", userList.checkUsername("TESTUSER"));
     }
     
 
@@ -195,9 +204,14 @@ public class UserTest {
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
     /*
-     *  Testing for:
+     * Testing for:
      *  public boolean checkPassword(String inputPassword)
         {
+            if (inputPassword == null || inputPassword.isEmpty() || inputPassword.contains(" "))
+            {
+                return false;
+            }
+
             return this.password.equals(inputPassword);
         }
     */
@@ -255,10 +269,11 @@ public class UserTest {
     @Test
     public void testPasswordAfterUsernameMatch()
     {
-        ensureTestUserIsInUserList();
+        UserList userList = UserList.getInstance();
+        userList.addUser(TEST_FIRSTNAME, TEST_LASTNAME, TEST_USERNAME, TEST_PASSWORD, TEST_EMAIL, TEST_SKILLLEVEL, TEST_FILTER);
 
-        User user = UserList.getInstance().getUser("testUser");
-        assertTrue("Password 'testPassword' should match for this user", user.checkPassword("testPassword"));
+        userList.checkUsername("testUser");
+        assertTrue("Password 'testPassword' should match current login attempt user", userList.checkPassword("testPassword"));
     }
     
 
@@ -291,37 +306,19 @@ public class UserTest {
      * 
      *  public boolean meetsUsernameRequirements(String inputUsername)
         {
-            if(inputUsername == null) //null check
+            if(inputUsername == null)
             {
                 return false;
             }
 
-            if(inputUsername == "") //empty check
+            if(inputUsername == "")
             {
                 return false;
             }
 
-            if (inputUsername.contains(" ") || inputUsername.contains("\t") || inputUsername.contains("\n")) //Space, newline, and tab check
-            {
-                return false; // no whitespace of any kind
-            }
-
-            if (!inputUsername.matches("[a-zA-Z0-9]+")) //I don't think special characters should be allowed in a username - Laurin Johnson
+            if(inputUsername.contains(" "))
             {
                 return false;
-            }
-
-            if (inputUsername.length() > 26) //Max length of username is 26 characters
-            {
-                return false;
-            }
-
-            for (User existingUser : UserList.getUsers()) //Checks for an already existing username, must match exactly
-            {
-                if (existingUser.getUsername().equals(inputUsername))
-                {
-                    return false;
-                }
             }
 
             return true;
@@ -496,12 +493,12 @@ public class UserTest {
      * 
      *  public boolean meetsPassRequirements(String inputPassword) 
         {
-            if (inputPassword == null || inputPassword.isEmpty())
+            if(inputPassword == null) //Null Pointer Check
             {
                 return false;
             }
 
-            if (inputPassword.contains(" ") || inputPassword.contains("\t") || inputPassword.contains("\n"))
+            if(inputPassword == "")
             {
                 return false;
             }
@@ -516,13 +513,8 @@ public class UserTest {
                 return false;
             }
 
-            if (!inputPassword.matches("^[\\p{ASCII}]+$"))
-            {
-                return false;
-            }
-
-            if (!inputPassword.matches(".*[!@#$%^&*()_+\\-={}\\[\\]:\";'<>?,./\\\\|].*"))
-            {
+            if(!inputPassword.matches(".*[\\p{Punct}].*"))//Special Character check
+            {                                                                                                 //This includes special characters like: ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~ but not spaces
                 return false;
             }
 
@@ -701,11 +693,6 @@ public class UserTest {
      *  public void setSkillLevel(String SkillLevel)
         {
             if (SkillLevel == null || SkillLevel.trim().isEmpty())
-            {
-                return;
-            }
-
-            if (!SkillLevel.matches("^[\\p{ASCII}]+$"))
             {
                 return;
             }
