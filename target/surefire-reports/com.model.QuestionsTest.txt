@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: com.model.Data_LoaderTest
+Test set: com.model.QuestionsTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.412 s -- in com.model.Data_LoaderTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.346 s -- in com.model.QuestionsTest
