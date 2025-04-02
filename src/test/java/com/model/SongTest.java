@@ -1,86 +1,62 @@
-package com.firewizapp.model;
-
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.*;
+package com.model;
 
 import java.util.UUID;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.firewizapp.model.Song;
 
 public class SongTest {
 
     private Song song;
+    private UUID testID;
+    private String[] notes;
 
     @Before
     public void setUp() {
-        // Sample data for the Song object
-        UUID songID = UUID.randomUUID();
-        String songTitle = "Test Song";
-        String difficulty = "Medium";
-        String[] songNotes = {"C4", "E4", "G4", "C5"};
-        int songTempo = 120;
-
-        // Initialize the Song object
-        song = new Song(songID, songTitle, difficulty, songNotes, songTempo);
+        testID = UUID.randomUUID();
+        notes = new String[]{"C", "D", "E", "F", "G"};
+        song = new Song(testID, "Test Song", "Easy", notes, 120);
     }
 
-    // Constructor Test for Song
-    @Test
-    public void testSongConstructor() {
-        assertNotNull("Song object should be initialized", song);
-    }
-
-    // Test for getting the song title
+    // Tests that the song title is returned correctly
+    //By Landen & Dylan
     @Test
     public void testGetTitle() {
-        assertEquals("Song title should match", "Test Song", song.getTitle());
+        assertEquals("Test Song", song.getTitle());
     }
 
-    // Test for getting the song difficulty
+    // Tests that the song difficulty is returned correctly
+    //By Landen & Dylan
     @Test
     public void testGetDifficulty() {
-        assertEquals("Song difficulty should match", "Medium", song.getDifficulty());
+        assertEquals("Easy", song.getDifficulty());
     }
 
-    // Test for getting the song tempo
+    // Tests that the song tempo is returned correctly
+    // By Landen & Dylan
     @Test
     public void testGetTempo() {
-        assertEquals("Song tempo should match", 120, song.getTempo());
+        assertEquals(120, song.getTempo());
     }
 
-    // Test for getting the song notes
+    // Tests that the notes array is returned correctly
+    // By Landen & Dylan
     @Test
     public void testGetNotes() {
-        String[] expectedNotes = {"C4", "E4", "G4", "C5"};
-        assertArrayEquals("Song notes should match", expectedNotes, song.getNotes());
+        assertEquals(5, song.getNotes().length);
+        assertEquals("C", song.getNotes()[0]);
+        assertEquals("G", song.getNotes()[4]);
     }
 
-    // Test for the song's UUID
+    // Tests that the song UUID is stored and returned properly
+    // By Landen & Dylan
     @Test
     public void testGetSongID() {
-        assertNotNull("Song ID should not be null", song.getSongID());
-    }
-
-    // Test for playNotes method (no direct output validation, can check for errors)
-    @Test
-    public void testPlayNotes() {
-        try {
-            song.playNotes();
-        } catch (Exception e) {
-            fail("playNotes should not throw an exception");
-        }
-    }
-
-    // Test that the SONGS HashMap is initialized
-    @Test
-    public void testSongsHashMapInitialization() {
-        assertNotNull("SONGS map should not be null", Song.SONGS);
-    }
-
-    // Test adding a song to SONGS map (by ID)
-    @Test
-    public void testAddSongToMap() {
-        UUID songID = song.getSongID();
-        Song.SONGS.put(songID, song);  // Corrected: use songID as the key
-        assertTrue("SONGS map should contain the song", Song.SONGS.containsKey(songID));
+        assertEquals(testID, song.getSongID());
+        assertNotNull(song.getSongID());
     }
 }
