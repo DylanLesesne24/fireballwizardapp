@@ -1,16 +1,17 @@
 package com.model;
 
-import static org.junit.Assert.*;
+import java.util.UUID;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.firewizapp.model.Lessons;
 import com.firewizapp.model.Difficulty;
 import com.firewizapp.model.Flashcards;
+import com.firewizapp.model.Lessons;
 import com.firewizapp.model.Quiz;
-
-import java.util.UUID;
 
 public class LessonsTest {
 
@@ -31,6 +32,7 @@ public class LessonsTest {
     }
 
     // Test that all constructor values are correctly set
+    //Tested by Landen Worthy Working
     @Test
     public void testConstructorAndGetters() {
         assertEquals(lessonID, lesson.getLessonID());
@@ -43,6 +45,7 @@ public class LessonsTest {
     }
 
     // Test setting a lesson as completed
+    //Tested by Landen Worthy working
     @Test
     public void testSetCompleted() {
         lesson.setCompleted(true);
@@ -50,6 +53,7 @@ public class LessonsTest {
     }
 
     // Test adding flashcards to the lesson
+    //Tested by Landen Worthy Working
     @Test
     public void testAddFlashcard() {
         Flashcards flashcard = new Flashcards();
@@ -59,15 +63,17 @@ public class LessonsTest {
     }
 
     // Test adding quizzes to the lesson
+    //Tested by Landen Worthy Working
     @Test
     public void testAddQuiz() {
-        Quiz quiz = new Quiz(); 
+        Quiz quiz = new Quiz(lessonID, null); 
         lesson.addQuiz(quiz);
         assertEquals(1, lesson.getQuizzes().size());
         assertEquals(quiz, lesson.getQuizzes().get(0));
     }
 
     // Test lesson summary format
+    //Tested by Landen Worthy Working
     @Test
     public void testGetLessonSummary() {
         String summary = lesson.getLessonSummary();
