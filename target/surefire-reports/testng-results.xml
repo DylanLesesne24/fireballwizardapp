@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="0" passed="0" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-04-02T15:36:06 EDT" name="Surefire suite" finished-at="2025-04-02T15:36:06 EDT" duration-ms="52">
+  <suite started-at="2025-04-02T15:37:28 EDT" name="Surefire suite" finished-at="2025-04-02T15:37:28 EDT" duration-ms="102">
     <groups>
     </groups>
-    <test started-at="2025-04-02T15:36:06 EDT" name="Surefire test" finished-at="2025-04-02T15:36:06 EDT" duration-ms="52">
+    <test started-at="2025-04-02T15:37:28 EDT" name="Surefire test" finished-at="2025-04-02T15:37:28 EDT" duration-ms="102">
+      <class name="com.model.QuizTest">
+        <test-method signature="testConstructorAndGetters()" started-at="2025-04-02T15:37:28 EDT" name="testConstructorAndGetters" finished-at="2025-04-02T15:37:28 EDT" duration-ms="19" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testConstructorAndGetters -->
+        <test-method signature="testAddQuestion()" started-at="2025-04-02T15:37:28 EDT" name="testAddQuestion" finished-at="2025-04-02T15:37:28 EDT" duration-ms="20" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddQuestion -->
+        <test-method signature="testCheckAnswerCorrect()" started-at="2025-04-02T15:37:28 EDT" name="testCheckAnswerCorrect" finished-at="2025-04-02T15:37:28 EDT" duration-ms="19" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckAnswerCorrect -->
+      </class> <!-- com.model.QuizTest -->
     </test> <!-- Surefire test -->
   </suite> <!-- Surefire suite -->
 </testng-results>
