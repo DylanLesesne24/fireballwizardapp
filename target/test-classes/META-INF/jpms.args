@@ -1,0 +1,4 @@
+--patch-module
+com.firewizapp=_
+--add-reads
+com.firewizapp=ALL-UNNAMED

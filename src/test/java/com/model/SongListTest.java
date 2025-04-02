@@ -1,64 +1,74 @@
 package com.model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.UUID;
-import module.Song;
-import module.SongList;
+
+import com.firewizapp.model.SongList;
 
 public class SongListTest {
 
-    private SongList songList;
-    private Song sampleSong;
+    private SongList song;
 
     @Before
     public void setUp() {
-        songList = new SongList();
-        sampleSong = new Song(UUID.randomUUID(), "Test Song", "Test Artist", "Test User", "C D E F G",
-                "Sheet Music Content");
+        song = new SongList("Test Title", "Test Artist", "Beginner", "Pop", 180);
     }
 
+    // Test constructor and getters
+    //Tested by Landen Worthy Working
     @Test
-    public void testAddSong() {
-        songList.addSong(sampleSong);
-        assertEquals(1, songList.getSongs().size());
-        assertTrue(songList.getSongs().contains(sampleSong));
+    public void testConstructorAndGetters() {
+        assertEquals("Title should be 'Test Title'", "Test Title", song.getTitle());
+        assertEquals("Artist should be 'Test Artist'", "Test Artist", song.getArtist());
+        assertEquals("Difficulty should be 'Beginner'", "Beginner", song.getDifficultyLevel());
+        assertEquals("Genre should be 'Pop'", "Pop", song.getGenre());
+        assertEquals("Duration should be 180 seconds", 180, song.getDuration());
     }
 
+    // Test setters
+    //Tested by Landen Worthy Working
     @Test
-    public void testRemoveSong() {
-        songList.addSong(sampleSong);
-        songList.removeSong(sampleSong);
-        assertEquals(0, songList.getSongs().size());
+    public void testSettersUpdateFields() {
+        song.setTitle("New Title");
+        song.setArtist("New Artist");
+        song.setDifficultyLevel("Intermediate");
+        song.setGenre("Rock");
+        song.setDuration(240);
+
+        assertEquals("Title should be updated", "New Title", song.getTitle());
+        assertEquals("Artist should be updated", "New Artist", song.getArtist());
+        assertEquals("Difficulty should be updated", "Intermediate", song.getDifficultyLevel());
+        assertEquals("Genre should be updated", "Rock", song.getGenre());
+        assertEquals("Duration should be updated", 240, song.getDuration());
     }
 
+    // Test toString format
+    //Tested by Landen Worthy Working
     @Test
-    public void testGetSongByTitle() {
-        songList.addSong(sampleSong);
-        Song found = songList.getSongByTitle("Test Song");
-        assertNotNull(found);
-        assertEquals("Test Artist", found.getArtist());
+    public void testToStringFormat() {
+        String expected = "Song{title='Test Title', artist='Test Artist', difficultyLevel='Beginner', genre='Pop', duration=180}";
+        assertEquals("toString() output should match", expected, song.toString());
     }
 
-    @Test
-    public void testSearchByArtist() {
-        songList.addSong(sampleSong);
-        Song found = songList.searchByArtist("Test Artist").get(0);
-        assertNotNull(found);
-        assertEquals("Test Song", found.getTitle());
+    // Test getAllSongs throws exception
+    //Tested by Landen Worthy Working
+    @Test(expected = UnsupportedOperationException.class)
+    public void testGetAllSongsThrows() {
+        song.getAllSongs();
     }
 
-    @Test
-    public void testRemoveNonExistentSong() {
-        // This should not throw or affect the list
-        songList.removeSong(sampleSong);
-        assertEquals(0, songList.getSongs().size());
+    // Test addSong throws exception
+    //Tested by Landen Worthy Working
+    @Test(expected = UnsupportedOperationException.class)
+    public void testAddSongThrows() {
+        song.addSong(null);
     }
 
-    @Test
-    public void testGetSongByTitleNotFound() {
-        Song result = songList.getSongByTitle("Nonexistent");
-        assertNull(result);
+    // Test getSong (by ID) throws exception
+    //Tested by Landen Worthy Working
+    @Test(expected = UnsupportedOperationException.class)
+    public void testGetSongByIdThrows() {
+        song.getSong(1);
     }
 }
