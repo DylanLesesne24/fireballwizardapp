@@ -24,7 +24,7 @@ public class Data_LoaderTest {
     }
 
     // Test that user list loads without being null or empty
-    //Test by Landen Worthy
+    //Test by Landen Worthy, Working
     @Test
     public void testLoadUsersNotEmpty() {
         assertNotNull(users);
@@ -32,7 +32,7 @@ public class Data_LoaderTest {
     }
 
     // Test that first user contains expected non-null fields
-    //Test by Landen Worthy
+    //Test by Landen Worthy, Working
     @Test
     public void testFirstUserFields() {
         User user = users.get(0);
@@ -44,6 +44,27 @@ public class Data_LoaderTest {
         assertNotNull(user.getEmail());
         assertNotNull(user.getSkillLevel());
         assertNotNull(user.getBadgesEarned());
+    }
+
+    // Test that song list loads without being null or empty
+    //Tested by Landen Worthy, Working
+    @Test
+    public void testLoadSongsNotEmpty() {
+        assertNotNull(songs);
+        assertTrue(songs.size() > 0);
+    }
+
+    // Test that first song contains valid fields
+    //Tested by Landen Worthy, Working
+    @Test
+    public void testFirstSongFields() {
+        Song song = songs.get(0);
+        assertNotNull(song.getSongID());
+        assertNotNull(song.getTitle());
+        assertNotNull(song.getDifficulty());
+        assertTrue(song.getTempo() > 0);
+        assertNotNull(song.getNotes());
+        assertTrue(song.getNotes().length > 0);
     }
 }
     
