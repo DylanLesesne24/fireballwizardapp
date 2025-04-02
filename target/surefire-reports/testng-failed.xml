@@ -5,9 +5,7 @@
     <classes>
       <class name="org.junit.runner.Description">
         <methods>
-          <include name="testCheckAnswerCorrect"/>
-          <include name="testConstructorAndGetters"/>
-          <include name="testAddQuestion"/>
+          <include name="testAddLesson"/>
         </methods>
       </class> <!-- org.junit.runner.Description -->
     </classes>

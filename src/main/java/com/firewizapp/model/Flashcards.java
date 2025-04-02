@@ -6,71 +6,39 @@ import java.util.HashMap;
  * Represents a set of flashcards, each with a question and answer.
  */
 public class Flashcards {
+
     private HashMap<Integer, String> questions;
     private HashMap<Integer, String> answers;
 
-    /**
-     * Constructs an empty Flashcards set.
-     */
+    // Constructor
     public Flashcards() {
         questions = new HashMap<>();
         answers = new HashMap<>();
     }
 
-    /**
-     * Adds a new flashcard to the set.
-     * 
-     * @param question The question string
-     * @param answer   The corresponding answer
-     */
+    // Add a new flashcard
     public void makeFlashcard(String question, String answer) {
-        int id = questions.size(); // simple ID based on count
+        int id = questions.size();
         questions.put(id, question);
         answers.put(id, answer);
     }
 
-    /**
-     * Gets the flashcard question at the specified ID.
-     * 
-     * @param id The flashcard ID
-     * @return The question string, or null if not found
-     */
+    // Get a question by ID
     public String getFlashcard(int id) {
         return questions.get(id);
     }
 
-    /**
-     * Checks if a user's answer is correct for the given flashcard ID.
-     * 
-     * @param id         The flashcard ID
-     * @param userAnswer The user's answer input
-     * @return true if correct, false otherwise
-     */
+    // Check the user's answer against the correct one
     public boolean checkAnswer(int id, String userAnswer) {
-        String correct = answers.get(id);
-        return correct != null && correct.equalsIgnoreCase(userAnswer.trim());
+        String correctAnswer = answers.get(id);
+        return correctAnswer != null && correctAnswer.equalsIgnoreCase(userAnswer.trim());
     }
 
-    /**
-     * Returns the number of flashcards in this set.
-     * 
-     * @return number of flashcards
-     */
-    public int size() {
-        return questions.size();
-    }
-
-    /**
-     * Returns a formatted string of a flashcard (question + answer) for debugging.
-     * 
-     * @param id The flashcard ID
-     * @return Formatted string or "Not found"
-     */
+    // Display a flashcard's question and answer
     public String displayFlashcard(int id) {
         if (questions.containsKey(id) && answers.containsKey(id)) {
             return "Q: " + questions.get(id) + "\nA: " + answers.get(id);
-        } else {
-            return "Flashcard not found.";
         }
+        return "Flashcard not found.";
     }
 }
