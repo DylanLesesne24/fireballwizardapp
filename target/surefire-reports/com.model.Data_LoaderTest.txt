@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: com.model.SongListTest
+Test set: com.model.Data_LoaderTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.115 s -- in com.model.SongListTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.170 s -- in com.model.Data_LoaderTest

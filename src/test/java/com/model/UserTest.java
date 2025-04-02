@@ -53,7 +53,7 @@ public class UserTest {
     }
 
     //Tested by Laurin Johnson, WORKS
-    ITest
+    @Test
     public void testGetPassword()
     {
         assertEquals(TEST_PASSWORD, testUser.getPassword());
