@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.model.UserTest" time="0.089" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.model.UserTest" time="0.362" tests="135" errors="0" skipped="0" failures="0">
   <properties>
+    <property name="jpda.address" value="51165"/>
     <property name="java.specification.version" value="24"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
@@ -10,14 +11,15 @@
     <property name="user.variant" value=""/>
     <property name="java.vendor.url" value="https://java.oracle.com/"/>
     <property name="user.timezone" value="America/New_York"/>
+    <property name="forkMode" value="once"/>
     <property name="os.name" value="Windows 11"/>
     <property name="java.vm.specification.version" value="24"/>
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-24\bin"/>
-    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\ssj4d\AppData\Local\Temp\surefire7057396640493888748 2025-04-02T19-36-56_940-jvmRun1 surefire-20250402193657517_1tmp surefire_0-20250402193657517_2tmp"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\ssj4d\AppData\Local\Temp\surefire11704764578215336491 2025-04-02T19-42-15_138-jvmRun1 surefire-20250402194215612_1tmp surefire_0-20250402194215612_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="com.model.UserTest#testGetLastName"/>
+    <property name="test" value="com.model.UserTest"/>
     <property name="surefire.test.class.path" value="C:\Users\ssj4d\fireballwizardapp\target\test-classes;C:\Users\ssj4d\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\ssj4d\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\ssj4d\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\ssj4d\.m2\repository\com\io7m\xom\xom\1.2.10\xom-1.2.10.jar;C:\Users\ssj4d\.m2\repository\xml-apis\xml-apis\1.3.03\xml-apis-1.3.03.jar;C:\Users\ssj4d\.m2\repository\xerces\xercesImpl\2.8.0\xercesImpl-2.8.0.jar;C:\Users\ssj4d\.m2\repository\xalan\xalan\2.7.0\xalan-2.7.0.jar;C:\Users\ssj4d\.m2\repository\org\openjfx\javafx-controls\13\javafx-controls-13.jar;C:\Users\ssj4d\.m2\repository\org\openjfx\javafx-graphics\13\javafx-graphics-13.jar;C:\Users\ssj4d\.m2\repository\org\openjfx\javafx-base\13\javafx-base-13.jar;C:\Users\ssj4d\.m2\repository\org\openjfx\javafx-fxml\13\javafx-fxml-13.jar;C:\Users\ssj4d\.m2\repository\org\apache\avro\avro\1.9.0\avro-1.9.0.jar;C:\Users\ssj4d\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.9.8\jackson-core-2.9.8.jar;C:\Users\ssj4d\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.9.8\jackson-databind-2.9.8.jar;C:\Users\ssj4d\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.9.0\jackson-annotations-2.9.0.jar;C:\Users\ssj4d\.m2\repository\org\apache\commons\commons-compress\1.18\commons-compress-1.18.jar;C:\Users\ssj4d\.m2\repository\org\slf4j\slf4j-api\1.7.25\slf4j-api-1.7.25.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\ssj4d"/>
@@ -43,6 +45,7 @@
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="jpda.listen" value="true"/>
     <property name="maven.ext.class.path" value="C:\Users\ssj4d\.vscode\extensions\oracle.oracle-java-23.1.0\nbcode\java\maven-nblib\netbeans-eventspy.jar"/>
     <property name="localRepository" value="C:\Users\ssj4d\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
@@ -60,6 +63,141 @@
     <property name="java.vm.version" value="24+36-3646"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="68.0"/>
+    <property name="maven.surefire.debug" value="-agentlib:jdwp=transport=dt_socket,server=n,address=51165"/>
   </properties>
-  <testcase name="testGetLastName" classname="com.model.UserTest" time="0.005"/>
+  <testcase name="testSetSkillLevelToUnknownValue" classname="com.model.UserTest" time="0.007"/>
+  <testcase name="testPasswordIsNull" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testSetSkillLevelBeginnerWithEnDash" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testPasswordWithUnicodeSpace" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testUsernameOnlyDigits" classname="com.model.UserTest" time="0.011"/>
+  <testcase name="testPasswordOnlySpecialCharacters" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelWithEmoji" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testPasswordMatch" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testUsernameIsEmpty" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testUsernameIsValid" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testSetFilterEmptyInput" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testPasswordWithInternalSpace" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testUsernameWithEmoji" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testPasswordNoCaps" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testUsernameWithSpace" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelMixedCase" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testSetSkillLevelNullInput" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testPasswordLeadingSpace" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelBeginnerWithUnicode" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testSetFilterNoWithLeadingSpace" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testUsernameMatchFromList" classname="com.model.UserTest" time="0.095"/>
+  <testcase name="testPasswordWithSpecialChar" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testPasswordWithUnderscore" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testSetSkillLevelWithInternalSpace" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testSetSkillLevelWithInternalTypos" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterNoWithTrailingSpace" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testSetSkillLevelProWithInvisibleCharacter" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testPasswordWithLeadingSpace" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testGetPassword" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testSetSkillLevelToIntermediate" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testGetEmail" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelIntermediateWithNewline" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testUsernameInternalSpace" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelWithTabCharacter" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testPasswordWithNumbers" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testUsernameAlreadyExistsExact" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testPasswordWithEmoji" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelProWithTab" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelWhitespaceOnly" classname="com.model.UserTest" time="0.002"/>
+  <testcase name="testSetSkillLevelWithUnicodeCharacters" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterNoWithTab" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testPasswordTooShort" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testUsernameMatch" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterWhitespaceOnly" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testPasswordWithEnDash" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterYesWithInvisibleCharacter" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testGetSkillLevel" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testUsernameMatchAllCaps" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testPasswordMatchMixed" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelIntermediateWithTab" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testUsernameOnlySpecialCharacters" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testSetSkillLevelEmptyInput" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testgetFilter" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testUsernameTooLong" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterYesLowercase" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testPasswordWithTrailingSpace" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testUsernameAllCaps" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterYesWithUnicode" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelToPro" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelProWithUnicode" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterNoLowercase" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testUsernameTrailingSpace" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelProWithEnDash" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testSetSkillLevelWithTrailingSpaces" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testUsernameWithInvisibleCharacter" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelWithLeadingSpaces" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testUsernameWithNewlineCharacter" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testSetFilterYesUppercase" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterYesWithLeadingSpace" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testGetLastName" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelBeginnerWithInvisibleCharacter" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterNoWithUnicode" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testUsernameWithEnDash" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testGetBadgesEarned" classname="com.model.UserTest" time="0.003"/>
+  <testcase name="testUsernameMatchMixed" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelIntermediateWithInvisibleCharacter" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelIntermediateWithEnDash" classname="com.model.UserTest" time="0.002"/>
+  <testcase name="testSetFilterUnknownWord" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testPasswordWithUnicode" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testUsernameWithNumbers" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testPasswordIsEmpty" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testPasswordIsValid" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelBeginnerWithNewline" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterNoUppercase" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterNoWithEnDash" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterNoWithInvisibleCharacter" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterYesWithTab" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelIntermediateWithUnicode" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterYesWithEmoji" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testSetSkillLevelBeginnerWithEmoji" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelBeginnerWithSpace" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testPasswordMatchAllCaps" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testPasswordInternalSpace" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterYesMixedCase" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testUsernameLeadingSpace" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testUsernameWithTabCharacter" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testUsernameIsNull" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterSingleLetterN" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testSetFilterSingleLetterY" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testPasswordAfterUsernameMatch" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelProWithEmoji" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelProWithSpace" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelWithNewlineCharacter" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelLowercase" classname="com.model.UserTest" time="0.002"/>
+  <testcase name="testUsernameNoCaps" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterYesWithEnDash" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testUsernameWithSpecialChar" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterNoWithEmoji" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testUsernameWithUnderscore" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testSetFilterNoMixedCase" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelWithInvisibleCharacter" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testPasswordOnlyDigits" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testGetUsername" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testGetFirstName" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testPasswordMatchNoCaps" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelIntermediateWithEmoji" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelIntermediateWithSpace" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testPasswordTooLong" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testUsernameWithUnicodeSpace" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testPasswordWithTabCharacter" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testGetUserID" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testPasswordWithNewlineCharacter" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testPasswordWithInvisibleCharacter" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testPasswordAllCaps" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterYesWithNewline" classname="com.model.UserTest" time="0.002"/>
+  <testcase name="testSetSkillLevelToBeginner" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelProWithNewline" classname="com.model.UserTest" time="0.001"/>
+  <testcase name="testSetFilterYesWithTrailingSpace" classname="com.model.UserTest" time="0.003"/>
+  <testcase name="testPasswordTrailingSpace" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelWithEnDash" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testUsernameWithUnicode" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testUsernameAlreadyExistsDifferentCase" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterNullInput" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetSkillLevelBeginnerWithTab" classname="com.model.UserTest" time="0.0"/>
+  <testcase name="testSetFilterNoWithNewline" classname="com.model.UserTest" time="0.0"/>
 </testsuite>

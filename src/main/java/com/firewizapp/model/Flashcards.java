@@ -41,4 +41,9 @@ public class Flashcards {
         }
         return "Flashcard not found.";
     }
+
+    // Returns the number of flashcards
+    public int size() {
+        return questions.size();
+    }
 }
