@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.firewizapp.SignupController"
+            stylesheets="@styles.css"
+            prefHeight="600.0" prefWidth="350.0"
+            style="-fx-background-color: #d9e8e8;">
+
+    <VBox alignment="CENTER" spacing="20.0" AnchorPane.topAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+        
+        <Label text="Create Account" styleClass="label" />
+
+        <ImageView fx:id="logoImage" fitWidth="100" fitHeight="100" />
+
+        <TextField fx:id="usernameField" promptText="username" styleClass="rounded-input" />
+        <PasswordField fx:id="passwordField" promptText="password" styleClass="rounded-input" />
+        <PasswordField fx:id="confirmPasswordField" promptText="confirm password" styleClass="rounded-input" />
+
+        <Button fx:id="signupButton" text="Sign Up" onAction="#handleSignup" styleClass="rounded-button" />
+        <Button text="Back" onAction="#handleBack" styleClass="rounded-button" />
+    </VBox>
+</AnchorPane>

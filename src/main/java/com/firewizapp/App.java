@@ -17,11 +17,14 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        // Load the login/signup screen first
+        scene = new Scene(loadFXML("loginsignup"), 640, 480);
         stage.setScene(scene);
+        stage.setTitle("Fireball Wizard Music");
         stage.show();
     }
 
+    // Used to switch between screens like "login"
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
@@ -34,5 +37,4 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 }

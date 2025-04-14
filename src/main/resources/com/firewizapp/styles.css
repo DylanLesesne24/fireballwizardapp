@@ -1,3 +1,52 @@
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-color: #d9e8e8; 
+}
+
+
 .label {
-    -fx-text-fill:blue;
+    -fx-text-fill: #000;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+
+.button {
+    -fx-background-color: linear-gradient(#fceabb, #f8b500);
+    -fx-text-fill: #000;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 8 16 8 16;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 3);
+}
+
+
+.hyperlink {
+    -fx-text-fill: #0066cc;
+    -fx-underline: true;
+}
+
+
+.rounded-input {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-pref-height: 40px;
+    -fx-padding: 0 10 0 10;
+    -fx-font-size: 14px;
+    -fx-border-color: #ccc;
+}
+
+
+.rounded-button {
+    -fx-background-color: linear-gradient(#fceabb, #f8b500);
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-pref-height: 40px;
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 4);
 }

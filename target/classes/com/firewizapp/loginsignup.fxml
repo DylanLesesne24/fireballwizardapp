@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.firewizapp.LoginSignupController"
+            stylesheets="@styles.css"
+            prefHeight="600.0" prefWidth="350.0"
+            style="-fx-background-color: #d9e8e8;">
+    
+    <VBox alignment="CENTER" spacing="20.0" layoutX="50.0" layoutY="30.0" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+        <Label text="Fireball Wizard Music" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+        <ImageView fitHeight="100" fitWidth="100" fx:id="logoImage" />
+
+        <Button fx:id="loginButton" text="Log In" prefWidth="200" onAction="#handleLogin"
+                style="-fx-background-color: linear-gradient(#fceabb, #f8b500); -fx-font-weight: bold; -fx-background-radius: 10;" />
+        <Button fx:id="signupButton" text="Sign Up" prefWidth="200" onAction="#handleSignup"
+                style="-fx-background-color: linear-gradient(#fceabb, #f8b500); -fx-font-weight: bold; -fx-background-radius: 10;" />
+        <Hyperlink fx:id="guestLink" text="Sign in as a Guest" onAction="#handleGuestLogin" />
+    </VBox>
+</AnchorPane>
