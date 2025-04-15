@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
@@ -9,24 +10,23 @@
             stylesheets="@styles.css"
             prefHeight="600.0" prefWidth="350.0"
             style="-fx-background-color: #d9e8e8;">
-    
-    <VBox alignment="CENTER" spacing="20.0"
-          AnchorPane.topAnchor="30.0"
-          AnchorPane.leftAnchor="20.0"
-          AnchorPane.rightAnchor="20.0">
+
+    <VBox alignment="CENTER" spacing="20.0" AnchorPane.topAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
         
-        <Label text="Welcome!" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+        <Label text="Welcome to Fireball Wizard Music!" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
 
-        <Button text="Lessons"
-                styleClass="rounded-button"
-                onAction="#handleLessons" />
+        <ImageView fx:id="logoImage" fitWidth="100" fitHeight="100" />
 
-        <Button text="Song List"
-                styleClass="rounded-button"
-                onAction="#handleSongList" />
+        <Button fx:id="lessonsButton" text="Lessons"
+                onAction="#handleLessons"
+                styleClass="rounded-button" />
 
-        <Button text="Quiz"
-                styleClass="rounded-button"
-                onAction="#handleQuiz" />
+        <Button fx:id="songListButton" text="Song List"
+                onAction="#handleSongList"
+                styleClass="rounded-button" />
+
+        <Button fx:id="quizButton" text="Quiz"
+                onAction="#handleQuiz"
+                styleClass="rounded-button" />
     </VBox>
 </AnchorPane>
