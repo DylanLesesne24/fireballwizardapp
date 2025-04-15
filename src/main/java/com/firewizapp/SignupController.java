@@ -29,7 +29,8 @@ public class SignupController {
             return;
         }
 
-        // TODO: Add logic to save new user
+        // Add user to in-memory database
+        UserDatabase.addUser(username, password);
         System.out.println("Sign-up successful for user: " + username);
 
         try {

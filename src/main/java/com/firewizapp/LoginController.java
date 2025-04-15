@@ -16,10 +16,14 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        // TODO: Replace with actual user
-        if ("admin".equals(username) && "1234".equals(password)) {
+        if (UserDatabase.isValidUser(username, password)) {
             System.out.println("Login successful!");
 
+            try {
+                App.setRoot("home"); // This should match your home screen FXML
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             System.out.println("Invalid username or password");
         }

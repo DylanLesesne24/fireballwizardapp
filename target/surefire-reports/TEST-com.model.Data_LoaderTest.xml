@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.model.Data_LoaderTest" time="0.096" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.model.Data_LoaderTest" time="0.15" tests="4" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="jpda.address" value="51586"/>
+    <property name="jpda.address" value="52021"/>
     <property name="java.specification.version" value="24"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
@@ -17,7 +17,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-24\bin"/>
-    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\ssj4d\AppData\Local\Temp\surefire141487888762115407 2025-04-02T20-15-48_152-jvmRun1 surefire-20250402201548744_1tmp surefire_0-20250402201548744_2tmp"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\ssj4d\AppData\Local\Temp\surefire15064242749758868628 2025-04-02T21-03-56_935-jvmRun1 surefire-20250402210357378_1tmp surefire_0-20250402210357378_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="com.model.Data_LoaderTest"/>
     <property name="surefire.test.class.path" value="C:\Users\ssj4d\fireballwizardapp\target\test-classes;C:\Users\ssj4d\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\ssj4d\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\ssj4d\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\ssj4d\.m2\repository\com\io7m\xom\xom\1.2.10\xom-1.2.10.jar;C:\Users\ssj4d\.m2\repository\xml-apis\xml-apis\1.3.03\xml-apis-1.3.03.jar;C:\Users\ssj4d\.m2\repository\xerces\xercesImpl\2.8.0\xercesImpl-2.8.0.jar;C:\Users\ssj4d\.m2\repository\xalan\xalan\2.7.0\xalan-2.7.0.jar;C:\Users\ssj4d\.m2\repository\org\openjfx\javafx-controls\13\javafx-controls-13.jar;C:\Users\ssj4d\.m2\repository\org\openjfx\javafx-graphics\13\javafx-graphics-13.jar;C:\Users\ssj4d\.m2\repository\org\openjfx\javafx-base\13\javafx-base-13.jar;C:\Users\ssj4d\.m2\repository\org\openjfx\javafx-fxml\13\javafx-fxml-13.jar;C:\Users\ssj4d\.m2\repository\org\apache\avro\avro\1.9.0\avro-1.9.0.jar;C:\Users\ssj4d\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.9.8\jackson-core-2.9.8.jar;C:\Users\ssj4d\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.9.8\jackson-databind-2.9.8.jar;C:\Users\ssj4d\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.9.0\jackson-annotations-2.9.0.jar;C:\Users\ssj4d\.m2\repository\org\apache\commons\commons-compress\1.18\commons-compress-1.18.jar;C:\Users\ssj4d\.m2\repository\org\slf4j\slf4j-api\1.7.25\slf4j-api-1.7.25.jar;"/>
@@ -63,10 +63,10 @@
     <property name="java.vm.version" value="24+36-3646"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="68.0"/>
-    <property name="maven.surefire.debug" value="-agentlib:jdwp=transport=dt_socket,server=n,address=51586"/>
+    <property name="maven.surefire.debug" value="-agentlib:jdwp=transport=dt_socket,server=n,address=52021"/>
   </properties>
-  <testcase name="testLoadUsersNotEmpty" classname="com.model.Data_LoaderTest" time="0.017"/>
-  <testcase name="testFirstUserFields" classname="com.model.Data_LoaderTest" time="0.001"/>
-  <testcase name="testFirstSongFields" classname="com.model.Data_LoaderTest" time="0.002"/>
-  <testcase name="testLoadSongsNotEmpty" classname="com.model.Data_LoaderTest" time="0.003"/>
+  <testcase name="testLoadUsersNotEmpty" classname="com.model.Data_LoaderTest" time="0.022"/>
+  <testcase name="testFirstUserFields" classname="com.model.Data_LoaderTest" time="0.0"/>
+  <testcase name="testFirstSongFields" classname="com.model.Data_LoaderTest" time="0.0"/>
+  <testcase name="testLoadSongsNotEmpty" classname="com.model.Data_LoaderTest" time="0.007"/>
 </testsuite>
