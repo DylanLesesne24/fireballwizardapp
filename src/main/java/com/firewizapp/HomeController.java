@@ -10,19 +10,19 @@ public class HomeController {
 
     @FXML
     private void handleLessons() {
-        System.out.println("Redirecting to Lessons.");
+        System.out.println("Redirecting to Lessons...");
         // TODO: Load lessons screen if needed later
     }
 
     @FXML
     private void handleSongList() {
-        System.out.println("Redirecting to SongList.");
+        System.out.println("Redirecting to SongList...");
         // TODO: Load song list screen if needed later
     }
 
     @FXML
     private void handleQuiz() {
-        System.out.println("Redirecting to Quiz.");
+        System.out.println("Redirecting to Quiz...");
         // TODO: Load quiz screen if needed later
     }
 
