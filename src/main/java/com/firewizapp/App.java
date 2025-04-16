@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * JavaFX App
@@ -24,13 +25,21 @@ public class App extends Application {
         stage.show();
     }
 
-    // Used to switch between screens like "login"
-    static void setRoot(String fxml) throws IOException {
+    // Used to switch between screens like "login" or "home"
+    public static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        String fxmlFile = fxml + ".fxml";
+        URL resource = App.class.getResource(fxmlFile);
+        System.out.println("Attempting to load FXML: " + fxmlFile + " from URL: " + resource);
+
+        if (resource == null) {
+            throw new IOException("FXML file not found: " + fxmlFile + ". Make sure it is in the resources/com/firewizapp/ folder.");
+        }
+
+        FXMLLoader fxmlLoader = new FXMLLoader(resource);
         return fxmlLoader.load();
     }
 

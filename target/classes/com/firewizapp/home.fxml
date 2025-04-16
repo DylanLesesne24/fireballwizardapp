@@ -13,7 +13,7 @@
 
     <VBox alignment="CENTER" spacing="20.0" AnchorPane.topAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
         
-        <Label text="Welcome to Fireball Wizard Music!" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+        <Label text="Fireball Wizard Music App" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
 
         <ImageView fx:id="logoImage" fitWidth="100" fitHeight="100" />
 
