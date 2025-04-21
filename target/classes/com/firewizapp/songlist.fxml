@@ -12,7 +12,7 @@
             stylesheets="@styles.css"
             prefHeight="600.0" prefWidth="350.0"
             style="-fx-background-color: #d9e8e8;">
-    
+
     <!-- Back Arrow -->
     <ImageView fx:id="backArrow" fitWidth="24" fitHeight="24"
                layoutX="10" layoutY="10"
@@ -22,13 +22,19 @@
         </image>
     </ImageView>
 
-    <!-- Centered Content -->
-    <VBox alignment="CENTER" spacing="20"
-          AnchorPane.topAnchor="50.0" AnchorPane.bottomAnchor="20.0"
-          AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
-        
-        <Label text="Song List" styleClass="label" />
-        
+    <!-- Header + List -->
+    <VBox alignment="TOP_CENTER" spacing="15"
+          AnchorPane.topAnchor="40.0"
+          AnchorPane.leftAnchor="20.0"
+          AnchorPane.rightAnchor="20.0"
+          AnchorPane.bottomAnchor="20.0">
+
+        <!-- Header Label -->
+        <Label text="Favorite Songs"
+               styleClass="label"
+               style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+
+        <!-- Song List -->
         <ListView fx:id="songListView"
                   prefWidth="310"
                   style="-fx-background-color: transparent;" />
