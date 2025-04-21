@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.firewizapp.HomeController"
+            stylesheets="@styles.css"
+            prefHeight="600.0" prefWidth="350.0"
+            style="-fx-background-color: #d9e8e8;">
+
+    <!-- Back Arrow (top-left corner) -->
+    <ImageView fx:id="backArrow" fitWidth="24" fitHeight="24" 
+               layoutX="10" layoutY="10" onMouseClicked="#handleBack">
+        <image>
+            <Image url="@images/back.png" />
+        </image>
+    </ImageView>
+
+    <!-- Top Header -->
+    <HBox alignment="CENTER" spacing="10.0" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+        <Label text="Welcome to Fireball Music" styleClass="label" />
+    </HBox>
+    
+    <!-- Center Logo and Buttons -->
+    <VBox alignment="CENTER" spacing="20.0" AnchorPane.topAnchor="80.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+        <ImageView fx:id="logoImage" fitWidth="120" fitHeight="120">
+            <image>
+                <Image url="@images/logo.png" />
+            </image>
+        </ImageView>
+
+        <Button text="Lessons" styleClass="rounded-button" prefWidth="200" />
+        <Button text="Song List" styleClass="rounded-button" prefWidth="200" />
+        <Button text="Quiz" styleClass="rounded-button" prefWidth="200" />
+    </VBox>
+
+    <!-- Bottom Icon Row -->
+    <HBox alignment="CENTER" spacing="40.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+        <ImageView fitWidth="30" fitHeight="30">
+            <image>
+                <Image url="@images/lock.png" />
+            </image>
+        </ImageView>
+        <ImageView fitWidth="30" fitHeight="30">
+            <image>
+                <Image url="@images/mic.png" />
+            </image>
+        </ImageView>
+        <ImageView fitWidth="30" fitHeight="30">
+            <image>
+                <Image url="@images/musicnote.png" />
+            </image>
+        </ImageView>
+    </HBox>
+</AnchorPane>

@@ -1,5 +1,7 @@
 package com.firewizapp;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
@@ -35,7 +37,11 @@ public class LoginSignupController {
 
     @FXML
     private void handleGuestLogin() {
-        System.out.println("Guest login clicked");
-        // TODO: load guest view
+        try {
+            App.setRoot("homepage");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 }

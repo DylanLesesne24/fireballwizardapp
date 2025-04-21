@@ -26,5 +26,9 @@
         <Button fx:id="loginButton" text="Log In" 
                 onAction="#handleLogin" 
                 styleClass="rounded-button" />
+
+        <Button text="Back" 
+                onAction="#handleBack" 
+                styleClass="rounded-button" />
     </VBox>
 </AnchorPane>

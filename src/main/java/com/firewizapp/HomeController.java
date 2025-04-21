@@ -35,4 +35,14 @@ public class HomeController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void handleBack() {
+        try {
+            App.setRoot("loginsignup");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

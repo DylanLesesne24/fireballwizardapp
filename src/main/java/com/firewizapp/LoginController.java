@@ -1,5 +1,7 @@
 package com.firewizapp;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
@@ -16,12 +18,13 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if (UserDatabase.isValidUser(username, password)) {
+        // Temporary hardcoded validation — replace with real check later
+        if ("admin".equals(username) && "1234".equals(password)) {
             System.out.println("Login successful!");
 
             try {
-                App.setRoot("home"); // This should match your home screen FXML
-            } catch (Exception e) {
+                App.setRoot("homepage");
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
