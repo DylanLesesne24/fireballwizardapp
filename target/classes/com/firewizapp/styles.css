@@ -51,5 +51,12 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 4);
 }
 
-
+.list-view {
+    -fx-background-insets: 0;
+    -fx-padding: 10;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #aaa;
+    -fx-background-color: #ffffff;
+}
 
