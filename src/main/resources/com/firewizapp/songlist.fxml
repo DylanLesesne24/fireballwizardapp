@@ -22,21 +22,25 @@
         </image>
     </ImageView>
 
-    <!-- Header + List -->
-    <VBox alignment="TOP_CENTER" spacing="15"
-          AnchorPane.topAnchor="40.0"
-          AnchorPane.leftAnchor="20.0"
-          AnchorPane.rightAnchor="20.0"
-          AnchorPane.bottomAnchor="20.0">
+    <VBox alignment="TOP_CENTER" spacing="8"
+      AnchorPane.topAnchor="40.0"
+      AnchorPane.leftAnchor="20.0"
+      AnchorPane.rightAnchor="20.0"
+      AnchorPane.bottomAnchor="20.0">
 
-        <!-- Header Label -->
-        <Label text="Favorite Songs"
-               styleClass="label"
-               style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+    <!-- Main Title -->
+    <Label text="Song List"
+           styleClass="label"
+           style="-fx-font-size: 22px; -fx-font-weight: bold;" />
 
-        <!-- Song List -->
-        <ListView fx:id="songListView"
-                  prefWidth="310"
-                  style="-fx-background-color: transparent;" />
-    </VBox>
+    <!-- Subheading -->
+    <Label text="Favorite Songs"
+           style="-fx-font-size: 14px; -fx-text-fill: #444;" />
+
+    <!-- Song List -->\
+    <ListView fx:id="songListView"
+              prefWidth="310"
+              style="-fx-background-color: transparent;" />
+</VBox>
+
 </AnchorPane>
