@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.firewizapp.SongListController"
+            stylesheets="@styles.css"
+            prefHeight="600.0" prefWidth="350.0"
+            style="-fx-background-color: #d9e8e8;">
+    
+    <!-- Back Arrow -->
+    <ImageView fx:id="backArrow" fitWidth="24" fitHeight="24"
+               layoutX="10" layoutY="10"
+               onMouseClicked="#handleBack">
+        <image>
+            <Image url="@images/back.png" />
+        </image>
+    </ImageView>
+
+    <!-- Centered Content -->
+    <VBox alignment="CENTER" spacing="20"
+          AnchorPane.topAnchor="50.0" AnchorPane.bottomAnchor="20.0"
+          AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+        
+        <Label text="Song List" styleClass="label" />
+        
+        <ListView fx:id="songListView"
+                  prefWidth="310"
+                  style="-fx-background-color: transparent;" />
+    </VBox>
+</AnchorPane>

@@ -1,5 +1,7 @@
 package com.firewizapp;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -15,9 +17,12 @@ public class HomeController {
     }
 
     @FXML
-    private void handleSongList() {
-        System.out.println("Redirecting to SongList...");
-        // TODO: Load song list screen if needed later
+    private void goToSongList() {
+        try {
+            App.setRoot("songlist");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

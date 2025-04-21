@@ -8,11 +8,12 @@ import org.jfugue.pattern.Pattern;
 
 public class Song {
 
-    // Change the key of the map to UUID to match the test expectations
+    // Static map to store all songs by UUID
     public static HashMap<UUID, Song> SONGS = new HashMap<>();
 
     private UUID songID;
     private String songTitle;
+    private String artist;
     private String difficulty;
     private String[] songNotes;
     private int songTempo;
@@ -22,44 +23,47 @@ public class Song {
      *
      * @param id         The UUID of the song
      * @param title      The title of the song
+     * @param artist     The artist/composer of the song
      * @param difficulty The difficulty level (e.g., "Easy", "Medium", "Hard")
      * @param notes      An array of musical notes representing the song
      * @param tempo      The tempo (beats per minute) of the song
      */
-    public Song(UUID id, String title, String difficulty, String[] notes, int tempo) {
+    public Song(UUID id, String title, String artist, String difficulty, String[] notes, int tempo) {
         this.songID = id;
         this.songTitle = title;
+        this.artist = artist;
         this.difficulty = difficulty;
         this.songNotes = notes;
         this.songTempo = tempo;
     }
 
-    /* Returns Title of the Song */
     public String getTitle() {
         return this.songTitle;
     }
 
-    /* Returns Difficulty of the Song */
+    public String getArtist() {
+        return this.artist;
+    }
+
     public String getDifficulty() {
         return this.difficulty;
     }
 
-    /* Returns Tempo of the Song */
     public int getTempo() {
         return this.songTempo;
     }
 
-    /* Returns Notes of the Song */
     public String[] getNotes() {
         return this.songNotes;
     }
 
-    /* Returns the Song ID */
     public UUID getSongID() {
         return this.songID;
     }
 
-    /* Plays the song's notes */
+    /**
+     * Plays the song's notes using JFugue.
+     */
     public void playNotes() {
         Player player = new Player();
         StringBuilder pattern = new StringBuilder();
@@ -69,11 +73,11 @@ public class Song {
 
         // Add each note with a duration
         for (String note : songNotes) {
-            pattern.append(note).append("q "); // quarter note duration
+            pattern.append(note).append("q "); // quarter note
         }
 
         try {
-            System.out.println("Pattern: " + pattern);
+            System.out.println("Playing pattern: " + pattern);
             player.play(new Pattern(pattern.toString().trim()));
         } catch (Exception e) {
             System.out.println("Error playing song.");
