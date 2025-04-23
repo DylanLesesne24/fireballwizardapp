@@ -1,0 +1,24 @@
+package com.firewizapp;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+
+public class PlayingYourFirstSongController implements Initializable {
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("Welcome to PlayingYourFirstSong.");
+    }
+
+    @FXML
+    private void goBackToLessons() {
+        try {
+            App.setRoot("lessons");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

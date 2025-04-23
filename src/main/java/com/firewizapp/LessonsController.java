@@ -8,22 +8,33 @@ public class LessonsController {
     @FXML
     private void handleIntroToNotes() {
         System.out.println("Opening Intro to Notes...");
-        // Implement logic to show the Intro to Notes content
-        // You can load another screen, display a pop-up, or anything else
+        try {
+            App.setRoot("introtonotes"); // Load the introtonotes.fxml screen
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // Handle "Playing Your First Song" button click
     @FXML
     private void handleFirstSong() {
         System.out.println("Opening Playing Your First Song...");
-        // Implement logic to show Playing Your First Song content
+        try {
+            App.setRoot("playingyourfirstsong"); // Load playingyourfirstsong.fxml
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // Handle "Reading Sheet Music" button click
     @FXML
     private void handleSheetMusic() {
         System.out.println("Opening Reading Sheet Music...");
-        // Implement logic to show Reading Sheet Music content
+        try {
+            App.setRoot("readingsheetmusic"); // Load readingsheetmusic.fxml
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // Handle the "Back to Home" button click
