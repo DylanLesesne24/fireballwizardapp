@@ -2,13 +2,39 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.control.Button?>
 
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.firewizapp.PlayingYourFirstSongController"
       alignment="CENTER"
       spacing="20.0"
       style="-fx-padding: 50;">
-    
-    <Label fx:id="messageLabel" text="Playing Your First Song Page" style="-fx-font-size: 20px;" />
-    
+
+    <!-- Header Bubble -->
+    <HBox alignment="CENTER" spacing="10.0"
+          style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-padding: 10;">
+        <Label text="Playing Your First Song"
+               style="-fx-font-size: 24px; -fx-text-fill: black;" />
+    </HBox>
+
+    <!-- Description inside a styled rectangle bubble -->
+    <StackPane>
+        <Rectangle width="300" height="100" arcWidth="20" arcHeight="20"
+                   fill="#ffffff" stroke="black" strokeWidth="2" />
+        <Label text="Description: Apply what you have learned by playing a simple melody. This lesson guides you step-by-step through your first song on your instrument."
+               wrapText="true"
+               style="-fx-font-size: 14px; -fx-padding: 10px; -fx-text-fill: black;"
+               maxWidth="280" />
+    </StackPane>
+
+    <!-- Begin Lesson Button (Bubble Style) -->
+    <Button fx:id="beginLessonButton"
+            text="Begin Lesson"
+            onAction="#handleBeginLesson"
+            style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: black; -fx-border-width: 2; -fx-font-size: 18px; -fx-text-fill: black; -fx-padding: 10px 20px;" />
+
 </VBox>

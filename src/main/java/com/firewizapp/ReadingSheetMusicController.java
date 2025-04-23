@@ -14,6 +14,12 @@ public class ReadingSheetMusicController implements Initializable {
     }
 
     @FXML
+    private void handleBeginLesson() {
+        System.out.println("Begin Lesson button clicked for Reading Sheet Music.");
+        // Add navigation or logic for the lesson here
+    }
+
+    @FXML
     private void goBackToLessons() {
         try {
             App.setRoot("lessons"); // Go back to the lessons screen

@@ -14,11 +14,8 @@ public class PlayingYourFirstSongController implements Initializable {
     }
 
     @FXML
-    private void goBackToLessons() {
-        try {
-            App.setRoot("lessons");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private void handleBeginLesson() {
+        System.out.println("Begin Lesson button clicked for Playing Your First Song.");
+        // You can add navigation or other logic here
     }
 }
