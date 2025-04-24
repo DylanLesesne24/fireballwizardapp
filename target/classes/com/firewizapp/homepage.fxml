@@ -34,10 +34,7 @@
             </image>
         </ImageView>
 
-        <!-- Lessons button with onAction -->
-        <Button text="Lessons" styleClass="rounded-button" prefWidth="200" onAction="#handleLessons" />
-
-        <!-- Other buttons -->
+        <Button text="Lessons" styleClass="rounded-button" prefWidth="200" />
         <Button text="Song List" onAction="#goToSongList" styleClass="rounded-button" prefWidth="200" />
         <Button text="Quiz" styleClass="rounded-button" prefWidth="200" />
     </VBox>
