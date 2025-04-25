@@ -1,23 +1,27 @@
 package com.firewizapp;
 
+import java.io.IOException;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 public class IntroToNotesController {
 
     @FXML
-    private Button beginLessonButton;  // Referenced from FXML for handling button clicks
+    private Button beginLessonButton;
 
-    // No need to modify any labels during initialization now
     @FXML
     public void initialize() {
-        // You can use this space for future setup logic if needed
+        // Optional initialization logic
     }
 
-    // Handle the Begin Lesson button click
     @FXML
     public void handleBeginLesson() {
-        System.out.println("Begin Lesson clicked!");
-        // Add logic here to transition to the actual lesson content when ready
+        System.out.println("Begin Lesson clicked! Navigating to lesson1.fxml...");
+        try {
+            App.setRoot("lesson1"); // Loads lesson1.fxml
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

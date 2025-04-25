@@ -1,5 +1,6 @@
 package com.firewizapp;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -16,6 +17,10 @@ public class PlayingYourFirstSongController implements Initializable {
     @FXML
     private void handleBeginLesson() {
         System.out.println("Begin Lesson button clicked for Playing Your First Song.");
-        // You can add navigation or other logic here
+        try {
+            App.setRoot("lesson2"); // Navigates to lesson2.fxml
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

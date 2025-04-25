@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.firewizapp.IntroToNotesController"
+            prefWidth="350.0" prefHeight="600.0"
+            style="-fx-background-color: #f0f8ff;">
+
+    <!-- Title Label -->
+    <Label text="Intro to Notes - Lesson 1"
+           layoutX="50" layoutY="40"
+           style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <!-- Begin Lesson Button -->
+    <Button fx:id="beginLessonButton"
+            layoutX="100" layoutY="100"
+            prefWidth="150"
+            text="Begin Lesson"
+            onAction="#handleBeginLesson"
+            style="-fx-background-color: #80cbc4; -fx-text-fill: white; -fx-font-weight: bold;" />
+
+</AnchorPane>

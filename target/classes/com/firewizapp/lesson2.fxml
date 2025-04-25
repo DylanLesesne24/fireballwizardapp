@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.firewizapp.PlayingYourFirstSongController"
+            prefWidth="350.0" prefHeight="600.0"
+            style="-fx-background-color: #fff3e0;">
+
+    <!-- Header -->
+    <Label text="Playing Your First Song - Lesson 2"
+           layoutX="40" layoutY="40"
+           style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <!-- Begin Lesson Button -->
+    <Button fx:id="beginLessonButton"
+            layoutX="100" layoutY="100"
+            prefWidth="150"
+            text="Begin Lesson"
+            onAction="#handleBeginLesson"
+            style="-fx-background-color: #ffb74d; -fx-text-fill: white; -fx-font-weight: bold;" />
+
+</AnchorPane>

@@ -1,5 +1,6 @@
 package com.firewizapp;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -16,14 +17,18 @@ public class ReadingSheetMusicController implements Initializable {
     @FXML
     private void handleBeginLesson() {
         System.out.println("Begin Lesson button clicked for Reading Sheet Music.");
-        // Add navigation or logic for the lesson here
+        try {
+            App.setRoot("lesson3"); // Navigates to lesson3.fxml
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void goBackToLessons() {
         try {
-            App.setRoot("lessons"); // Go back to the lessons screen
-        } catch (Exception e) {
+            App.setRoot("homepage"); // Go back to the home screen
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
