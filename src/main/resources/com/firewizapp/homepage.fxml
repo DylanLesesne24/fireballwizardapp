@@ -34,7 +34,7 @@
             </image>
         </ImageView>
 
-        <Button text="Lessons" styleClass="rounded-button" prefWidth="200" />
+        <Button text="Lessons" onAction="#handleLessons" styleClass="rounded-button" prefWidth="200" />
         <Button text="Song List" onAction="#goToSongList" styleClass="rounded-button" prefWidth="200" />
         <Button text="Quiz" styleClass="rounded-button" prefWidth="200" />
     </VBox>
