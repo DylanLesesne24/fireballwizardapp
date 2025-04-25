@@ -8,18 +8,30 @@ import javafx.scene.control.Button;
 public class IntroToNotesController {
 
     @FXML
-    private Button beginLessonButton;
+    private Button backButton;  // Reference to the Back Button in FXML
 
     @FXML
     public void initialize() {
-        // Optional initialization logic
+        // Optional initialization logic if needed
     }
 
+    // Handle the Back button click to navigate back to homepage.fxml
+    @FXML
+    public void handleBackToHome() {
+        System.out.println("Back button clicked! Navigating back to homepage.fxml...");
+        try {
+            App.setRoot("homepage");  // Navigate back to homepage.fxml
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Handle the Begin Lesson button if it's needed
     @FXML
     public void handleBeginLesson() {
         System.out.println("Begin Lesson clicked! Navigating to lesson1.fxml...");
         try {
-            App.setRoot("lesson1"); // Loads lesson1.fxml
+            App.setRoot("lesson1");  // Loads lesson1.fxml
         } catch (IOException e) {
             e.printStackTrace();
         }

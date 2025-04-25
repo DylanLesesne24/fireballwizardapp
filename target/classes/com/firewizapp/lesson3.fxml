@@ -1,29 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.firewizapp.ReadingSheetMusicController"
-            prefWidth="350.0" prefHeight="600.0"
-            style="-fx-background-color: #d1c4e9;">
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.firewizapp.ReadingSheetMusicController"
+      alignment="CENTER"
+      spacing="15.0"
+      style="-fx-padding: 30;">
 
-    <!-- Header -->
-    <Label text="Reading Sheet Music - Lesson 3"
-           layoutX="40" layoutY="40"
-           style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <!-- Header Bubble -->
+    <HBox alignment="CENTER" spacing="8.0"
+          style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-padding: 8;">
+        <Label text="Lesson Content: Reading Sheet Music"
+               style="-fx-font-size: 22px; -fx-text-fill: black;" />
+    </HBox>
 
-    <!-- Begin Lesson Button -->
-    <Button fx:id="beginLessonButton"
-            layoutX="100" layoutY="100"
-            prefWidth="150"
-            text="Begin Lesson"
-            onAction="#handleBeginLesson"
-            style="-fx-background-color: #9575cd; -fx-text-fill: white; -fx-font-weight: bold;" />
+    <!-- Lesson Image (lesson3.png) -->
+    <ImageView fitWidth="200" fitHeight="200">
+        <image>
+            <Image url="@images/lesson3.png" />
+        </image>
+    </ImageView>
 
-    <!-- Back to Lessons Button -->
-    <Button text="Back to Lessons"
-            layoutX="100" layoutY="150"
-            prefWidth="150"
-            onAction="#goBackToLessons"
-            style="-fx-background-color: #ff7043; -fx-text-fill: white; -fx-font-weight: bold;" />
-</AnchorPane>
+    <!-- Description inside a styled rectangle bubble -->
+    <StackPane>
+        <Rectangle width="280" height="110" arcWidth="20" arcHeight="20"
+                   fill="#ffffff" stroke="black" strokeWidth="2" />
+        <Label text="Description: Now that you've played Fur Elise using note letters, you'll learn how these notes look on sheet music."
+               wrapText="true"
+               style="-fx-font-size: 13px; -fx-padding: 10px; -fx-text-fill: black;"
+               maxWidth="260" />
+    </StackPane>
+
+    <!-- Back Button (Bubble Style) -->
+    <Button fx:id="backButton"
+            text="Back"
+            onAction="#handleBackToHome"
+            style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: black; -fx-border-width: 2; -fx-font-size: 16px; -fx-text-fill: black; -fx-padding: 8px 16px;" />
+</VBox>

@@ -1,33 +1,37 @@
 package com.firewizapp;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 
-public class ReadingSheetMusicController implements Initializable {
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("Welcome to Reading Sheet Music.");
-    }
+public class ReadingSheetMusicController {
 
     @FXML
-    private void handleBeginLesson() {
-        System.out.println("Begin Lesson button clicked for Reading Sheet Music.");
+    private Button backButton;  // Reference to the Back Button in FXML
+
+    @FXML
+    public void initialize() {
+        // Optional initialization logic if needed
+    }
+
+    // Handle the Back button click to navigate back to homepage.fxml
+    @FXML
+    public void handleBackToHome() {
+        System.out.println("Back button clicked! Navigating back to homepage.fxml...");
         try {
-            App.setRoot("lesson3"); // Navigates to lesson3.fxml
+            App.setRoot("homepage");  // Navigate back to homepage.fxml
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    // Handle the Begin Lesson button if it's needed
     @FXML
-    private void goBackToLessons() {
+    public void handleBeginLesson() {
+        System.out.println("Begin Lesson clicked! Navigating to lesson3.fxml...");
         try {
-            App.setRoot("homepage"); // Go back to the home screen
+            App.setRoot("lesson3");  // Loads lesson3.fxml
         } catch (IOException e) {
             e.printStackTrace();
         }
