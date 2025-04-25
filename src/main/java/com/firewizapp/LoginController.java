@@ -3,8 +3,8 @@ package com.firewizapp;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 public class LoginController {
 
