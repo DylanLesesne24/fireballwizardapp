@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.firewizapp.QuizController"
+      alignment="CENTER"
+      spacing="20" style="-fx-padding: 20;">
+    
+    <!-- Top row for Back button -->
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Button onAction="#handleBack">
+    <graphic>
+        <ImageView fx:id="backImage" fitHeight="30" fitWidth="30">
+            <image>
+                <Image url="@images/back.png" />
+            </image>
+        </ImageView>
+    </graphic>
+</Button>
+
+
+    </HBox>
+
+    <!-- Question and Choices -->
+    <Label fx:id="questionLabel" style="-fx-font-size: 24px;" wrapText="true"/>
+    
+    <Button fx:id="choiceButton1" onAction="#handleChoice1" maxWidth="400" />
+    <Button fx:id="choiceButton2" onAction="#handleChoice2" maxWidth="400" />
+    <Button fx:id="choiceButton3" onAction="#handleChoice3" maxWidth="400" />
+    <Button fx:id="choiceButton4" onAction="#handleChoice4" maxWidth="400" />
+    
+    <Label fx:id="feedbackLabel" style="-fx-text-fill: green; -fx-font-size: 18px;"/>
+
+    <!-- Retry Button (hidden initially) -->
+    <Button fx:id="retryButton" text="Retry Quiz" onAction="#handleRetry" visible="false" maxWidth="200"/>
+
+</VBox>

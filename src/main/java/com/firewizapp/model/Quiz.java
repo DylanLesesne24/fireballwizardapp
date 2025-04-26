@@ -5,10 +5,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Represents a music learning quiz consisting of multiple-choice questions.
+ */
 public class Quiz {
     private UUID quizID;
     private String title;
-    private List<Questions> questions;  // Updated from Question to Questions
+    private List<Question> questions;
 
     public Quiz(UUID quizID, String title) {
         this.quizID = quizID;
@@ -24,17 +27,17 @@ public class Quiz {
         return title;
     }
 
-    public void addQuestion(Questions question) {
+    public void addQuestion(Question question) {
         questions.add(question);
     }
 
-    public List<Questions> getQuestions() {
-        // Return an unmodifiable list to prevent external modification
+    public List<Question> getQuestions() {
         return Collections.unmodifiableList(questions);
     }
 
-    public boolean checkAnswer(int questionIndex, String userAnswer) {
-        if (questionIndex < 0 || questionIndex >= questions.size()) return false;
-        return questions.get(questionIndex).isCorrect(userAnswer);
+    public boolean checkAnswer(int questionIndex, int selectedChoiceIndex) {
+        if (questionIndex < 0 || questionIndex >= questions.size())
+            return false;
+        return questions.get(questionIndex).isCorrect(selectedChoiceIndex);
     }
 }

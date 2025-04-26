@@ -36,7 +36,9 @@
 
         <Button text="Lessons" onAction="#handleLessons" styleClass="rounded-button" prefWidth="200" />
         <Button text="Song List" onAction="#goToSongList" styleClass="rounded-button" prefWidth="200" />
-        <Button text="Quiz" styleClass="rounded-button" prefWidth="200" />
+        <Button text="Quiz" onAction="#handleQuiz" styleClass="rounded-button" prefWidth="200" />
+
+
     </VBox>
 
     <!-- Bottom Icon Row -->

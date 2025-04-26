@@ -36,7 +36,11 @@ public class HomeController {
     @FXML
     private void handleQuiz() {
         System.out.println("Redirecting to Quiz...");
-        // TODO: Load quiz screen if needed later
+        try {
+            App.setRoot("quiz-view"); // Make sure quiz-view.fxml is correctly placed inside resources
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // Handles logout button click event (if used in your app)

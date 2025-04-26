@@ -37,6 +37,24 @@ public class Song {
         this.songTempo = tempo;
     }
 
+    /**
+     * Alternative constructor without difficulty for loading simple song data.
+     *
+     * @param id     The UUID of the song
+     * @param title  The title of the song
+     * @param artist The artist/composer of the song
+     * @param notes  An array of musical notes
+     * @param tempo  The tempo (beats per minute) of the song
+     */
+    public Song(UUID id, String title, String artist, String[] notes, int tempo) {
+        this.songID = id;
+        this.songTitle = title;
+        this.artist = artist;
+        this.songNotes = notes;
+        this.songTempo = tempo;
+        this.difficulty = "Unknown"; // Default if not specified
+    }
+
     public String getTitle() {
         return this.songTitle;
     }
