@@ -6,7 +6,6 @@ import com.firewizapp.model.Quiz;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -40,9 +39,21 @@ public class QuizController {
     private int score = 0;
 
     public void initialize() {
-        // Load first quiz
         MusicLearningFacade facade = MusicLearningFacade.getInstance();
-        currentQuiz = facade.getAllQuizzes().get(0);
+        List<Quiz> quizzes = facade.getAllQuizzes();
+
+        if (quizzes.isEmpty()) {
+            questionLabel.setText("No quizzes available!");
+            choiceButton1.setVisible(false);
+            choiceButton2.setVisible(false);
+            choiceButton3.setVisible(false);
+            choiceButton4.setVisible(false);
+            feedbackLabel.setText("Please add quizzes first.");
+            retryButton.setVisible(false);
+            return; // Don't proceed further
+        }
+
+        currentQuiz = quizzes.get(0);
         questions = currentQuiz.getQuestions();
         showCurrentQuestion();
     }

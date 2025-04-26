@@ -2,11 +2,8 @@ package com.firewizapp.model;
 
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.List;
 
-/**
- * Facade class that simplifies access to the core components of the music
- * learning app.
- */
 public class MusicLearningFacade {
 
     private static MusicLearningFacade instance;
@@ -14,6 +11,7 @@ public class MusicLearningFacade {
 
     private MusicLearningFacade() {
         quizzes = new ArrayList<>();
+        loadDefaultQuizzes(); // <<-- ADDED HERE
     }
 
     public static MusicLearningFacade getInstance() {
@@ -38,5 +36,22 @@ public class MusicLearningFacade {
             }
         }
         return null;
+    }
+
+    // NEW: Load a default quiz if none exist
+    private void loadDefaultQuizzes() {
+        Quiz sampleQuiz = new Quiz(UUID.randomUUID(), "Music Basics");
+
+        sampleQuiz.addQuestion(new Question(
+                "What is the symbol for a sharp note?",
+                List.of("♯", "♭", "♮", "𝄐"),
+                0));
+
+        sampleQuiz.addQuestion(new Question(
+                "How many lines are there in a musical staff?",
+                List.of("4", "5", "6", "7"),
+                1));
+
+        quizzes.add(sampleQuiz);
     }
 }
