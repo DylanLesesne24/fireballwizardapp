@@ -18,7 +18,6 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        // Temporary hardcoded validation — replace with real check later
         if ("admin".equals(username) && "1234".equals(password)) {
             System.out.println("Login successful!");
 

@@ -4,45 +4,45 @@ import javafx.fxml.FXML;
 
 public class LessonsController {
 
-    // Handle "Intro to Notes" button click
+    // Handle "Intro to Notes"
     @FXML
     private void handleIntroToNotes() {
         System.out.println("Opening Intro to Notes...");
         try {
-            App.setRoot("introtonotes"); // Load the introtonotes.fxml screen
+            App.setRoot("introtonotes");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // Handle "Playing Your First Song" button click
+    // Handle "Playing Your First Song"
     @FXML
     private void handleFirstSong() {
         System.out.println("Opening Playing Your First Song...");
         try {
-            App.setRoot("playingyourfirstsong"); // Load playingyourfirstsong.fxml
+            App.setRoot("playingyourfirstsong");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // Handle "Reading Sheet Music" button click
+    // Handle "Reading Sheet Music"
     @FXML
     private void handleSheetMusic() {
         System.out.println("Opening Reading Sheet Music...");
         try {
-            App.setRoot("readingsheetmusic"); // Load readingsheetmusic.fxml
+            App.setRoot("readingsheetmusic");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // Handle the "Back to Home" button click
+    // Handle the "Back to Home" b
     @FXML
     private void goBackToHome() {
         System.out.println("Going back to Home...");
         try {
-            App.setRoot("home"); // Redirects back to the home screen
+            App.setRoot("home");
         } catch (Exception e) {
             e.printStackTrace();
         }

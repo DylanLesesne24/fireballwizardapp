@@ -15,46 +15,46 @@ public class HomeController {
     private void handleLessons() {
         System.out.println("Redirecting to Lessons...");
         try {
-            App.setRoot("lessons"); // Ensure that "lessons.fxml" is present in your resources folder
+            App.setRoot("lessons");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // Handles "Song List" button click event
+    // Handles "Song List" button
     @FXML
     private void goToSongList() {
         System.out.println("Redirecting to Song List...");
         try {
-            App.setRoot("songlist"); // Ensure that "songlist.fxml" exists
+            App.setRoot("songlist");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // Placeholder method for handling "Quiz" button click event
+    // Placeholder method for handling "Quiz"
     @FXML
     private void handleQuiz() {
         System.out.println("Redirecting to Quiz...");
         try {
-            App.setRoot("quiz-view"); // Make sure quiz-view.fxml is correctly placed inside resources
+            App.setRoot("quiz-view");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // Handles logout button click event (if used in your app)
+    // Handles logout button
     @FXML
     private void handleLogout() {
         System.out.println("Logging out...");
         try {
-            App.setRoot("loginsignup"); // Ensure the "loginsignup.fxml" exists
+            App.setRoot("loginsignup");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // Handles "Back" button click (typically to return to login screen)
+    // Handles "Back" button
     @FXML
     private void handleBack() {
         System.out.println("Going back to login/signup...");

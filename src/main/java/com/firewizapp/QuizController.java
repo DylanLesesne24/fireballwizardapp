@@ -11,11 +11,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import java.util.Random;
 
 import java.util.List;
 
 public class QuizController {
 
+    @FXML
+    private Label quizTitleLabel;
+    @FXML
+    private Button homeButton;
     @FXML
     private Label questionLabel;
     @FXML
@@ -50,25 +55,37 @@ public class QuizController {
             choiceButton4.setVisible(false);
             feedbackLabel.setText("Please add quizzes first.");
             retryButton.setVisible(false);
-            return; // Don't proceed further
+            return;
         }
 
-        currentQuiz = quizzes.get(0);
+        Random random = new Random();
+        currentQuiz = quizzes.get(random.nextInt(quizzes.size())); // <-- random quiz selection!
+
         questions = currentQuiz.getQuestions();
+
+        if (quizTitleLabel != null) {
+            quizTitleLabel.setText("Quiz: " + currentQuiz.getTitle());
+        }
+
         showCurrentQuestion();
     }
 
     private void showCurrentQuestion() {
         if (currentQuestionIndex >= questions.size()) {
             questionLabel.setText("Quiz Finished! Score: " + score + "/" + questions.size());
+            questionLabel.setStyle("-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #4CAF50;");
+
             choiceButton1.setVisible(false);
             choiceButton2.setVisible(false);
             choiceButton3.setVisible(false);
             choiceButton4.setVisible(false);
             feedbackLabel.setVisible(false);
-            retryButton.setVisible(true); // Show retry button
+            retryButton.setVisible(true);
+            homeButton.setVisible(true);
             return;
         }
+
+        questionLabel.setStyle("-fx-font-size: 24px; -fx-font-weight: normal; -fx-text-fill: black;");
 
         Question q = questions.get(currentQuestionIndex);
         questionLabel.setText(q.getQuestionText());
@@ -130,8 +147,26 @@ public class QuizController {
         choiceButton3.setVisible(true);
         choiceButton4.setVisible(true);
         retryButton.setVisible(false);
+        homeButton.setVisible(false); // <-- hide home
         feedbackLabel.setVisible(true);
+
+        if (quizTitleLabel != null) {
+            quizTitleLabel.setText("Quiz: " + currentQuiz.getTitle());
+        }
+
         showCurrentQuestion();
+    }
+
+    @FXML
+    private void handleHome() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/firewizapp/homepage.fxml"));
+            Stage stage = (Stage) homeButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

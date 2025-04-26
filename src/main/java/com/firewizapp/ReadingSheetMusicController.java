@@ -8,30 +8,30 @@ import javafx.scene.control.Button;
 public class ReadingSheetMusicController {
 
     @FXML
-    private Button backButton;  // Reference to the Back Button in FXML
+    private Button backButton; // Reference to the Back Button in FXML
 
     @FXML
     public void initialize() {
-        // Optional initialization logic if needed
+
     }
 
-    // Handle the Back button click to navigate back to homepage.fxml
+    // Handle the Back button
     @FXML
     public void handleBackToHome() {
         System.out.println("Back button clicked! Navigating back to homepage.fxml...");
         try {
-            App.setRoot("homepage");  // Navigate back to homepage.fxml
+            App.setRoot("homepage"); // Navigate back to homepage.fxml
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // Handle the Begin Lesson button if it's needed
+    // Handle the Begin Lesson button
     @FXML
     public void handleBeginLesson() {
         System.out.println("Begin Lesson clicked! Navigating to lesson3.fxml...");
         try {
-            App.setRoot("lesson3");  // Loads lesson3.fxml
+            App.setRoot("lesson3"); // Loads lesson3.fxml
         } catch (IOException e) {
             e.printStackTrace();
         }
