@@ -35,6 +35,6 @@
     <Button fx:id="beginLessonButton"
             text="Begin Lesson"
             onAction="#handleBeginLesson"
-            style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: black; -fx-border-width: 2; -fx-font-size: 18px; -fx-text-fill: black; -fx-padding: 10px 20px;" />
+            styleClass="button" />
 
 </VBox>
