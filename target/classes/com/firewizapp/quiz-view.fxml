@@ -55,7 +55,7 @@
        wrapText="true"
        textAlignment="CENTER"/>
 
-<!-- Retry and Home Buttons (Initially hidden) in VBox -->
+<!-- Retry and Home Buttons  -->
 <VBox alignment="CENTER" spacing="15">
     <Button fx:id="retryButton" text="Retry Quiz" onAction="#handleRetry" visible="false" maxWidth="200"
             style="-fx-background-radius: 16; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 18px;"/>

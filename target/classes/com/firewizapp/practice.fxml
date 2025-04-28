@@ -2,6 +2,8 @@
 
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
@@ -12,20 +14,28 @@
       spacing="20"
       style="-fx-padding: 30; -fx-background-color: #f7f9fc;">
       
+    <!-- Title -->
     <Label text="Practice a Song" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #263238;"/>
 
-    <!-- Piano keys -->
-    <HBox alignment="CENTER" spacing="2">
-        <Button text="C" onAction="#playC" styleClass="white-key"/>
-        <Button text="D" onAction="#playD" styleClass="white-key"/>
-        <Button text="E" onAction="#playE" styleClass="white-key"/>
-        <Button text="F" onAction="#playF" styleClass="white-key"/>
-        <Button text="G" onAction="#playG" styleClass="white-key"/>
-        <Button text="A" onAction="#playA" styleClass="white-key"/>
-        <Button text="B" onAction="#playB" styleClass="white-key"/>
+    <!-- Piano image -->
+    <ImageView fx:id="pianoImage" fitWidth="600" preserveRatio="true">
+        <image>
+            <Image url="@images/keyboard.png" />
+        </image>
+    </ImageView>
+
+    <!-- Piano keys  -->
+    <HBox alignment="CENTER" spacing="5">
+        <Button text="C" fx:id="cButton" styleClass="white-key" onAction="#handleC" />
+        <Button text="D" fx:id="dButton" styleClass="white-key" onAction="#handleD" />
+        <Button text="E" fx:id="eButton" styleClass="white-key" onAction="#handleE" />
+        <Button text="F" fx:id="fButton" styleClass="white-key" onAction="#handleF" />
+        <Button text="G" fx:id="gButton" styleClass="white-key" onAction="#handleG" />
+        <Button text="A" fx:id="aButton" styleClass="white-key" onAction="#handleA" />
+        <Button text="B" fx:id="bButton" styleClass="white-key" onAction="#handleB" />
     </HBox>
 
     <!-- Back Button -->
-    <Button text="Return to Home" onAction="#handleBack" styleClass="rounded-button"/>
+    <Button text="Return to Home" onAction="#handleBack" styleClass="rounded-button" prefWidth="200"/>
 
 </VBox>

@@ -64,4 +64,22 @@
     -fx-font-weight: bold;
 }
 
+.white-key {
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-pref-width: 40px;
+    -fx-pref-height: 150px;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-cursor: hand;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 4, 0, 0, 2);
+}
+
+.white-key:hover {
+    -fx-background-color: #f0f0f0;
+}
 

@@ -11,37 +11,37 @@ import javafx.event.ActionEvent;
 public class PracticeController {
 
     @FXML
-    private void playC() {
+    private void handleC() {
         System.out.println("C key clicked!");
     }
 
     @FXML
-    private void playD() {
+    private void handleD() {
         System.out.println("D key clicked!");
     }
 
     @FXML
-    private void playE() {
+    private void handleE() {
         System.out.println("E key clicked!");
     }
 
     @FXML
-    private void playF() {
+    private void handleF() {
         System.out.println("F key clicked!");
     }
 
     @FXML
-    private void playG() {
+    private void handleG() {
         System.out.println("G key clicked!");
     }
 
     @FXML
-    private void playA() {
+    private void handleA() {
         System.out.println("A key clicked!");
     }
 
     @FXML
-    private void playB() {
+    private void handleB() {
         System.out.println("B key clicked!");
     }
 

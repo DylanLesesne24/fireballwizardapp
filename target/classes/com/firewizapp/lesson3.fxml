@@ -21,14 +21,14 @@
                style="-fx-font-size: 22px; -fx-text-fill: black;" />
     </HBox>
 
-    <!-- Lesson Image (lesson3.png) -->
+    <!-- Lesson Image  -->
     <ImageView fitWidth="200" fitHeight="200">
         <image>
             <Image url="@images/lesson3.png" />
         </image>
     </ImageView>
 
-    <!-- Description inside a styled rectangle bubble -->
+    <!-- Description  -->
     <StackPane>
         <Rectangle width="280" height="110" arcWidth="20" arcHeight="20"
                    fill="#ffffff" stroke="black" strokeWidth="2" />
@@ -38,7 +38,7 @@
                maxWidth="260" />
     </StackPane>
 
-    <!-- Back Button (Bubble Style) -->
+    <!-- Back Button -->
     <Button fx:id="backButton"
             text="Back"
             onAction="#handleBackToHome"
