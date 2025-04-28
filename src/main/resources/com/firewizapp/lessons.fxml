@@ -10,9 +10,9 @@
             fx:controller="com.firewizapp.LessonsController"
             stylesheets="@com/firewizapp/styles.css"
             prefHeight="600.0" prefWidth="350.0"
-            style="-fx-background-color: #d9e8e8;">
+            style="-fx-background-color: linear-gradient(to bottom, #d9e8e8, #ffffff);">
 
-    <!-- Back Arrow (top-left) -->
+    <!-- Back Arrow -->
     <ImageView fx:id="backArrow" fitWidth="24" fitHeight="24"
                layoutX="10" layoutY="10" onMouseClicked="#goBackToHome">
         <image>
@@ -20,28 +20,29 @@
         </image>
     </ImageView>
 
-    <!-- Top Header -->
+    <!-- Title Header -->
     <HBox alignment="CENTER" spacing="10.0" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
-        <Label text="Lessons" styleClass="label" />
+        <Label text="Explore Your Lessons" styleClass="label" style="-fx-font-size: 26px; -fx-font-weight: bold;" />
     </HBox>
 
     <!-- Main Content -->
-    <VBox alignment="CENTER" spacing="20.0" AnchorPane.topAnchor="80.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+    <VBox alignment="CENTER" spacing="25.0" AnchorPane.topAnchor="80.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
         
-        <!-- Optional icon or lesson image -->
-        <ImageView fitWidth="120" fitHeight="120">
+        <!-- Main Icon -->
+        <ImageView fitWidth="100" fitHeight="100">
             <image>
                 <Image url="@com/firewizapp/images/lessons.png" />
             </image>
         </ImageView>
 
-        <!-- Lesson Buttons -->
-        <Button text="Intro to Notes" onAction="#handleIntroToNotes" styleClass="rounded-button" prefWidth="200" />
-        <Button text="Playing Your First Song" onAction="#handleFirstSong" styleClass="rounded-button" prefWidth="200" />
-        <Button text="Reading Sheet Music" onAction="#handleSheetMusic" styleClass="rounded-button" prefWidth="200" />
+        <!-- Lesson Buttons with small music icons -->
+        <Button text="🎵 Intro to Notes" onAction="#handleIntroToNotes" styleClass="rounded-button" prefWidth="250" prefHeight="50" />
+        <Button text="🎹 Playing Your First Song" onAction="#handleFirstSong" styleClass="rounded-button" prefWidth="250" prefHeight="50" />
+        <Button text="🎼 Reading Sheet Music" onAction="#handleSheetMusic" styleClass="rounded-button" prefWidth="250" prefHeight="50" />
+
     </VBox>
 
-    <!-- Optional bottom icons -->
+    <!-- Bottom Notes -->
     <HBox alignment="CENTER" spacing="40.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
         <ImageView fitWidth="30" fitHeight="30">
             <image>
