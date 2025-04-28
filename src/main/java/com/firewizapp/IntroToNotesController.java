@@ -18,9 +18,9 @@ public class IntroToNotesController {
     // Handle the Back button
     @FXML
     public void handleBackToHome() {
-        System.out.println("Back button clicked! Navigating back to homepage.fxml...");
+        System.out.println("Back button clicked! Navigating back to lessons.fxml...");
         try {
-            App.setRoot("homepage"); // Navigate back to homepage.fxml
+            App.setRoot("lessons"); // Navigate back to lessons.fxml
         } catch (IOException e) {
             e.printStackTrace();
         }

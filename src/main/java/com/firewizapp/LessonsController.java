@@ -42,7 +42,7 @@ public class LessonsController {
     private void goBackToHome() {
         System.out.println("Going back to Home...");
         try {
-            App.setRoot("home");
+            App.setRoot("homepage");
         } catch (Exception e) {
             e.printStackTrace();
         }
