@@ -32,7 +32,7 @@
 
 /* Hyperlink styling */
 .hyperlink {
-    -fx-text-fill: #0066cc;
+    -fx-text-fill: black;
     -fx-underline: true;
 }
 

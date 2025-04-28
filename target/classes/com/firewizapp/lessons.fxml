@@ -16,7 +16,7 @@
     <ImageView fx:id="backArrow" fitWidth="24" fitHeight="24"
                layoutX="10" layoutY="10" onMouseClicked="#goBackToHome">
         <image>
-            <Image url="@com/firewizapp/images/back.png" />
+            <Image url="@images/back.png" />
         </image>
     </ImageView>
 
